@@ -1,0 +1,34 @@
+.md-scrim {
+
+    display: grid;
+
+    &>.md-dialog {
+        place-self: center;
+
+        width: 0;
+        height: 0;
+        border-radius: 28px;
+        position: relative;
+        transition: .3s;
+        overflow: hidden;
+    }
+
+    &:has(>label>input:checked) {
+        .md-dialog {
+            width: auto;
+            height: auto;
+            overflow: initial;
+        }
+    }
+
+    &:has(>div.confirmation) {
+        &>label {
+            pointer-events: none;
+        }
+        &:active {
+            &>div:not(:hover) {
+                transform: scale(1.01);
+            }
+        }
+    }
+}

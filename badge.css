@@ -1,0 +1,29 @@
+.md-badge {
+	background: var(--error);
+	color: var(--on-error);
+    
+    width: min-content;
+	user-select: none;
+	border-radius: 16px;
+	display: grid;
+	place-items: center;
+	pointer-events: none;
+
+    font: var(--label-small-font);
+    letter-spacing: var(--label-small-letter-spacing);
+
+    &:not(.large) { aspect-ratio: 1/1; width: 16px;}
+
+    &.small  {
+        width: 6px;
+        height: 6px;
+    }
+
+    &.large   {
+        max-width: 34px;
+        min-width: 16px;
+        height: 16px;
+        padding: 0 4px;
+    }
+
+}

@@ -1,0 +1,6 @@
+.md-divider {
+    background: var(--outline-variant);
+    display: block;
+    min-width: 1px;
+    min-height: 1px;
+}

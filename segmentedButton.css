@@ -1,0 +1,75 @@
+.md-segmentedButton {
+    height: clamp(40px, 40px, 40px);
+
+    display: grid;
+    grid-auto-flow: column;
+
+	&>.md-segmentedButtonOption {
+        display: grid;
+        grid-auto-flow: column;
+        place-content: center;
+        place-items: center;
+        gap: 8px;
+        padding: 0 12px;
+        position: relative;
+        margin-right: -1px;
+		box-sizing: border-box;
+		cursor: pointer;
+
+		& input {
+	        opacity: 0;
+	        position: absolute;
+	        pointer-events: none;
+	    }
+
+		&:first-child { border-radius: 20px 0 0 20px;}
+        &:last-child { border-radius: 0 20px 20px 0;}
+
+        &>.icon { font-size: 18px;}
+        &>.label {
+			font: var(--label-large-font);
+        	letter-spacing: var(--label-large-letter-spacing);
+		}
+		&>.icon, &>.label {
+            position: relative;
+            user-select: none;
+            pointer-events: none;
+			height: min-content;
+        }
+		border: solid 1px var(--outline);
+
+		&:not(.disabled){
+			--md-content-unselected: transparent;
+            --md-content-selected: var(--secondary-container);
+			
+            --md-on-content-unselected: var(--on-surface);
+            --md-on-content-selected: var(--on-secondary-container);
+
+			background: var(--md-content-unselected);
+			color: var(--md-on-content-unselected);
+
+			&:is(:hover, .hovered) {
+				background: color-mix(in srgb, var(--md-content-unselected), var(--md-on-content-unselected) 8%);
+			}
+		    &:is(
+				:focus, .focused,
+			    :active, .pressed
+			) { background: color-mix(in srgb, var(--md-content-unselected), var(--md-on-content-unselected) 12%);}
+
+			&:has(:checked) {
+				background: var(--md-content-selected);
+				color: var(--md-on-content-selected);
+
+				&:is(:hover, .hovered) {
+					background: color-mix(in srgb, var(--md-content-selected), var(--md-on-content-selected) 8%);
+				}
+			    &:is(
+					:focus, .focused,
+				    :active, .pressed
+				) { background: color-mix(in srgb, var(--md-content-selected), var(--md-on-content-selected) 12%);}
+	
+			}
+		
+		}
+	}
+}

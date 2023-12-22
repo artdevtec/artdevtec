@@ -1,0 +1,233 @@
+.md-navigation {
+
+	background: var(--surface);
+	display: grid;
+
+	& .button {
+		display: grid;
+		position: relative;
+		cursor: var(--cursor-pointer);
+
+		&>*{ pointer-events: none; z-index: 1;}
+
+		&>input {
+	        opacity: 0;
+	        position: absolute;
+	    }
+
+		&>.active-indicator {
+			background: var(--secondary-container);
+			width: 0px;
+			position: absolute;
+			inset: auto 0;
+			margin: auto;
+			transition: .3s ease-in-out;
+		}
+		&>.icon {
+			color: var(--on-surface-variant);
+		}
+		&>.label {
+			color: var(--on-surface-variant);
+		}
+		&>.icon, &>.label {
+			display: grid;
+			user-select: none;
+		}
+		&:has(:checked) {
+			&>.label { color: var(--on-surface);}
+			&>.icon {
+				color: var(--on-secondary-container);
+				font-variation-settings: "FILL" 1,"wght" 400,"GRAD" 0,"opsz" 48;
+			}
+			&>.ripple>.effect { --effect: var(--on-surface);}
+		}
+	}
+	
+	&.bar {
+		grid-auto-flow: column;
+		height: 80px;
+		width: calc(100vw - 32px);
+
+		& .button {
+			height: 80px;
+			padding: 12px 0 16px 0;
+			gap: 4px;
+
+			&>.active-indicator {
+				width: 0px;
+				height: 32px;
+				border-radius: 16px;
+				top: 12px;
+			}
+			&>.icon {
+				width: 64px;
+				height: 32px;
+				border-radius: 16px;
+				place-content: center;
+				justify-self: center;
+			}
+			&>.label {
+				font: var(--label-medium-font);
+	    		letter-spacing: var(--label-medium-letter-spacing);
+			}
+			&>.icon, &>.label {
+				place-content: center;
+			}
+
+			&:is(:hover, .hovered)>.icon {
+				background: color-mix(in srgb, transparent, var(--on-surface-variant) 8%);
+			}
+			&:is(
+				:focus, .focused,
+				:active, .pressed
+			)>.icon { background: color-mix(in srgb, transparent, var(--on-surface-variant) 12%);}
+	
+			&:has(:checked) {
+				&>.active-indicator { width: 64px;}
+	
+				&:is(:hover, .hovered)>.icon {
+					background: color-mix(in srgb, transparent, var(--on-surface) 8%);
+				}
+				&:is(
+					:focus, .focused,
+					:active, .pressed
+				)>.icon { background: color-mix(in srgb, transparent, var(--on-surface) 12%);}
+			}
+
+			&>.ripple {
+				width: 64px;
+				height: 32px;
+				border-radius: 16px;
+				position: absolute;
+				opacity: 1;
+				inset: auto 0;
+				margin: auto;
+				top: 12px;
+			}
+
+			& .md-badge.large {
+				position: absolute;
+				left: 50%;
+				top: 14px;
+			}
+		}
+	}
+	&.drawer {
+
+		min-width: 360px;
+		
+		& .button {
+		    width: calc(360px - 12px);
+		    height: 56px;
+		    padding: 0 24px 0 16px;
+		    gap: 12px;
+		    border-radius: 56px;
+		    grid-template-columns: 24px 1fr auto;
+		    align-items: center;
+			justify-self: center;
+
+			&>.active-indicator {
+				height: 100%;
+				border-radius: 56px;
+			}
+			&>.label {
+				font: var(--label-large-font);
+	    		letter-spacing: var(--label-large-letter-spacing);
+			}
+
+			&:is(:hover, .hovered) {
+				background: color-mix(in srgb, transparent, var(--on-surface-variant) 8%);
+			}
+			&:is(
+				:focus, .focused,
+				:active, .pressed
+			) { background: color-mix(in srgb, transparent, var(--on-surface-variant) 12%);}
+	
+			&:has(:checked) {
+				&>.active-indicator { width: 100%;}
+				&>.label { color: var(--on-surface);}
+				&>.icon {
+					color: var(--on-secondary-container);
+					font-variation-settings: "FILL" 1,"wght" 400,"GRAD" 0,"opsz" 48;
+				}
+	
+				&:is(:hover, .hovered)>.active-indicator {
+					background: color-mix(in srgb, var(--secondary-container), var(--on-surface) 8%);
+				}
+				&:is(
+					:focus, .focused,
+					:active, .pressed
+				)>.active-indicator { background: color-mix(in srgb, var(--secondary-container), var(--on-surface) 12%);}
+				&>.ripple>.effect { --effect: var(--on-surface);}
+			}
+		}
+
+	}
+	&.rail {
+		& .button {
+
+			width: 80px;
+            height: 56px;
+            padding: 0 8px 4px 8px;
+            gap: 4px;
+
+			&>.active-indicator {
+				width: 0px;
+				height: 32px;
+				border-radius: 16px;
+			}
+			&>.icon {
+				width: 64px;
+				height: 32px;
+				border-radius: 16px;
+				place-content: center;
+			}
+			&>.label {
+				font: var(--label-medium-font);
+	    		letter-spacing: var(--label-medium-letter-spacing);
+				width: 80px;
+			    left: -8px;
+			    position: relative;
+			}
+			&>.icon, &>.label {
+				place-content: center;
+			}
+	
+			&:is(:hover, .hovered)>.icon {
+				background: color-mix(in srgb, transparent, var(--on-surface-variant) 8%);
+			}
+			&:is(
+				:focus, .focused,
+				:active, .pressed
+			)>.icon { background: color-mix(in srgb, transparent, var(--on-surface-variant) 12%);}
+	
+			&:has(:checked) {
+				&>.active-indicator { width: 64px;}
+	
+				&:is(:hover, .hovered)>.icon {
+					background: color-mix(in srgb, transparent, var(--on-surface) 8%);
+				}
+				&:is(
+					:focus, .focused,
+					:active, .pressed
+				)>.icon { background: color-mix(in srgb, transparent, var(--on-surface) 12%);}
+			}
+
+			&>.ripple {
+				width: 64px;
+				height: 32px;
+				border-radius: 16px;
+				position: absolute;
+				opacity: 1;
+				inset: auto 0;
+				margin: auto;
+			}
+
+			& .md-badge.large {
+				position: absolute;
+				left: 40px;
+				top: 2px;
+			}
+		}
+	}
+}

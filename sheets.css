@@ -1,0 +1,30 @@
+.md-scrim {
+    .md-sheets.bottom {
+        width: 100%;
+        max-width: 640px;
+        height: 0;
+        max-height: calc(100% - 72px);
+        border-radius: 28px 28px 0 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transition: .3s ;
+    }
+
+    .md-sheets.side {
+        width: 0;
+        max-width: 400px;
+        height: 100%;
+        border-radius: 28px 0 0 28px;
+        position: absolute;
+        right: 0;
+        transition: .3s ;
+    }
+
+    &:has(>label>input:checked) {
+        .md-sheets.bottom { height: 100%;}
+        .md-sheets.side { width: 100%;}
+    }
+}

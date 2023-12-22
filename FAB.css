@@ -1,0 +1,56 @@
+.md-FAB {
+    all: unset;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    position: relative;
+
+    &.elevation { box-shadow: var(--elevation-3);}
+    background: var(--primary-container);
+    --state: var(--on-primary-container);
+    
+    &>.icon {
+        color: var(--on-primary-container);
+        position: relative;
+        user-select: none;
+        pointer-events: none;
+    }
+    &>.md-overlay { color: var(--on-primary-container);}
+    &>.ripple>.effect { --effect: var(--state);}   
+
+    &.small {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+    }
+
+    &.large {
+        width: 96px;
+        height: 96px;
+        border-radius: 28px;
+
+        &>.icon {
+            font-size: 36px;
+        }
+    }
+
+    &.surface {
+        --state: var(--primary);
+        &.low { background: var(--surface-container-low);}
+        &.high { background: var(--surface-container-high);}
+        &>.icon { color: var(--primary);}
+    }
+    &.secondary {
+        --state: var(--on-secondary-container);
+        background: var(--secondary-container);
+        &>.icon { color: var(--on-secondary-container);}
+    }
+    &.tertiary {
+        --state: var(--on-tertiary-container);
+        background: var(--tertiary-container);
+        &>.icon { color: var(--on-tertiary-container);}
+    }
+}

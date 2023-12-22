@@ -1,0 +1,89 @@
+.md-textField {
+	
+	display: grid;
+	transition: .3s;
+	user-select: none;
+	
+	&.filled>label {
+		background: var(--surface-container-highest);
+		border-bottom: solid 1px var(--outline);
+		border-radius: 4px 4px 0 0;
+
+		&:has(input:focus, input:valid) {
+			border-bottom: solid 2px var(--primary);
+			
+			&>.label {
+				top: 8px;
+				font-size: 8px;
+				font: var(--body-small-font);
+		        letter-spacing: var(--body-small-letter-spacing);
+			}
+
+			&>input { margin-bottom: 7px;}
+			&>.icon, &>.button { top: .5px; position: relative; }
+		}
+
+		&>input {
+			align-self: end;
+			margin-bottom: 8px;
+		}
+	}
+	&.outlined {
+		background: inherit;
+	}
+	&.outlined>label {
+		background: inherit;
+		background: var(--surface);
+		border: solid 1px var(--outline);
+		border-radius: 4px;
+
+		&:has(input:focus, input:valid) {
+			border: solid 2px var(--primary);
+			&:has(>.icon) {padding-left: 11px;}
+			&:has(>.button) {padding-right: 3px;}
+			&>.label {
+				background: inherit;
+				font: var(--body-small-font);
+		        letter-spacing: var(--body-small-letter-spacing);
+				left: 11px;
+				top: -9px;
+				height: min-content;
+				padding: 0 4px;
+			}
+		}
+	}
+	&>label {
+		display: flex;
+		height: 56px;
+		align-items: center;
+		padding: 0 16px;
+		gap: 16px;
+		box-sizing: border-box;
+		position: relative;
+		font: var(--body-large-font);
+        letter-spacing: var(--body-large-letter-spacing);
+		cursor: text;
+
+		&>input {
+			all: unset;
+			width: 0;
+            flex: 1 1 0%;
+		}
+
+		&:has(>.icon) {
+			padding-left: 12px;
+			&>.label {
+				left: 52px;
+			}
+		}
+		&:has(.button) { padding-right: 4px;}
+
+		&>.label {
+			position: absolute;
+			left: 16px;
+			top: 16px;
+			transition: .3s;
+		}
+
+	}
+}

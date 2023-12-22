@@ -1,0 +1,84 @@
+.md-button {
+
+    all: unset;
+    height: clamp(40px, 40px, 40px);
+    border-radius: 20px;
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    gap: 8px;
+    position: relative;
+    cursor: pointer;
+    cursor: var(--cursor-pointer);
+    transition: .3s;
+	box-sizing: border-box;
+    box-shadow: var(--elevation-0);
+    padding: 0 24px;
+	
+    &:has(.icon) { padding-left: 16px;}
+
+    &:not(.disabled) {
+        &.elevated {
+			--btn-content: var(--surface-container-low);
+            --btn-on-content: var(--primary);
+            --hover-elevation: var(--elevation-2);
+            &:not(:hover, .hover) { box-shadow: var(--elevation-1);}
+        }
+    
+        &.filled {
+            --btn-content: var(--primary);
+            --btn-on-content: var(--on-primary);
+            --hover-elevation: var(--elevation-1);
+        }
+    
+        &.tonal {
+            --btn-content: var(--secondary-container);
+            --btn-on-content: var(--on-secondary-container);
+            --hover-elevation: var(--elevation-1);
+        }
+    
+        &.outlined {
+            --btn-content: transparent;
+            --btn-on-content: var(--primary);
+            border: solid 1px var(--outline);
+        }
+    
+        &.text {
+            --btn-content: transparent;
+            --btn-on-content: var(--primary);
+        }
+    
+        background: var(--btn-content);
+        &>.ripple>.effect { --effect: var(--btn-on-content);}
+    }
+
+    &>.icon { font-size: 18px;}
+    &>.label {
+        font: var(--label-large-font);
+        letter-spacing: var(--label-large-letter-spacing);
+        text-transform: capitalize;
+    }
+    &>.icon, &>.label {
+		color: var(--btn-on-content);
+        position: relative;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    &:is(:hover, .hovered) {
+		box-shadow: var(--hover-elevation);
+		background: color-mix(in srgb, var(--btn-content), var(--btn-on-content) 8%);
+	}
+    &:is(
+		:focus, .focused,
+	    :active, .pressed
+	) { background: color-mix(in srgb, var(--btn-content), var(--btn-on-content) 12%);}
+
+    &.disabled {
+        pointer-events: none;
+        &:not(.text, .outlined) { background: color-mix(in srgb, transparent, var(--on-surface) 12%);}
+        &>.icon, &>.label { color: color-mix(in srgb, transparent, var(--on-surface) 38%);}
+        &.outlined { border: solid 1px color-mix(in srgb, transparent, var(--on-surface) 12%); }
+    }
+
+}

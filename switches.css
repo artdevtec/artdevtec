@@ -1,0 +1,84 @@
+.md-switches {
+
+    --track-selected: var(--primary);
+    --track-unselected: var(--surface-container-highest);
+
+    width: clamp(52px,52px,52px);
+    height: clamp(32px,32px,32px);
+    border-radius: 32px;
+    display: grid;
+    position: relative;
+	cursor: pointer;
+	box-sizing: bolder-box;
+	border: solid 2px var(--outline);
+
+    transition: .3s ease-in-out;
+
+	& * { pointer-events: none;}
+
+    & .icon {
+        display: none;
+        font-size: 16px;
+		user-select: none;
+    }
+
+    &>.thumb {
+        width: 16px;
+        height: 16px;
+        border-radius: 16px;
+        display: block;
+        inset: 0 0 0 6px;
+        transition: .3s;
+        position: absolute;
+        margin: auto 0;
+        display: grid;
+        place-content: center;
+    }
+
+    &:has(input:checked) {
+        background: var(--track-selected);
+		border-color: var(--primary);
+        &>.thumb { background: var(--on-primary);}
+        &.is-on .icon.true { display: block; color: var(--on-primary-container);}
+    }
+    &:has(input:not(:checked)) {
+        background: var(--track-unselected);
+        &>.thumb { background: var(--outline);}
+        &.is-off .thumb {
+            width: 24px;
+            height: 24px;
+            inset: 0 0 0 2px;
+        }
+        &.is-off .icon.false {display: block; color: var(--surface-container-highest);}
+    }
+
+    & input {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &:has(input:checked) {
+        &>.thumb {
+            width: 24px;
+            height: 24px;
+            inset: 0 0 0 22px;
+        }
+    }
+
+    &:active {
+        &>.thumb {
+			width: 24px;
+			height: 24px;
+			inset: 0 0 0 2px;
+        }
+        &:has(input:checked) {
+            &>.thumb {
+                width: 28px;
+                height: 28px;
+                inset: 0 0 0 20px;
+            }
+        }
+    }
+
+}

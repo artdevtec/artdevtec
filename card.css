@@ -1,0 +1,47 @@
+.md-card {
+
+	all: unset;
+	display: grid;
+
+    position: relative;
+	transition: .3s;
+	cursor: pointer;
+
+    &.elevated {
+        --card-content: var(--surface-container-low);
+        box-shadow: var(--elevation-1);
+		--hover-elevation: var(--elevation-2);
+    }
+
+    &.filled {
+        --card-content: var(--surface-container-highest);
+    }
+
+    &.outlined {
+        --card-content: var(--surface);
+        border: solid 1px var(--outline);
+    }
+
+	background: var(--card-content);
+
+	&:is(:hover, .hovered) {
+		box-shadow: var(--hover-elevation);
+		background: color-mix(in srgb, var(--card-content), var(--on-surface) 8%);
+	}
+    &:is(
+		:focus, .focused,
+	    :active, .pressed
+	) { background: color-mix(in srgb, var(--card-content), var(--on-surface) 12%);}
+
+	&>.ripple>.effect { --effect: var(--on-surface);}
+
+	&.disabled {
+		pointer-events: none;
+		user-select: none;
+		opacity: .38;
+		
+		&.elevated { background: var(--surface-variant);}
+		&.filled { background: var(--surface);}
+		&:outlined {background: var(--surface-variant);}
+	}
+}
