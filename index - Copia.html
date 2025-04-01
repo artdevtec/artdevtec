@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <title>Art</title>
+        <!-- Material Pieces -->
+        <link rel="stylesheet" href="src/css/pieces/pieces.css">
+        <script src="src/js/pieces/pieces.js"></script>
+        <!-- m css -->
+        <link rel="stylesheet" href="src/css/style.css">
+        <link rel="stylesheet" href="src/css/pages/home.css">
+        <link rel="stylesheet" href="src/css/pages/favorite.css">
+        <link rel="stylesheet" href="src/css/pages/config.css">
+        <!-- m js -->
+        <script src="src/js/tools.js"></script>
+        <script src="src/js/art.js"></script>
+        <!-- m pages -->
+        <script src="src/js/pages/home.js" defer></script>
+        <script src="src/js/pages/config.js" defer></script>
+
+        <!-- last m js -->
+        <!-- <script src="src/js/index.js" defer></script> -->
+        <!-- Libs js CDN -->
+        <style>
+            * {
+                /* box-shadow: 0 0 0 1px rgba(255,0,0,0.2); */
+            }
+        </style>
+    </head>
+    <body class="light triade pieces-surface background-color-bg text-color-to-bg">
+        <header id="m-header" class="pieces-surface">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="24" height="24" shape-rendering="geometricPrecision">
+                <defs>
+                    <path d="M18 18h3v3h-3v-3Z" id="e" shape-rendering="crispEdges" width="3" height="3"></path>
+                    <path d="M18 3h3v3h-3V3Z" id="c" shape-rendering="crispEdges" width="3" height="3"></path>
+                    <path d="M3 18h3v3H3v-3Z" id="d" shape-rendering="crispEdges" width="3" height="3"></path>
+                    <path d="M18 6 6 18" shape-rendering="crispEdges" id="b"></path>
+                    <path d="m12 12 6 6" shape-rendering="crispEdges" id="a"></path>
+                    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#3a6fcf"></stop>
+                        <stop offset="100%" stop-color="#9134d0"></stop>
+                    </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="100%" height="100%" rx="0.25rem" ry="0.25rem" fill="url(#grad3)"></rect>
+                <use xlink:href="#a" fill-opacity="0" stroke="#fff"></use>
+                <use xlink:href="#b" fill-opacity="0" stroke="#fff"></use>
+                <use xlink:href="#c" fill-opacity="0" stroke="#fff"></use>
+                <use xlink:href="#d" fill-opacity="0" stroke="#fff"></use>
+                <use xlink:href="#e" fill-opacity="0" stroke="#fff"></use>
+            </svg>
+            <h1>Art</h1>
+            <h2>Início</h2>
+        </header>
+        <span class="pieces-surface pieces-divider background-color-fg"></span>
+        <main id="m-main">
+            <style>
+                .surface-border { border-width: 1px; border-style: solid;}
+                #m-main {
+                    display: grid;
+                    padding: 16px;
+                    align-items: start;
+                    align-content: start;
+                    gap: 16px;
+
+                    h2 {
+                        font-size: 24px;
+                        font-weight: 900;
+                    }
+                    h3 {
+                        font-size: 16px;
+                        font-weight: 900;
+                    }
+
+                    #components {
+                        display: grid;
+                        border-radius: 44px;
+                        padding: 16px;
+                        gap: 12px;
+                        img {
+                            background: white;
+                            border-radius: 32px;
+                            aspect-ratio: 16/9;
+                        }
+                        ul {
+                            display: grid;
+                            grid-auto-flow: column;
+                            place-content: center;
+                        }
+                        li {
+                            background: white;
+                            border-radius: 100%;
+                            aspect-ratio: 1/1;
+                            width: clamp(56px, 56px, 56px);
+                            list-style: none;
+                            border-width: 4px;
+                            border-style: solid;
+                            &:not(:first-child){margin-left: -16px;}
+                        }
+                    }
+                }
+            </style>
+            <section style="display:grid;gap:16px;place-items:start;place-self:start;">
+                <b><b class="pieces-surface background-color-accent text-color-to-accent prop">pieces-surface</b></b>
+                <h2>background</h2>
+                <b><b class="pieces-surface background-color-mg text-color-to-mg prop">background-color-*</b></b>
+                <span>
+                    <b><b class="pieces-surface background-color-bg text-color-to-bg prop">bg</b></b>
+                    <b><b class="pieces-surface background-color-mg text-color-to-mg prop">mg</b></b>
+                    <b><b class="pieces-surface background-color-fg text-color-to-fg prop">fg</b></b>
+                    <b><b class="pieces-surface background-color-toned text-color-to-toned prop">toned</b></b>
+                    <b><b class="pieces-surface background-color-accent text-color-to-accent prop">accent</b></b>
+                </span>
+                <h3>Hover</h3>
+                <b><b class="pieces-surface background-color-fg text-color-to-fg prop">background-color-hover-*</b></b>
+                <span>
+                    <b><b class="pieces-surface background-color-bg background-color-hover-bg text-color-to-bg prop">bg</b></b>
+                    <b><b class="pieces-surface background-color-mg background-color-hover-mg text-color-to-mg prop">mg</b></b>
+                    <b><b class="pieces-surface background-color-fg background-color-hover-fg text-color-to-fg prop">fg</b></b>
+                    <b><b class="pieces-surface background-color-toned background-color-hover-toned text-color-to-toned prop">toned</b></b>
+                    <b><b class="pieces-surface background-color-accent background-color-hover-accent text-color-to-accent prop">accent</b></b>
+                </span>
+                <h3>Hover to</h3>
+                <b><b class="pieces-surface background-color-fg text-color-to-fg prop">background-color-hover-to-*</b></b>
+                <span>
+                    <b><b class="pieces-surface background-color-bg background-color-hover-to-bg text-color-to-bg prop">bg</b></b>
+                    <b><b class="pieces-surface background-color-mg background-color-hover-to-mg text-color-to-mg prop">mg</b></b>
+                    <b><b class="pieces-surface background-color-fg background-color-hover-to-fg text-color-to-fg prop">fg</b></b>
+                    <b><b class="pieces-surface background-color-toned background-color-hover-to-toned text-color-to-toned prop">toned</b></b>
+                    <b><b class="pieces-surface background-color-accent background-color-hover-to-accent text-color-to-accent prop">accent</b></b>
+                </span>
+            </section>
+            <span class="pieces-surface pieces-divider background-color-fg"></span>
+            <section style="display:grid;gap:16px;place-items:start;place-self:start;">
+                <h2>Text / Icon</h2>
+                <b><b class="pieces-surface background-color-fg text-color-to-fg prop">text-color-*</b></b>
+                <span>
+                    <b><b class="pieces-surface background-color-bg text-color-bg prop">bg</b></b>
+                    <b><b class="pieces-surface background-color-bg text-color-mg prop">mg</b></b>
+                    <b><b class="pieces-surface background-color-bg text-color-fg prop">fg</b></b>
+                    <b><b class="pieces-surface background-color-bg text-color-toned prop">toned</b></b>
+                    <b><b class="pieces-surface background-color-bg text-color-accent prop">accent</b></b>
+                </span>
+                <b><b class="pieces-surface background-color-fg text-color-to-fg prop">text-color-to-*</b></b>
+                <span>
+                    <b><b class="pieces-surface background-color-bg text-color-to-bg prop">bg</b></b>
+                    <b><b class="pieces-surface background-color-bg text-color-to-mg prop">mg</b></b>
+                    <b><b class="pieces-surface background-color-bg text-color-to-fg prop">fg</b></b>
+                    <b><b class="pieces-surface background-color-bg text-color-to-toned prop">toned</b></b>
+                    <b><b class="pieces-surface background-color-bg text-color-to-accent prop">accent</b></b>
+                </span>
+            </section>
+            <span class="pieces-surface pieces-divider background-color-fg"></span>
+            <h2>Text</h2>
+            <article class="pieces-surface">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, maiores. Ipsa doloribus magnam, aut, provident laudantium voluptates similique veritatis fuga expedita dolores voluptate veniam nulla dignissimos, molestiae earum aliquam in?
+            </article>
+            <span class="pieces-surface pieces-divider background-color-fg"></span>
+            <h2>Components</h2>
+            <article id="components" class="pieces-surface background-color-bg inverse border-color-bg">
+                <img src="img.formato" alt="">
+                <ul>
+                    <li class="pieces-surface background-color-bg inverse border-color-bg"></li>
+                    <li class="pieces-surface background-color-bg inverse border-color-bg"></li>
+                    <li class="pieces-surface background-color-bg inverse border-color-bg"></li>
+                    <li class="pieces-surface background-color-bg inverse border-color-bg"></li>
+                    <li class="pieces-surface background-color-bg inverse border-color-bg"></li>
+                    <li class="pieces-surface background-color-bg inverse border-color-bg"></li>
+                </ul>
+            </article>
+            <span class="pieces-surface pieces-divider background-color-fg"></span>
+            <h2>Category</h2>
+            <article class="pieces-surface" style="display: grid; gap: 16px;">
+                <style>
+                    .pieces-switch {
+                        width: 52px;
+                        height: 32px;
+                        border-radius: 32px;
+                        display: grid;
+                        border-style: solid;
+                        border-width: 2px;
+                        overflow: hidden;
+                        position: relative;
+                        transition: .3s;
+                        cursor: var(--cursor-pointer);
+                        &>*{pointer-events: none;}
+                        .active-indicator {
+                            width: 16px;
+                            height: 16px;
+                            border-radius: 16px;
+                            display: grid;
+                            margin: 6px 6px;
+                            transition: .3s;
+                        }
+                        &:has(input:checked) {
+                            .active-indicator {
+                                width: 24px;
+                                height: 24px;
+                                margin: 2px 22px;
+                            }
+                        }
+                        input {
+                            user-select: all;
+                            z-index: 1;
+                            position: absolute;
+                            width: 100vh;
+                            height: 100vh;
+                            opacity: 0;
+                        }
+                    }
+                </style>
+                <b>Estrutura</b>
+                <label class="
+                    pieces-switch
+                    pieces-surface
+
+                    border-color-bg
+
+                    debug-mode
+                    debug-mode-all
+                ">
+                    <span class="pieces-ripple"></span>
+                    <input type="checkbox" class="surface-controller">
+                    <span class="
+                        active-indicator
+                        pieces-surface
+                        surface-parent
+                        background-color-bg
+                        background-color-bg-active
+                    "></span>
+                </label>
+                <style>
+                    .prop {border-radius: 8px;padding: 0 8px;}
+                    .p16 {margin-left: 16px;}
+                    .p32 {margin-left: 32px;}
+                </style>
+                <pre style="display: grid; gap: 4px; place-items: start; place-self: start;">
+                    <b>&lt;label class="</b>
+                        <b class="pieces-surface background-color-accent text-color-to-accent prop p16 secondary">pieces-switch</b>
+                        <b class="pieces-surface background-color-accent text-color-to-accent prop p16">pieces-surface</b>
+                    <b class="aaaaaaaaaaa">"&gt;</b>
+                        <b class="p16">&lt;span class="<b class="pieces-surface background-color-accent text-color-to-accent prop tertiary">pieces-ripple</b>"&gt;&lt;/span&gt;</b>
+                        <b class="p16">&lt;input type="checkbox" class="<b class="pieces-surface background-color-accent text-color-to-accent prop">surface-controller</b>"&gt;</b>
+                        <b class="p16">&lt;span class="</b>
+                            <b class="pieces-surface background-color-fg text-color-to-fg prop p32 secondary">active-indicator</b>
+                            <b class="pieces-surface background-color-accent text-color-to-accent prop p32">pieces-surface</b>
+                            <b class="pieces-surface background-color-accent text-color-to-accent prop p32">surface-parent</b>
+                        <b class="p16">">&lt;/span&gt;</b>
+                    <b class="aaaaaaaaaaa">&lt;/label&gt;</b>
+                </pre>
+                <b>Material</b>
+                <label class="
+                    pieces-switch
+                    pieces-surface
+
+                    background-color-bg
+                    background-color-hover-to-bg
+
+                    background-color-accent-active
+                    background-color-hover-to-accent-active
+
+
+                    border-color-mg
+                    border-color-accent-active
+                    
+                    ripple-to-fg
+                    ripple-to-accent-active
+                ">
+                    <span class="pieces-ripple"></span>
+                    <input type="checkbox" class="surface-controller">
+                    <span class="
+                        active-indicator
+                        pieces-surface
+                        surface-parent
+                        background-color-accent
+                        background-color-bg-active
+                    "></span>
+                </label>
+                <pre style="display: grid; gap: 4px; place-items: start; place-self: start;">
+                    <b>&lt;label class="</b>
+                        <b class="pieces-surface background-color-accent text-color-to-accent prop p16 secondary">pieces-switch</b>
+                        <b class="pieces-surface background-color-accent text-color-to-accent prop p16">pieces-surface</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p16">background-color-bg</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p16">background-color-hover-to-bg</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p16">background-color-accent-active</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p16">background-color-hover-to-accent-active</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p16">border-color-mg</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p16">border-color-accent-active</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p16 tertiary">ripple-to-fg</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p16 tertiary">ripple-to-accent-active</b>
+                    <b class="aaaaaaaaaaa">"&gt;</b>
+                        <b class="p16">&lt;span class="<b class="pieces-surface background-color-accent text-color-to-accent prop tertiary">pieces-ripple</b>"&gt;&lt;/span&gt;</b>
+                        <b class="p16">&lt;input type="checkbox" class="<b class="pieces-surface background-color-accent text-color-to-accent prop">surface-controller</b>"&gt;</b>
+                        <b class="p16">&lt;span class="</b>
+                            <b class="pieces-surface background-color-fg text-color-to-fg prop p32 secondary">active-indicator</b>
+                            <b class="pieces-surface background-color-accent text-color-to-accent prop p32">pieces-surface</b>
+                            <b class="pieces-surface background-color-accent text-color-to-accent prop p32">surface-parent</b>
+                            <b class="pieces-surface background-color-fg text-color-to-fg prop p32">background-color-accent</b>
+                            <b class="pieces-surface background-color-fg text-color-to-fg prop p32">background-color-bg-active</b>
+                        <b class="p16">">&lt;/span&gt;</b>
+                    <b class="aaaaaaaaaaa">&lt;/label&gt;</b>
+                </pre>
+                <section style="display:grid;gap:16px;place-items:start;place-self:start;">
+                    <b><b class="pieces-surface background-color-accent text-color-to-accent prop secondary">pieces-switch</b>,</b>
+                    <b><b class="pieces-surface background-color-accent text-color-to-accent prop">pieces-surface</b>: Essas classes são parte do framework de um conjunto de estilos personalizados, fornecendo estilização e comportamento ao switch/checkbox.</b>
+                    <b><b class="pieces-surface background-color-fg text-color-to-fg prop">background-color-*</b>, <b class="pieces-surface background-color-fg text-color-to-fg prop">border-color-*</b>, <b class="pieces-surface background-color-fg text-color-to-fg prop tertiary">ripple-*</b>: Essas classes parecem controlar várias propriedades visuais, como cores de fundo, de borda e efeitos de "ripple" (ondas que aparecem ao clicar).</b>
+                    <b><b class="pieces-surface background-color-fg text-color-to-fg prop">background-color-bg</b> e <b class="pieces-surface background-color-fg text-color-to-fg prop">background-color-hover-to-bg</b>: Configuram a cor de fundo padrão e a cor de fundo ao passar o mouse (hover).</b>
+                    <b><b class="pieces-surface background-color-fg text-color-to-fg prop">background-color-accent-active</b>: Especifica a cor de fundo quando o checkbox está ativo.</b>
+                    <b><b class="pieces-surface background-color-fg text-color-to-fg prop">border-color-mg</b> e <b class="pieces-surface background-color-fg text-color-to-fg prop">border-color-accent-active</b>: Configuram a cor da borda do checkbox em diferentes estados.</b>
+                    <b><b class="pieces-surface background-color-fg text-color-to-fg prop tertiary">ripple-to-fg</b> e <b class="pieces-surface background-color-fg text-color-to-fg prop tertiary">ripple-to-accent-active</b>: Efeitos visuais de "ripple" ao clicar.</b>
+                </section>
+                <div class="pieces-surface background-color-toned text-color-bg" style="padding: 16px;">
+                    <h1 class="pieces-surface text-color-bg">Exempru com fg</h1>
+                    <h3 class="pieces-surface text-color-mg">teste mg</h3>
+                    <span class="pieces-surface text-color-to-toned">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Repellat minima laboriosam dolor ut natus enim, cupiditate adipisci exercitationem eligendi?
+                        Aperiam nihil laudantium dicta cupiditate! Corrupti ipsum non nihil autem illo.
+                    </span>
+                </div>
+            </article>
+        </main>
+    </body>
+</html>

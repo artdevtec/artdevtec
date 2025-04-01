@@ -1,0 +1,11 @@
+#page-material {
+    display: grid;
+    overflow: hidden;
+    padding: 16px;
+    gap: 16px;
+
+    pre {
+        overflow: auto;
+        height: 100%;
+    }
+}

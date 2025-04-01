@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <title>Art</title>
+        <!-- Material Pieces -->
+        <link rel="stylesheet" href="src/css/pieces/pieces.css">
+        <script src="src/js/pieces/pieces.js"></script>
+        <!-- m css -->
+        <link rel="stylesheet" href="src/css/style.css">
+        <link rel="stylesheet" href="src/css/pages/home.css">
+        <link rel="stylesheet" href="src/css/pages/favorite.css">
+        <link rel="stylesheet" href="src/css/pages/config.css">
+        <!-- m js -->
+        <script src="src/js/tools.js"></script>
+        <script src="src/js/art.js"></script>
+        <!-- m pages -->
+        <script src="src/js/pages/home.js" defer></script>
+        <script src="src/js/pages/config.js" defer></script>
+
+        <!-- last m js -->
+        <!-- <script src="src/js/index.js" defer></script> -->
+        <!-- Libs js CDN -->
+        <style>
+            * {
+                /* box-shadow: 0 0 0 1px rgba(255,0,0,0.2); */
+            }
+        </style>
+    </head>
+    <body class="light triade pieces-surface background-color-bg text-color-to-bg">
+        <article class="pieces-surface" style="display: grid; gap: 16px;">
+            <style>
+                .pieces-switch {
+                    width: 52px;
+                    height: 32px;
+                    border-radius: 32px;
+                    display: grid;
+                    border-style: solid;
+                    border-width: 2px;
+                    overflow: hidden;
+                    position: relative;
+                    transition: .3s;
+                    cursor: var(--cursor-pointer);
+                    &>*{pointer-events: none;}
+                    .active-indicator {
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 16px;
+                        display: grid;
+                        margin: 6px 6px;
+                        transition: .3s;
+                    }
+                    &:has(input:checked) {
+                        .active-indicator {
+                            width: 24px;
+                            height: 24px;
+                            margin: 2px 22px;
+                        }
+                    }
+                    input {
+                        user-select: all;
+                        z-index: 1;
+                        position: absolute;
+                        width: 100vh;
+                        height: 100vh;
+                        opacity: 0;
+                    }
+                }
+            </style>
+            <b>Estrutura</b>
+            <div style="padding:16px; display: grid;gap: 16px;grid-template-columns: repeat(2, 1fr);">
+                <div class="pieces-surface background-color-mg">
+                    <pre style="display: grid; gap: 4px; place-items: start; place-self: start;">
+                        <b>&lt;label class="</b>
+                            <b class="pieces-surface background-color-accent text-color-to-accent prop p16 secondary">pieces-switch</b>
+                            <b class="pieces-surface background-color-accent text-color-to-accent prop p16">pieces-surface</b>
+                        <b class="aaaaaaaaaaa">"&gt;</b>
+                            <b class="p16">&lt;span class="<b class="pieces-surface background-color-accent text-color-to-accent prop tertiary">pieces-ripple</b>"&gt;&lt;/span&gt;</b>
+                            <b class="p16">&lt;input type="checkbox" class="<b class="pieces-surface background-color-accent text-color-to-accent prop">surface-controller</b>"&gt;</b>
+                            <b class="p16">&lt;span class="</b>
+                                <b class="pieces-surface background-color-fg text-color-to-fg prop p32 secondary">active-indicator</b>
+                                <b class="pieces-surface background-color-accent text-color-to-accent prop p32">pieces-surface</b>
+                                <b class="pieces-surface background-color-accent text-color-to-accent prop p32">surface-parent</b>
+                            <b class="p16">"&gt;&lt;/span&gt;</b>
+                        <b class="aaaaaaaaaaa">&lt;/label&gt;</b>
+                    </pre>
+                </div>
+                <div>
+                    <label class="
+                        pieces-switch
+                        pieces-surface
+
+                        border-color-bg
+
+                        debug-mode
+                        debug-mode-all
+                    ">
+                        <span class="pieces-ripple"></span>
+                        <input type="checkbox" class="surface-controller">
+                        <span class="
+                            active-indicator
+                            pieces-surface
+                            surface-parent
+                            background-color-bg
+                            background-color-bg-active
+                        "></span>
+                    </label>
+                </div>
+            </div>
+            <div style="display:grid;gap:16px;padding:16px;">
+                
+            <label class="
+            pieces-switch
+            pieces-surface
+
+            background-color-bg
+            background-color-hover-to-bg
+
+            background-color-accent-active
+            background-color-hover-to-accent-active
+
+
+            border-color-mg
+            border-color-accent-active
+            
+            ripple-to-fg
+            ripple-to-accent-active
+        ">
+            <span class="pieces-ripple"></span>
+            <input type="checkbox" class="surface-controller">
+            <span class="
+                active-indicator
+                pieces-surface
+                surface-parent
+                background-color-accent
+                background-color-bg-active
+            "></span>
+        </label>
+            </div>
+            <style>
+                .prop {border-radius: 8px;padding: 0 8px;}
+                .p16 {margin-left: 16px;}
+                .p32 {margin-left: 32px;}
+            </style>
+            <b>Material</b>
+            <pre style="display: grid; gap: 4px; place-items: start; place-self: start;">                    <b>&lt;label class="</b>
+                    <b class="pieces-surface background-color-accent text-color-to-accent prop p16 secondary">pieces-switch</b>
+                    <b class="pieces-surface background-color-accent text-color-to-accent prop p16">pieces-surface</b>
+                    <b class="pieces-surface background-color-fg text-color-to-fg prop p16">background-color-bg</b>
+                    <b class="pieces-surface background-color-fg text-color-to-fg prop p16">background-color-hover-to-bg</b>
+                    <b class="pieces-surface background-color-fg text-color-to-fg prop p16">background-color-accent-active</b>
+                    <b class="pieces-surface background-color-fg text-color-to-fg prop p16">background-color-hover-to-accent-active</b>
+                    <b class="pieces-surface background-color-fg text-color-to-fg prop p16">border-color-mg</b>
+                    <b class="pieces-surface background-color-fg text-color-to-fg prop p16">border-color-accent-active</b>
+                    <b class="pieces-surface background-color-fg text-color-to-fg prop p16 tertiary">ripple-to-fg</b>
+                    <b class="pieces-surface background-color-fg text-color-to-fg prop p16 tertiary">ripple-to-accent-active</b>
+                <b class="aaaaaaaaaaa">"&gt;</b>
+                    <b class="p16">&lt;span class="<b class="pieces-surface background-color-accent text-color-to-accent prop tertiary">pieces-ripple</b>"&gt;&lt;/span&gt;</b>
+                    <b class="p16">&lt;input type="checkbox" class="<b class="pieces-surface background-color-accent text-color-to-accent prop">surface-controller</b>"&gt;</b>
+                    <b class="p16">&lt;span class="</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p32 secondary">active-indicator</b>
+                        <b class="pieces-surface background-color-accent text-color-to-accent prop p32">pieces-surface</b>
+                        <b class="pieces-surface background-color-accent text-color-to-accent prop p32">surface-parent</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p32">background-color-accent</b>
+                        <b class="pieces-surface background-color-fg text-color-to-fg prop p32">background-color-bg-active</b>
+                    <b class="p16">"&gt;&lt;/span&gt;</b>
+                <b class="aaaaaaaaaaa">&lt;/label&gt;</b>
+            </pre>
+            <section style="display:grid;gap:16px;place-items:start;place-self:start;">
+                <b><b class="pieces-surface background-color-accent text-color-to-accent prop secondary">pieces-switch</b>,</b>
+                <b><b class="pieces-surface background-color-accent text-color-to-accent prop">pieces-surface</b>: Essas classes são parte do framework de um conjunto de estilos personalizados, fornecendo estilização e comportamento ao switch/checkbox.</b>
+                <b><b class="pieces-surface background-color-fg text-color-to-fg prop">background-color-*</b>, <b class="pieces-surface background-color-fg text-color-to-fg prop">border-color-*</b>, <b class="pieces-surface background-color-fg text-color-to-fg prop tertiary">ripple-*</b>: Essas classes parecem controlar várias propriedades visuais, como cores de fundo, de borda e efeitos de "ripple" (ondas que aparecem ao clicar).</b>
+                <b><b class="pieces-surface background-color-fg text-color-to-fg prop">background-color-bg</b> e <b class="pieces-surface background-color-fg text-color-to-fg prop">background-color-hover-to-bg</b>: Configuram a cor de fundo padrão e a cor de fundo ao passar o mouse (hover).</b>
+                <b><b class="pieces-surface background-color-fg text-color-to-fg prop">background-color-accent-active</b>: Especifica a cor de fundo quando o checkbox está ativo.</b>
+                <b><b class="pieces-surface background-color-fg text-color-to-fg prop">border-color-mg</b> e <b class="pieces-surface background-color-fg text-color-to-fg prop">border-color-accent-active</b>: Configuram a cor da borda do checkbox em diferentes estados.</b>
+                <b><b class="pieces-surface background-color-fg text-color-to-fg prop tertiary">ripple-to-fg</b> e <b class="pieces-surface background-color-fg text-color-to-fg prop tertiary">ripple-to-accent-active</b>: Efeitos visuais de "ripple" ao clicar.</b>
+            </section>
+            <div class="pieces-surface background-color-toned text-color-bg" style="padding: 16px;">
+                <h1 class="pieces-surface text-color-bg">Exempru com fg</h1>
+                <h3 class="pieces-surface text-color-mg">teste mg</h3>
+                <span class="pieces-surface text-color-to-toned">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Repellat minima laboriosam dolor ut natus enim, cupiditate adipisci exercitationem eligendi?
+                    Aperiam nihil laudantium dicta cupiditate! Corrupti ipsum non nihil autem illo.
+                </span>
+            </div>
+        </article>
+    </body>
+</html>

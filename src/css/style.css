@@ -1,0 +1,166 @@
+body {
+    display: grid;
+    overflow: hidden;
+    height: 100dvh;
+
+    #m-header {
+        display: grid;
+        grid-area: m-header;
+        height: 80px;
+        width: 100%;
+        grid-template-columns: 1fr auto 1fr;
+
+        #titulo {
+
+            display: grid;
+            grid-template: 'svg h1' 'svg h2';
+            grid-template-columns: auto 1fr;
+            grid-template-rows: repeat(2, 1fr);
+            gap: 0px 16px;
+            padding: 16px;
+            height: 80px;
+
+            &>svg {
+                --size: 48px;
+                width: var(--size);
+                height: var(--size);
+                grid-area: svg;
+            }
+            &>h1 {
+                font-size: 20px;
+                font-weight: 900;
+                grid-area: h1;
+                align-self: end;
+            }
+            &>h2 {
+                font-size: 12px;
+                font-weight: 500;
+                grid-area: h2;
+                align-self: start;
+            }
+        }
+    }
+
+    #m-divider-h {
+        grid-area: m-divider-h;
+    }
+
+    #m-aside {
+        display: grid;
+        grid-area: m-aside;
+    }
+
+    #m-divider-v {
+        grid-area: m-divider-v;
+    }
+
+    #m-main {
+        display: grid;
+        grid-area: m-main;
+        overflow: hidden;
+    }
+}
+
+.s-16 {--s: 16%;}
+.s-40 {--s: 40%;}
+
+/* 📱 Mobile (1 coluna) */
+@media (max-width: 767px) {
+/* Estilos para celulares */
+    body {
+        
+        grid-template-rows: 80px 1px 1fr 1px 80px;
+        grid-template-areas:
+            'm-header'
+            'm-divider-h'
+            'm-main'
+            'm-divider-v'
+            'm-aside'
+        ;
+
+        #m-aside {
+            overflow: hidden;
+            #m-nav {
+                display: grid;
+                grid-auto-flow: column;
+                align-content: center;
+                gap: 16px;
+                padding: 16px;
+            }
+        }
+    }
+    #head-tools {
+        display: none;
+    }
+}
+
+/* 📟 Tablets e dobráveis (2 colunas) */
+@media (min-width: 768px) and (max-width: 1279px) {
+/* Estilos para tablets e dobráveis */
+    body {
+            
+        grid-template-rows: 80px 1px 1fr 1px 80px;
+        grid-template-areas:
+            'm-header'
+            'm-divider-h'
+            'm-main'
+            'm-divider-v'
+            'm-aside'
+        ;
+
+        #m-aside {
+            overflow: hidden;
+            #m-nav {
+                display: grid;
+                grid-auto-flow: column;
+                align-content: center;
+                gap: 16px;
+                padding: 16px;
+            }
+        }
+    }
+    #head-tools {
+        display: none;
+    }
+}
+
+/* 🖥️ Telas grandes (ajustes para desktops grandes) */
+@media (min-width: 1280px) {
+/* Estilos para telas grandes */
+
+    body {
+        grid-template-rows: 80px 1px 1fr;
+        grid-template-columns: 80px 1px 1fr;
+        grid-template-areas:
+            'm-header m-header m-header'
+            'm-divider-h m-divider-h m-divider-h'
+            'm-aside m-divider-v m-main'
+        ;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    #head-tools {
+        display: grid;
+        place-items: center;
+        grid-auto-flow: column;
+        gap: 16px;
+        padding-inline: 16px;
+        position: relative;
+
+        #line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+        }
+    }
+    #m-aside {
+        width: 80px;
+        #m-nav {
+            display: grid;
+            align-content: center;
+            gap: 16px;
+            padding: 16px;
+        }
+    }
+}

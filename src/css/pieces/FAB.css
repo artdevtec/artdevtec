@@ -1,0 +1,38 @@
+.piece-FAB {
+    all: unset;
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-content: center;
+    border-radius: 16px;
+    cursor: var(--cursor-pointer);
+    background: var(--fab-background);
+    color: var(--fab-color);
+    transition: .3s;
+    position: relative;
+    user-select: none;
+
+    .material-symbols-rounded {
+        pointer-events: none;
+    }
+
+    &.accent {
+        --fab-background: hsla(var(--h),var(--s),48%,var(--a));
+        --fab-color: hsla(var(--h),var(--s),96%,var(--a));
+        --ripple: var(--tema-inverso);
+    }
+    &.toned {
+        --fab-background: hsla(var(--h),var(--s),calc(var(--tema) var(--tema-calc) 28%),var(--a));
+        --fab-color: hsla(var(--h),var(--s),calc(var(--tema) var(--tema-calc) 86%),var(--a));
+        --ripple: var(--tema-inverso);
+    }
+    &.surface {
+        --fab-background: hsla(var(--h),var(--s),calc(var(--surface-background) var(--tema-calc) 8%),var(--a));
+        --fab-color: hsla(var(--h),var(--s),calc(var(--surface-color) var(--tema-calc) 20%),var(--a));
+        --ripple: var(--tema-inverso);
+    }
+
+    &:hover {
+        background: hsla(var(--h),var(--s),calc(var(--tema) var(--tema-calc) 28% var(--tema-calc) 8%),var(--a));
+    }
+}

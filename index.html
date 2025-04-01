@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <title>Art</title>
+        <!-- Material piece -->
+        <link rel="stylesheet" href="src/css/pieces/pieces.css">
+        <script src="src/js/pieces/pieces.js"></script>
+        <!-- m css -->
+        <link rel="stylesheet" href="src/css/style.css">
+        <link rel="stylesheet" href="src/css/pages/home.css">
+        <link rel="stylesheet" href="src/css/pages/material.css">
+        <link rel="stylesheet" href="src/css/pages/config.css">
+        <!-- m js -->
+        <script src="src/js/tools.js"></script>
+        <script src="src/js/art.js"></script>
+        <!-- m pages -->
+        <script src="src/js/pages/home.js" defer></script>
+        <script src="src/js/pages/material.js" defer></script>
+        <script src="src/js/pages/config.js" defer></script>
+
+        <!-- last m js -->
+        <script src="src/js/index.js" defer></script>
+        <!-- Libs js CDN -->
+        <style>
+            * {
+                /* box-shadow: 0 0 0 1px rgba(255,0,0,0.2); */
+            }
+        </style>
+    </head>
+    <body style="--s:16%;" class="light triade piece-surface background-color-096 text-color-004">
+        <header id="m-header" class="pieces-surface bg">
+            <div id="titulo">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="24" height="24" shape-rendering="geometricPrecision">
+                    <defs>
+                        <path d="M18 18h3v3h-3v-3Z" id="e" shape-rendering="crispEdges" width="3" height="3"></path>
+                        <path d="M18 3h3v3h-3V3Z" id="c" shape-rendering="crispEdges" width="3" height="3"></path>
+                        <path d="M3 18h3v3H3v-3Z" id="d" shape-rendering="crispEdges" width="3" height="3"></path>
+                        <path d="M18 6 6 18" shape-rendering="crispEdges" id="b"></path>
+                        <path d="m12 12 6 6" shape-rendering="crispEdges" id="a"></path>
+                        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#3a6fcf"></stop>
+                            <stop offset="100%" stop-color="#9134d0"></stop>
+                        </linearGradient>
+                    </defs>
+                    <rect x="0" y="0" width="100%" height="100%" rx="0.25rem" ry="0.25rem" fill="url(#grad3)"></rect>
+                    <use xlink:href="#a" fill-opacity="0" stroke="#fff"></use>
+                    <use xlink:href="#b" fill-opacity="0" stroke="#fff"></use>
+                    <use xlink:href="#c" fill-opacity="0" stroke="#fff"></use>
+                    <use xlink:href="#d" fill-opacity="0" stroke="#fff"></use>
+                    <use xlink:href="#e" fill-opacity="0" stroke="#fff"></use>
+                </svg>
+                <h1>Art</h1>
+                <h2>Início</h2>
+            </div>
+            <div id="head-tools">
+                <a id="line" class="piece-divider piece-surface background-color-080"></span>
+                <a
+                    id="export-exel-jestor-completo"
+                    href="#recents-section"
+                    class="
+                        piece-button
+                        piece-surface
+                        background-color-096
+                        background-color-092-hover
+                        background-color-088-active
+                        background-color-084-hover-active
+                        text-color-012
+                        ripple-color-100
+                        piece-actived
+                        s-0
+                    ">
+                    <span class="material-symbols-rounded piece-icon" translate="no">history</span>
+                    <span class="piece-label">Recentes</span>
+                    <span class="piece-ripple"></span>
+                </a>
+                <a
+                    id="export-exel-jestor-completo"
+                    href="#harpa-section"
+                    class="
+                        piece-button
+                        piece-surface
+                        background-color-096
+                        background-color-092-hover
+                        background-color-088-active
+                        background-color-084-hover-active
+                        text-color-012
+                        ripple-color-100
+                        s-0
+                    ">
+                    <span class="material-symbols-rounded piece-icon" translate="no">h_mobiledata_badge</span>
+                    <span class="piece-label">Harpa</span>
+                    <span class="piece-ripple"></span>
+                </a>
+                <button
+                    id="export-exel-jestor-completo"
+                    class="
+                        piece-button
+                        piece-surface
+                        background-color-096
+                        background-color-092-hover
+                        background-color-088-active
+                        background-color-084-hover-active
+                        text-color-012
+                        ripple-color-100
+                        s-0
+                    ">
+                    <span class="material-symbols-rounded piece-icon" translate="no">extension</span>
+                    <span class="piece-label">componentes</span>
+                    <span class="piece-ripple"></span>
+                </button>
+            </div>
+            <div></div>
+        </header>
+        <span id="m-divider-h" class="piece-divider piece-surface background-color-080"></span>
+        <aside id="m-aside" class="piece-surface">
+            <nav id="m-nav" class="s-40"></nav>
+        </aside>
+        <span id="m-divider-v" class="piece-divider piece-surface background-color-080"></span>
+        <main id="m-main"></main>
+    </body>
+</html>
