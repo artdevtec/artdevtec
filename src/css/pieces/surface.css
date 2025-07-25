@@ -8,23 +8,24 @@
     --piece-text-color-h: var(--piece-h);
     --piece-border-color-h: var(--piece-h);
     --piece-box-shadow-color-h: var(--piece-h);
+    
     --piece-scrollbar-track-outline-color-h: var(--piece-h);
     --piece-scrollbar-thumb-background-color-h: var(--piece-h);
     --piece-scrollbar-thumb-border-color-h: var(--piece-h);
 
-    --piece-scrollbar-track-outline-color: hsla(
+    --scrollbar-track-outline-color: hsla(
         var(--piece-scrollbar-track-outline-color-h),
         var(--piece-s),
         var(--piece-scrollbar-track-outline-color),
         var(--piece-a)
     );
-    --piece-scrollbar-thumb-background-color: hsla(
+    --scrollbar-thumb-background-color: hsla(
         var(--piece-scrollbar-thumb-background-color-h),
         var(--piece-s),
         var(--piece-scrollbar-thumb-background-color),
         var(--piece-a)
     );
-    --piece-scrollbar-thumb-border-color: hsla(
+    --scrollbar-thumb-border-color: hsla(
         var(--piece-scrollbar-thumb-border-color-h),
         var(--piece-s),
         var(--piece-scrollbar-thumb-border-color),
@@ -68,6 +69,15 @@
         );
         background-size: 8px 8px;
         background-repeat: repeat;
+    }
+
+    ::backdrop {
+        background: hsla(
+            var(--piece-background-color-h),
+            40%,
+            var(--piece-background-color),
+            0.25
+        );
     }
 
 }

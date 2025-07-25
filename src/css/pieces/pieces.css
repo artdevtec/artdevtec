@@ -44,6 +44,7 @@
 }
 
 /* main resets */
+/* main resets */
 * {
     margin: 0px;
     padding: 0px;
@@ -51,11 +52,38 @@
     -webkit-tap-highlight-color: transparent;
     font-family: "Montserrat", "sans-serif";
     scroll-behavior: smooth;
-
-    /* box-shadow: 0 0 1px 0 red; */
 }
 
 body { cursor: var(--cursor-default);}
+
+
+
+::-webkit-scrollbar {
+    width: 24px;
+    height:24px;
+    display: var(--piece-scrollbar-display);
+}
+.webkit-scrollbar-display-0 {--piece-scrollbar-display: none;}
+.webkit-scrollbar-display-1 {--piece-scrollbar-display: block;}
+
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border: solid 1px var(--scrollbar-track-outline-color);
+    box-shadow: inset 0px 0px 0px 4px var(--scrollbar-thumb-outline-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-background-color);
+    border-left: 1px solid var(--scrollbar-track-outline-color);
+    box-shadow: inset 0px 0px 0px 4px var(--scrollbar-thumb-border-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-background-color);
+    border-left: 1px solid var(--scrollbar-thumb-background-color);
+    box-shadow: inset 0px 0px 0px 4px var(--scrollbar-thumb-border-color);
+}
 
 .piece-button,
 .piece-FAB,

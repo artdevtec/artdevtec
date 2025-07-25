@@ -13,7 +13,7 @@ art.pages.push({
                 piece-surface
                 scrollbar-track-outline-color-auto-04
                 scrollbar-thumb-background-color-auto-10
-                scrollbar-thumb-border-color-auto-00
+                scrollbar-thumb-border-color-auto-02
                 webkit-scrollbar-display-1
             ">
                 <section id="recents-section">

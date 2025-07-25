@@ -4,7 +4,6 @@ body {
     height: 100dvh;
 
     #m-header {
-        display: grid;
         grid-area: m-header;
         height: 80px;
         width: 100%;
@@ -67,6 +66,8 @@ body {
 @media (max-width: 767px) {
 /* Estilos para celulares */
     body {
+
+        ::-webkit-scrollbar {display: none;}
         
         grid-template-rows: 80px 1px 1fr 1px auto;
         grid-template-areas:
@@ -77,6 +78,7 @@ body {
             'm-aside'
         ;
     }
+    #m-header { display: grid;}
     #head-tools {
         display: none;
     }
@@ -86,6 +88,8 @@ body {
 @media (min-width: 768px) and (max-width: 1279px) {
 /* Estilos para tablets e dobráveis */
     body {
+
+        ::-webkit-scrollbar {display: none;}
             
         grid-template-rows: 80px 1px 1fr 1px auto;
         grid-template-areas:
@@ -96,6 +100,7 @@ body {
             'm-aside'
         ;
     }
+    #m-header { display: grid;}
     #head-tools {
         display: none;
     }
@@ -114,6 +119,8 @@ body {
         height: 100dvh;
         overflow: hidden;
     }
+
+    #m-header { display: none;}
 
     #head-tools {
         display: grid;
