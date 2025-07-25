@@ -129,8 +129,8 @@ art.pages.push({
             let h = degrees
 
             localStorage.quiverExtentionColor = h
-            document.querySelector("html").style.setProperty('--main-color', h)
-            document.querySelector("html").style.setProperty('--main-color-deg', -h+"deg")
+            document.querySelector("html").style.setProperty('--piece-main-color', h)
+            document.querySelector("html").style.setProperty('--piece-main-color-deg', -h+"deg")
             art.HUEMainColor.set(h)
         }
 
@@ -253,13 +253,13 @@ art.pages.push({
         if(art.darkMode.get()) tema.setAttribute('checked', true)
             document.querySelector("#page-config #tema input").addEventListener('click', (e)=>{
             let body = document.body
-            let isDark = body.classList.contains('dark')
+            let isDark = body.classList.contains('piece-dark')
             if (isDark) {
-                body.classList.remove('dark')
-                body.classList.add('light')
+                body.classList.remove('piece-dark')
+                body.classList.add('piece-light')
             } else {
-                body.classList.remove('light')
-                body.classList.add('dark')
+                body.classList.remove('piece-light')
+                body.classList.add('piece-dark')
             }
             art.darkMode.set()
         })

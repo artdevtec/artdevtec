@@ -1,11 +1,11 @@
 //Define o tema claro ou escuro
 if(localStorage.art) {
-    if(art.darkMode.get()) document.body.classList.add("dark")
-    else document.body.classList.add("light")
+    if(art.darkMode.get()) document.body.classList.add("piece-dark")
+    else document.body.classList.add("piece-light")
 }
 
 //Define o Hue
-document.querySelector("html").style.setProperty('--main-color', art.HUEMainColor.get())
+document.querySelector("html").style.setProperty('--piece-main-color', art.HUEMainColor.get())
 //Define o paleta
 document.body.classList.add(art.paleta.get())
 
