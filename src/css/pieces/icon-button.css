@@ -1,4 +1,4 @@
-.piece-checkbox {
+.piece-icon-button {
     /* transition: width 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); */
     transition: .3s;
     .piece-icon {transition: .3s;}
@@ -23,7 +23,7 @@
         )*/
     }
 }
-.piece-checkbox {
+.piece-icon-button {
     
     box-sizing: border-box;
 

@@ -46,7 +46,6 @@ body {
     }
 
     #m-aside {
-        display: grid;
         grid-area: m-aside;
     }
 
@@ -61,15 +60,15 @@ body {
     }
 }
 
-.s-16 {--s: 16%;}
-.s-40 {--s: 40%;}
+.s-16 {--piece-s: 16%;}
+.s-40 {--piece-s: 40%;}
 
 /* 📱 Mobile (1 coluna) */
 @media (max-width: 767px) {
 /* Estilos para celulares */
     body {
         
-        grid-template-rows: 80px 1px 1fr 1px 80px;
+        grid-template-rows: 80px 1px 1fr 1px auto;
         grid-template-areas:
             'm-header'
             'm-divider-h'
@@ -77,17 +76,6 @@ body {
             'm-divider-v'
             'm-aside'
         ;
-
-        #m-aside {
-            overflow: hidden;
-            #m-nav {
-                display: grid;
-                grid-auto-flow: column;
-                align-content: center;
-                gap: 16px;
-                padding: 16px;
-            }
-        }
     }
     #head-tools {
         display: none;
@@ -99,7 +87,7 @@ body {
 /* Estilos para tablets e dobráveis */
     body {
             
-        grid-template-rows: 80px 1px 1fr 1px 80px;
+        grid-template-rows: 80px 1px 1fr 1px auto;
         grid-template-areas:
             'm-header'
             'm-divider-h'
@@ -107,17 +95,6 @@ body {
             'm-divider-v'
             'm-aside'
         ;
-
-        #m-aside {
-            overflow: hidden;
-            #m-nav {
-                display: grid;
-                grid-auto-flow: column;
-                align-content: center;
-                gap: 16px;
-                padding: 16px;
-            }
-        }
     }
     #head-tools {
         display: none;
@@ -129,11 +106,9 @@ body {
 /* Estilos para telas grandes */
 
     body {
-        grid-template-rows: 80px 1px 1fr;
-        grid-template-columns: 80px 1px 1fr;
+        grid-template-rows: 1fr;
+        grid-template-columns: auto 1px 1fr;
         grid-template-areas:
-            'm-header m-header m-header'
-            'm-divider-h m-divider-h m-divider-h'
             'm-aside m-divider-v m-main'
         ;
         height: 100dvh;
@@ -152,15 +127,6 @@ body {
             position: absolute;
             width: 100%;
             height: 1px;
-        }
-    }
-    #m-aside {
-        width: 80px;
-        #m-nav {
-            display: grid;
-            align-content: center;
-            gap: 16px;
-            padding: 16px;
         }
     }
 }

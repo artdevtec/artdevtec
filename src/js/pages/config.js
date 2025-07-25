@@ -4,7 +4,7 @@ art.pages.push({
     showInNavigation: true,
     main() {
         //m-header
-        document.querySelector('#m-header #titulo h2').innerText = this.name
+        // document.querySelector('#m-header #titulo h2').innerText = this.name
         //m-main
         const mMain = document.querySelector(`#m-main`)
         mMain.innerHTML = `

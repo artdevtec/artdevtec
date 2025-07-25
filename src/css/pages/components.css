@@ -1,0 +1,12 @@
+#page-components {
+    display: grid;
+    padding: 16px;
+    grid-template-rows: auto 1fr;
+    overflow-y: scroll;
+
+    &>div {
+        display: grid;
+        place-content: center;
+        >*:not(:first-child) {display: none;}
+    }
+}

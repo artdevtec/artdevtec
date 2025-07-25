@@ -18,7 +18,6 @@ document.addEventListener("click", ({ target, offsetX, offsetY, pointerType }) =
     });
 });
 
-//CREATE PIECES CSS
 // Seleciona ou cria o elemento <style>
 let style = document.querySelector("#dynamic-styles");
 if (!style) {
@@ -27,18 +26,32 @@ if (!style) {
     document.head.appendChild(style);
 }
 
-// Array com as peÃ§as
-const piece = [
-    "&.property-color-000",
-    "&.property-color-000-hover:hover",
-    "&.piece-actived.property-color-000-active",
-    "&.piece-actived.property-color-000-hover-active:hover",
-    "&.property-color-000-active:has(.piece-controller:checked)",
-    "&:has(.piece-controller:checked)>.piece-parent.property-color-000-active",
-    "&.property-color-000-hover-active:has(.piece-controller:checked):hover",
-    "&.piece-actived>.piece-parent.property-color-000-active",
-    "&.piece-actived>.piece-parent.property-color-000-hover-active:hover",
-];
+// Função que gera os seletores de peça com base no tema
+function generatePieces(theme) {
+    return [
+        `&.property-color-${theme}-000`,
+        `&.property-color-${theme}-000-hover:hover`,
+        `&:hover>.piece-parent.property-color-${theme}-000-hover`,
+        `&.piece-actived.property-color-${theme}-000-active`,
+        `&.piece-actived.property-color-${theme}-000-hover-active:hover`,
+        `&.property-color-${theme}-000-active:has(.piece-controller:checked)`,
+        `&.property-color-${theme}-000-active:has(input[type="text"].piece-controller:focus)`,
+        `&:has(.piece-controller:checked)>.piece-parent.property-color-${theme}-000-active`,
+        `&:has(.piece-controller:checked):hover>.piece-parent.property-color-${theme}-000-hover`,
+        `&:has(.piece-controller:checked):hover>.piece-parent.property-color-${theme}-000-hover-active`,
+        `&.property-color-${theme}-000-hover-active:has(.piece-controller:checked):hover`,
+        `&.piece-actived>.piece-parent.property-color-${theme}-000-active`,
+        `&.piece-actived>.piece-parent.property-color-${theme}-000-hover-active:hover`,
+        `.piece-loading-controller .property-color-${theme}-000-loading`
+    ];
+}
+
+const themes = {
+    auto: generatePieces("auto"),
+    inverse: generatePieces("inverse"),
+    light: generatePieces("light"),
+    dark: generatePieces("dark")
+};
 
 const properties = [
     "background",
@@ -49,72 +62,49 @@ const properties = [
     "scrollbar-track-outline",
     "scrollbar-thumb-background",
     "scrollbar-thumb-border"
-]
+];
 
-properties.forEach(property=>{
-    // Gera as regras CSS dinamicamente e adiciona ao <style>
-    for (let i = 0; i <= 100; i += 4) {
-        const cssRule = `.piece-surface { ${piece.join(", ").replaceAll("property", property).replaceAll("000", String(i).padStart(3, "0"))} { --piece-${property}-color: calc(var(--theme) var(--theme-operator) ${100 - i}%); }}`
-        style.appendChild(document.createTextNode(cssRule + "\n"))
+const colors = ["piece-primary", "piece-secondary", "piece-tertiary"];
+
+// Geração otimizada de todo o CSS
+let css = "";
+
+properties.forEach(property => {
+    for (let i = 0, count = 0; i <= 100; i += 4, count++) {
+        css += `.piece-surface { ${themes.auto.join(", ").replaceAll("property", property).replaceAll("000", String(count).padStart(2, "0"))} { --piece-${property}-color: calc(var(--piece-theme) var(--piece-theme-operator) ${i}%); } }\n`;
     }
-})
+    for (let i = 0, count = 0; i <= 100; i += 4, count++) {
+        css += `.piece-surface { ${themes.inverse.join(", ").replaceAll("property", property).replaceAll("000", String(count).padStart(2, "0"))} { --piece-${property}-color: calc(var(--piece-theme-inverse) var(--piece-theme-operator-inverse) ${i}%); } }\n`;
+    }
+    for (let i = 100, count = 0; i >= 0; i -= 4, count++) {
+        css += `.piece-surface { ${themes.light.join(", ").replaceAll("property", property).replaceAll("000", String(count).padStart(2, "0"))} { --piece-${property}-color: ${i}%; } }\n`;
+    }
+    for (let i = 0, count = 0; i <= 100; i += 4, count++) {
+        css += `.piece-surface { ${themes.dark.join(", ").replaceAll("property", property).replaceAll("000", String(count).padStart(2, "0"))} { --piece-${property}-color: ${i}%; } }\n`;
+    }
 
-const piece_h = [
-    "&.property-color-000",
-    "&.property-color-000-hover:hover",
-    "&.piece-actived.property-color-000-active",
-    "&.piece-actived.property-color-000-hover-active:hover",
-    "&.property-color-000-active:has(.piece-controller:checked)",
-    "&:has(.piece-controller:checked)>.piece-parent.property-color-000-active",
-    "&.property-color-000-hover-active:has(.piece-controller:checked):hover"
-]
+    colors.forEach(color => {
+        ["auto", "light", "dark"].forEach(theme => {
+            css += `.piece-surface { ${themes[theme].join(", ").replaceAll("property", property).replaceAll("000", color)} { --piece-${property}-color-h: var(--${color}); } }\n`;
+        });
+    });
+});
 
-properties.forEach(property=>{
-    // Gera as regras CSS dinamicamente e adiciona ao <style>
-    const colors = ["primary","secondary","tertiary"]
-    colors.forEach(color=>{
-        const cssRule = `.piece-surface { ${piece.join(", ").replaceAll("property", property).replaceAll("000", color)} { --piece-${property}-color-h: var(--${color}); }}`
-        style.appendChild(document.createTextNode(cssRule + "\n"))
-    })
-})
+style.textContent = css;
 
 //importar a fonte de icones do Google
 var googleIcons = document.createElement('style');
 googleIcons.innerHTML = `
     @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 `
-document.head.appendChild(googleIcons);
 
-//funÃ§Ã£o que transforma html em element
-function create(html) {
-    const template = document.createElement('template')
-    html = html.trim()
-    template.innerHTML = html
-    return template.content
-}
+document.addEventListener('click', e => {
+    document.querySelectorAll('.piece-interactive').forEach(el => {
+        const clickedInside = el.contains(e.target);
+        const clickedInNoInteractive = e.target.closest('.piece-not-interactive');
 
-document.addEventListener('click', (event) => {
-    const pieces_SearchElements = document.querySelectorAll('.piece-search')
-
-    pieces_SearchElements.forEach(pieces_SearchElement => {
-        const menu = pieces_SearchElement
-
-        if(event.target === pieces_SearchElement || pieces_SearchElement.contains(event.target)) {
-            // Se o clique ocorreu dentro de pieces-search
-            menu.classList.add('piece-actived')
-
-            if(event.target.classList.contains('close')) {
-                pieces_SearchElement.querySelector('.bar input').value = ""
-                document.body.click()
-            }
-            if(event.target.classList.contains('clear')) {
-                pieces_SearchElement.querySelector('.bar input').value = ""
-                pieces_SearchElement.querySelector('.bar input').focus()
-            }
-        } else {
-            // Se o clique ocorreu fora de pieces_search
-            menu.classList.remove('piece-actived')
-        }
-        
-    })
-})
+        // Desativa se for fora ou dentro de .piece-not-interactive
+        const shouldDeactivate = !clickedInside || clickedInNoInteractive;
+        el.classList.toggle('piece-actived', !shouldDeactivate);
+    });
+});

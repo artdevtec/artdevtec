@@ -12,37 +12,32 @@ document.body.classList.add(art.paleta.get())
 // Fill m-nav
 art.pages
 .filter(page=>page.showInNavigation)
-.forEach(page=>{
-    const template = `
-        <label class="
-            piece-nav-button
-            piece-surface
-            background-color-088
-            background-color-084-hover
-            text-color-012
+.forEach((page, i)=>{
+    const template = /*html*/`
+        <label class="piece-item piece-surface">
+            <span class="
+                piece-indicator
+                piece-surface
+                piece-parent
 
-            background-color-secondary-active
-            text-color-secondary-active
-            
-            ripple-color-056
-            piece-icon-active
-        ">
-            <input type="radio" name="nav" value="${page.name}" class="piece-controller">
+                background-color-auto-02
+                background-color-auto-04-hover
+
+                text-color-auto-04-hover
+
+                background-color-auto-11-active
+                background-color-auto-13-hover-active
+            "></span>
             <span class="material-symbols-rounded piece-icon" translate="no">${page.icon}</span>
             <span class="piece-label">${page.name}</span>
-            <span class="piece-ripple secondary"></span>
-            <span class="piece-tooltip piece-surface background-color-096 text-color-004 inverse right hover">${page.name}</span>
+            <input id="nav-btn-${i}" type="radio" name="nav" value="${page.name}" class="piece-controller">
         </label>
     `
-    document.querySelector(`#m-nav`).appendChild(tools.create(template))
+    document.querySelector(`#m-aside .piece-items`).appendChild(tools.create(template))
 })
-document.querySelectorAll("#m-nav input").forEach(input=>{
+document.querySelectorAll(".piece-items input").forEach(input=>{
     input.addEventListener('click', ()=> {
         art.pages.filter(page=>page.name==input.value)[0].main()
     })
 })
-document.querySelector('#m-nav .piece-nav-button').click()
-
-document.addEventListener("click", (event)=>{
-    if(event.target.classList.contains("presentation")) art.presentation.set(event.target.innerHTML)
-})
+document.querySelector('#m-aside .piece-item').click()

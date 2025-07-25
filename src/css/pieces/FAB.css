@@ -1,38 +1,46 @@
 .piece-FAB {
-    all: unset;
     width: 56px;
     height: 56px;
     display: grid;
+    grid-auto-flow: column;
     place-content: center;
+    place-items: center;
     border-radius: 16px;
     cursor: var(--cursor-pointer);
-    background: var(--fab-background);
-    color: var(--fab-color);
-    transition: .3s;
-    position: relative;
     user-select: none;
+    gap: 8px;
+    padding-inline: 16px;
 
-    .material-symbols-rounded {
-        pointer-events: none;
-    }
+    .piece-label{font-size: 16px;}
 
-    &.accent {
-        --fab-background: hsla(var(--h),var(--s),48%,var(--a));
-        --fab-color: hsla(var(--h),var(--s),96%,var(--a));
-        --ripple: var(--tema-inverso);
+    &.piece-small {
+        gap: 4px;
+        padding-inline: 8px;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        .piece-label{font-size: 12px;}
+        .piece-icon {font-size: 24px;}
     }
-    &.toned {
-        --fab-background: hsla(var(--h),var(--s),calc(var(--tema) var(--tema-calc) 28%),var(--a));
-        --fab-color: hsla(var(--h),var(--s),calc(var(--tema) var(--tema-calc) 86%),var(--a));
-        --ripple: var(--tema-inverso);
+    &.piece-medium {
+        gap: 12px;
+        padding-inline: 26px;
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        .piece-label{font-size: 22px;}
+        .piece-icon {font-size: 28px;}
     }
-    &.surface {
-        --fab-background: hsla(var(--h),var(--s),calc(var(--surface-background) var(--tema-calc) 8%),var(--a));
-        --fab-color: hsla(var(--h),var(--s),calc(var(--surface-color) var(--tema-calc) 20%),var(--a));
-        --ripple: var(--tema-inverso);
+    &.piece-large {
+        gap: 16px;
+        padding-inline: 28px;
+        width: 96px;
+        height: 96px;
+        border-radius: 28px;
+        .piece-label{font-size: 24px;}
+        .piece-icon {font-size: 36px;}
     }
-
-    &:hover {
-        background: hsla(var(--h),var(--s),calc(var(--tema) var(--tema-calc) 28% var(--tema-calc) 8%),var(--a));
+    &.piece-extended {
+        width: min-content;
     }
 }

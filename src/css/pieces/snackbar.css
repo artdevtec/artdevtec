@@ -1,0 +1,24 @@
+.piece-snackbar {
+    border-radius: 4px;
+    height: clamp(48px, 48px, 68px);
+    padding: 0 16px 0 16px;
+    display: grid;
+	gap: 12px;
+	grid-auto-flow: column;
+    justify-self: start;
+    align-items: center;
+	user-select: none;
+
+    &>.piece-label {text-wrap: nowrap;}
+
+    .left-aligned {
+        position: fixed;
+        left: 16px;
+        bottom: 16px;
+    }
+    .center-aligned {
+        position: fixed;
+        left: 16px;
+        bottom: 16px;
+    }
+}

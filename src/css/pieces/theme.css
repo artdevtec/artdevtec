@@ -1,44 +1,49 @@
-.triade {
-    --primary: var(--main-color);
-    --secondary: calc(var(--primary) + 120);
-    --tertiary: calc(var(--secondary) + 120);
+.piece-triade {
+    --piece-primary: var(--piece-main-color);
+    --piece-secondary: calc(var(--piece-primary) + 120);
+    --piece-tertiary: calc(var(--piece-secondary) + 120);
 }
-.analoga {
-    --primary: var(--main-color);
-    --secondary: calc(var(--primary) + 30);
-    --tertiary: calc(var(--secondary) + 60);
+.piece-analoga {
+    --piece-primary: var(--piece-main-color);
+    --piece-secondary: calc(var(--piece-primary) + 30);
+    --piece-tertiary: calc(var(--piece-secondary) + 60);
 }
-.complementar {
-    --primary: var(--main-color);
-    --secondary: calc(var(--primary) + 120);
-    --tertiary: calc(var(--secondary) + 30);
+.piece-complementar {
+    --piece-primary: var(--piece-main-color);
+    --piece-secondary: calc(var(--piece-primary) + 120);
+    --piece-tertiary: calc(var(--piece-secondary) + 30);
+}
+.piece-mono {
+    --piece-primary: var(--piece-main-color);
+    --piece-secondary: var(--piece-main-color);
+    --piece-tertiary: var(--piece-main-color);
 }
 
-.primary {--h: var(--primary);}
-.secondary {--h: var(--secondary);}
-.tertiary {--h: var(--tertiary);}
+.piece-primary {--piece-h: var(--piece-primary);}
+.piece-secondary {--piece-h: var(--piece-secondary);}
+.piece-tertiary {--piece-h: var(--piece-tertiary);}
 
-.light {
-    --tema: 100%;
-    --tema-inverso: 0%;
-    --tema-calc: -;
-    --tema-calc-inverso: +;
+.piece-light {
+    --piece-theme: 100%;
+    --piece-theme-inverse: 0%;
+    --piece-theme-operator: -;
+    --piece-theme-operator-inverse: +;
     &.inverse, .inverse {
-        --tema: 0%;
-        --tema-inverso: 100%;
-        --tema-calc: +;
-        --tema-calc-inverso: -;
+        --theme: 0%;
+        --theme-inverse: 100%;
+        --theme-operator: +;
+        --theme-operator-inverse: -;
     }
 }
-.dark {
-    --tema: 0%;
-    --tema-inverso: 100%;
-    --tema-calc: +;
-    --tema-calc-inverso: -;
+.piece-dark {
+    --piece-theme: 0%;
+    --piece-theme-inverse: 100%;
+    --piece-theme-operator: +;
+    --piece-theme-operator-inverse: -;
     &.inverse, .inverse {
-        --tema: 100%;
-        --tema-inverso: 0%;
-        --tema-calc: -;
-        --tema-calc-inverso: +;
+        --theme: 100%;
+        --theme-inverse: 0%;
+        --theme-operator: -;
+        --theme-operator-inverse: +;
     }
 }

@@ -1,0 +1,163 @@
+.piece-split-button {
+    
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 2px;
+    position: relative;
+
+    user-select: none;
+
+    .piece-leading-button {
+        display: grid;
+        grid-auto-flow: column;
+        place-content: center;
+        cursor: var(--cursor-pointer);
+    }
+    .piece-trailing-button {
+        display: grid;
+        place-content: center;
+        cursor: var(--cursor-pointer);
+        transition: .2s ease-in-out;
+        .piece-icon {transition: .2s ease-in-out;}
+    }
+
+    &.piece-actived {
+
+        .piece-trailing-button .piece-icon {
+            transform: rotateZ(180deg);
+        }
+
+        &.piece-extra-small {
+            .piece-trailing-button {
+                padding-inline: 13px;
+                border-radius: 100vh;
+            }
+        }
+        &.piece-small {
+            .piece-trailing-button {
+                padding-inline: 13px;
+                border-radius: 100vh;
+            }
+        }
+        &.piece-medium {
+            .piece-trailing-button {
+                padding-inline: 15px;
+                border-radius: 100vh;
+            }
+        }
+        &.piece-large {
+            .piece-trailing-button {
+                padding-inline: 29px;
+                border-radius: 100vh;
+            }
+        }
+        &.piece-extra-large {
+            .piece-trailing-button {
+                padding-inline: 43px;
+                border-radius: 100vh;
+            }
+        }
+    }
+
+    &.piece-extra-small {
+        height: 32px;
+        .piece-leading-button {
+            border-radius: 32px 4px 4px 32px;
+            padding: 0 10px 0 12px;
+            gap: 4px;
+            place-items: center;
+            .piece-icon {font-size: 20px;}
+            .piece-label {font-size: 20px;}
+        }
+        .piece-trailing-button {
+            border-radius: 4px 32px 32px 4px;
+            padding: 0 14px 0 12px;
+            .piece-icon {font-size: 22px;}
+        }
+    }
+    &.piece-small {
+        height: 40px;
+        .piece-leading-button {
+            border-radius: 40px 4px 4px 40px;
+            padding: 0 12px 0 16px;
+            gap: 8px;
+            place-items: center;
+            .piece-icon {font-size: 20px;}
+            .piece-label {font-size: 20px;}
+        }
+        .piece-trailing-button {
+            border-radius: 4px 40px 40px 4px;
+            padding: 0 14px 0 12px;
+            .piece-icon {font-size: 22px;}
+        }
+    }
+    &.piece-medium {
+        height: 56px;
+        .piece-leading-button {
+            border-radius: 56px 4px 4px 56px;
+            padding: 0 24px 0 24px;
+            gap: 8px;
+            place-items: center;
+            .piece-icon {font-size: 24px;}
+            .piece-label {font-size: 24px;}
+        }
+        .piece-trailing-button {
+            border-radius: 4px 56px 56px 4px;
+            padding: 0 17px 0 13px;
+            .piece-icon {font-size: 26px;}
+        }
+    }
+    &.piece-large {
+        height: 96px;
+        .piece-leading-button {
+            border-radius: 96px 8px 8px 96px;
+            padding: 0 48px 0 48px;
+            gap: 12px;
+            place-items: center;
+            .piece-icon {font-size: 32px;}
+            .piece-label {font-size: 32px;}
+        }
+        .piece-trailing-button {
+            border-radius: 8px 96px 96px 8px;
+            padding: 0 32px 0 26px;
+            .piece-icon {font-size: 38px;}
+        }
+    }
+    &.piece-extra-large {
+        height: 136px;
+        .piece-leading-button {
+            border-radius: 136px 12px 12px 136px;
+            padding: 0 64px 0 64px;
+            gap: 16px;
+            place-items: center;
+            .piece-icon {font-size: 40px;}
+            .piece-label {font-size: 40px;}
+        }
+        .piece-trailing-button {
+            border-radius: 12px 136px 136px 12px;
+            padding: 0 49px 0 37px;
+            .piece-icon {font-size: 50px;}
+        }
+    }
+
+    ul {
+        display: none;
+        top: calc(100% + 4px);
+        border-radius: 16px;
+        position: absolute;
+        padding: 16px;
+        z-index: 1;
+
+        li {
+            padding: 16px;
+            list-style: none;
+        }
+    }
+
+    &.piece-actived {
+        ul {
+            display: grid;
+        }
+    }
+
+}

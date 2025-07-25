@@ -2,7 +2,7 @@
     
     min-width: 40px;
     height: 40px;
-    border-radius: 40px;
+    border-radius: 1000000px;
     box-sizing: border-box;
 
     display: grid;
@@ -17,7 +17,9 @@
     transition:
         background 0.3s ease,
         border-radius 0.1s ease
+        border-radius: .3 ease-in-out;
     ;
+    transition: .3s;
     position: relative;
 
     :where(*, * *) {
@@ -31,13 +33,13 @@
         font-weight: 500;
     }
 
-    &:has(.icon):not(:has(.label)) {
+    /* &:has(.icon):not(:has(.label)) {
         padding: 0;
         border-radius: 100%;
         aspect-ratio: 1/1;
     }
 
-    &:has(.label):not(:has(.icon)) { padding: 0 16px;}
+    &:has(.label):not(:has(.icon)) { padding: 0 16px;} */
 
     cursor: var(--cursor-pointer);
 
@@ -48,6 +50,48 @@
     &:has(input:checked) .piece-icon {
         font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
+
+    &.piece-extra-small {
+        height: 32px;
+        padding: 12px;
+        gap: 4px;
+        &:active {border-radius: 12px;}
+        .piece-label {font-size: 14px;}
+        .piece-icon {font-size: 20px;}
+    }
+    &.piece-small {
+        height: 40px;
+        padding: 16px;
+        gap: 8px;
+        &:active {border-radius: 12px;}
+        .piece-label {font-size: 14px;}
+        .piece-icon {font-size: 24px;}
+    }
+    &.piece-medium {
+        height: 56px;
+        padding: 24px;
+        gap: 8px;
+        &:active {border-radius: 16px;}
+        .piece-label {font-size: 16px;}
+        .piece-icon {font-size: 24px;}
+    }
+    &.piece-large {
+        height: 96px;
+        padding: 48px;
+        gap: 12px;
+        &:active {border-radius: 28px;}
+        .piece-label {font-size: 24px;}
+        .piece-icon {font-size: 32px;}
+    }
+    &.piece-extra-large {
+        height: 136px;
+        padding: 64px;
+        gap: 16px;
+        &:active {border-radius: 28px;}
+        .piece-label {font-size: 32px;}
+        .piece-icon {font-size: 40px;}
+    }
+
 }
 
 .gradient {

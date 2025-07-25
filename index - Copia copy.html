@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Botão com Animação Material 3</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f5f5f5;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 18px;
+    }
+
+    .btn {
+      width: 120px;
+      height: 32px;
+      background-color: #6200ee;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s;
+      /* Simula uma animação tipo mola (spring) */
+    }
+
+    .btn:active {
+      transform: scaleX(0.85); /* Reduz 15% da largura */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="button-group">
+    <button class="btn">Botão 1</button>
+    <button class="btn">Botão 2</button>
+    <button class="btn">Botão 3</button>
+  </div>
+
+</body>
+</html>

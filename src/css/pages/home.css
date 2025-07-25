@@ -165,7 +165,7 @@
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(3, 1fr);
             padding: 64px;
-            height: calc(100vh - 81px);
+            height: calc(100vh);
 
             &>article {
 

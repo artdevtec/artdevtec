@@ -1,9 +1,7 @@
 .piece-tooltip {
 	
     font-size: 12px;
-    letter-spacing: var(--body-small-letter-spacing);
-    /* background: var(--inverse-surface); */
-    /* color: var(--inverse-on-surface); */
+    font-weight: 500;
     border-radius: 4px;
     width: min-content;
     height: 24px;

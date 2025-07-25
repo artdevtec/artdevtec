@@ -4,70 +4,70 @@
     border: none;
 
     /* m variables */
-    --piece-background-color-h: var(--h);
-    --piece-text-color-h: var(--h);
-    --piece-border-color-h: var(--h);
-    --piece-box-shadow-color-h: var(--h);
-    --piece-scrollbar-track-outline-color-h: var(--h);
-    --piece-scrollbar-thumb-background-color-h: var(--h);
-    --piece-scrollbar-thumb-border-color-h: var(--h);
+    --piece-background-color-h: var(--piece-h);
+    --piece-text-color-h: var(--piece-h);
+    --piece-border-color-h: var(--piece-h);
+    --piece-box-shadow-color-h: var(--piece-h);
+    --piece-scrollbar-track-outline-color-h: var(--piece-h);
+    --piece-scrollbar-thumb-background-color-h: var(--piece-h);
+    --piece-scrollbar-thumb-border-color-h: var(--piece-h);
 
-    --scrollbar-track-outline-color: hsla(
+    --piece-scrollbar-track-outline-color: hsla(
         var(--piece-scrollbar-track-outline-color-h),
-        var(--s),
+        var(--piece-s),
         var(--piece-scrollbar-track-outline-color),
-        var(--a)
+        var(--piece-a)
     );
-    --scrollbar-thumb-background-color: hsla(
+    --piece-scrollbar-thumb-background-color: hsla(
         var(--piece-scrollbar-thumb-background-color-h),
-        var(--s),
+        var(--piece-s),
         var(--piece-scrollbar-thumb-background-color),
-        var(--a)
+        var(--piece-a)
     );
-    --scrollbar-thumb-border-color: hsla(
+    --piece-scrollbar-thumb-border-color: hsla(
         var(--piece-scrollbar-thumb-border-color-h),
-        var(--s),
+        var(--piece-s),
         var(--piece-scrollbar-thumb-border-color),
-        var(--a)
+        var(--piece-a)
     );
 
     /* m settings */
     background: hsla(
         var(--piece-background-color-h),
-        var(--s),
+        var(--piece-s),
         var(--piece-background-color),
-        var(--a)
+        var(--piece-a)
     );
     color: hsla(
         var(--piece-text-color-h),
-        var(--s),
+        var(--piece-s),
         var(--piece-text-color),
-        var(--a)
+        var(--piece-a)
     );
     border-color: hsla(
         var(--piece-border-color-h),
-        var(--s),
+        var(--piece-s),
         var(--piece-border-color),
-        var(--a)
+        var(--piece-a)
     );
     &.piece-box-shadow {
         box-shadow: 0px 0px 4px 0px hsla(
             var(--piece-box-shadow-color-h),
-            var(--s),
+            var(--piece-s),
             var(--piece-box-shadow-color),
-            var(--a)
+            var(--piece-a)
         );
     }
 
-}
+    &.bg-dot {
+        background-image: radial-gradient(
+            circle at center,
+            hsla(0,0%,48%,48%) 0%,
+            hsla(0,0%,48%,48%) 16%,
+            transparent 1%
+        );
+        background-size: 8px 8px;
+        background-repeat: repeat;
+    }
 
-.bg-dot {
-    background-image: radial-gradient(
-        circle at center,
-        hsla(var(--h),0%,48%,48%) 0%,
-        hsla(var(--h),0%,48%,48%) 16%,
-        transparent 1%
-    );
-    background-size: 8px 8px;
-    background-repeat: repeat;
 }
