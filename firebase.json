@@ -1,0 +1,53 @@
+{
+    "hosting": {
+      // 1. Defina a pasta dos seus arquivos. Mantenha o que for correto para você (ex: 'public', 'build', 'dist')
+      "public": "public", 
+      
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      
+      // 2. Esta é a seção que DESATIVA o cache do Hosting
+      "headers": [
+        {
+          "source": "/**", 
+          "headers": [
+            {
+              "key": "Cache-Control",
+              // Força a não usar cache para o navegador e para o Firebase CDN
+              "value": "no-cache, no-store, must-revalidate" 
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Expires",
+              "value": "0"
+            }
+          ]
+        }
+      ]
+    },
+    
+    // 3. Esta é a sua configuração de AI/MCP
+    "mcpServers": {
+      "firebase": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "firebase-tools@latest",
+          "experimental:mcp"
+        ]
+      }
+    }
+  }

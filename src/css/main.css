@@ -1,0 +1,49 @@
+body {
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: 1fr 80px;
+    grid-template-areas:
+        'm-main'
+        'm-aside'
+    ;
+    overflow: hidden;
+
+    #m-aside {
+        display: grid;
+        grid-area: m-aside;
+        height: 80px;
+    }
+
+    #m-main {
+        display: grid;
+        grid-area: m-main;
+        overflow: hidden;
+    }
+    #letra {
+        display: grid;
+        overflow-y: scroll;
+        align-content: start;
+        gap: 16px;
+        position: relative;
+        &>h1 {
+            display: grid;
+            align-content: center;
+            height: 80px;
+            position: sticky;
+            top: 0;
+            padding-inline: 16px;
+        }
+        &>div {
+            margin-inline: 16px;
+            padding: 16px;
+            border-radius: var(--shape-small);
+            &.primary {
+                position: sticky;
+                top: 80px;
+                margin-inline: 0;
+                padding: 32px;
+                border-radius: 0;
+            }
+        }
+    }
+}

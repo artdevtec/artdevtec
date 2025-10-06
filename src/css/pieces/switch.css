@@ -1,0 +1,36 @@
+.piece-switch {
+    width: 52px;
+    height: 32px;
+    border-radius: 32px;
+    display: grid;
+    
+    border-style: solid;
+    border-width: 2px;
+
+    overflow: hidden;
+    position: relative;
+    transition: .3s;
+    .piece-indicator {
+        width: 16px;
+        height: 16px;
+        border-radius: 16px;
+        display: grid;
+        margin: 6px 6px;
+        transition: .3s;
+    }
+    &:has(input:checked) {
+        .piece-indicator {
+            width: 24px;
+            height: 24px;
+            margin: 2px 22px;
+        }
+    }
+    input {
+        user-select: all;
+        z-index: 1;
+        position: absolute;
+        width: 100vh;
+        height: 100vh;
+        opacity: 0;
+    }
+}

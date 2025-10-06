@@ -1,0 +1,53 @@
+#view-pesquisa {
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 1fr 1px 3fr;
+    #busca-resultados {
+        display: grid;
+        overflow-y: scroll;
+        gap: 1px;
+        .card-list {
+            display: grid;
+            padding: 16px;
+            grid-template-columns: auto 1fr;
+            place-content: center;
+            gap: 0 16px;
+            align-items: center;
+            user-select: none;
+            grid-template-areas:
+                'numero nome'
+                'numero cantor'
+            ;
+            &>*{pointer-events: none;}
+            .numero {
+                grid-area: numero;
+                width: 48px;
+                height: 48px;
+                display: grid;
+                place-items: center;
+                border-radius: 16px;
+                aspect-ratio: 1/1;
+                font-weight: 900;
+            }
+            .nome {
+                grid-area: nome;
+                font-size: 12px;
+                border-radius: 4px;
+                text-align: start;
+                font-weight: 900;
+            }
+            .cantor {
+                grid-area: cantor;
+                font-size: 12px;
+                border-radius: 4px;
+                text-align: start;
+            }
+            &>:where(.numero, .nome):nth-child(-n+15) {
+                animation: list .6s ease-in-out;
+            }
+        }
+    }
+    #letras-detalhe {
+
+    }
+}

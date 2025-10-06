@@ -1,0 +1,55 @@
+.piece-FAB-menu {
+    background: transparent;
+    display: grid;
+    pointer-events: none;
+    width: min-content;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    justify-items: end;
+    gap: 8px;
+    user-select: none;
+
+    &.piece-actived {
+        &>div {display: grid;}
+        .piece-toggle-button {
+            border-radius: 100%;
+            pointer-events: none;
+            .piece-icon.piece-false {display: grid;}
+            .piece-icon.piece-true {display: none;}
+        }
+    }
+
+    &>div {
+        display: none;
+        justify-items: end;
+        gap: 4px;
+        pointer-events: none;
+        .menu-item {
+            pointer-events: all;
+            display: grid;
+            grid-auto-flow: column;
+            align-items: center;
+            padding-inline: 24px;
+            gap: 8px;
+            height: 56px;
+            border-radius: 56px;
+            cursor: var(--cursor-pointer);
+            .piece-label{
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .piece-toggle-button {
+        transition: .1s ease-in-out;
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        pointer-events: all;
+        cursor: var(--cursor-pointer);
+        .piece-icon.piece-false {display: none;}
+        .piece-icon.piece-true {display: grid;}
+    }
+}

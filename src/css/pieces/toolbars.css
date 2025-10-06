@@ -1,0 +1,15 @@
+.piece-toolbar {
+    height: 64px;
+    .piece-floating {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        gap: 4px;
+        height: 64px;
+        border-radius: 64px;
+        width: min-content;
+        .piece-icon-button {
+            min-width: 40px;
+        }
+    }
+}

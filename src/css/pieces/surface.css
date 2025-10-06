@@ -1,0 +1,102 @@
+.piece-surface {
+
+    position: relative;
+    border: none;
+
+    /* m variables */
+    --piece-background-color-h: var(--piece-h);
+    --piece-text-color-h: var(--piece-h);
+    --piece-border-color-h: var(--piece-h);
+    --piece-box-shadow-color-h: var(--piece-h);
+    
+    --piece-ripple-color-h: var(--piece-h);
+
+    --piece-scrollbar-track-outline-color-h: var(--piece-h);
+    --piece-scrollbar-thumb-background-color-h: var(--piece-h);
+    --piece-scrollbar-thumb-border-color-h: var(--piece-h);
+
+    --ripple-color: hsla(
+        var(--piece-ripple-color-h),
+        var(--piece-s),
+        var(--piece-ripple-color),
+        var(--piece-a)
+    );
+
+    --scrollbar-track-outline-color: hsla(
+        var(--piece-scrollbar-track-outline-color-h),
+        var(--piece-s),
+        var(--piece-scrollbar-track-outline-color),
+        var(--piece-a)
+    );
+    --scrollbar-thumb-background-color: hsla(
+        var(--piece-scrollbar-thumb-background-color-h),
+        var(--piece-s),
+        var(--piece-scrollbar-thumb-background-color),
+        var(--piece-a)
+    );
+    --scrollbar-thumb-border-color: hsla(
+        var(--piece-scrollbar-thumb-border-color-h),
+        var(--piece-s),
+        var(--piece-scrollbar-thumb-border-color),
+        var(--piece-a)
+    );
+
+    /* m settings */
+    background: hsla(
+        var(--piece-background-color-h),
+        var(--piece-s),
+        var(--piece-background-color),
+        var(--piece-a)
+    );
+    color: hsla(
+        var(--piece-text-color-h),
+        var(--piece-s),
+        var(--piece-text-color),
+        var(--piece-a)
+    );
+    border-color: hsla(
+        var(--piece-border-color-h),
+        var(--piece-s),
+        var(--piece-border-color),
+        var(--piece-a)
+    );
+    &.piece-box-shadow {
+        box-shadow: 0px 0px 4px 0px hsla(
+            var(--piece-box-shadow-color-h),
+            var(--piece-s),
+            var(--piece-box-shadow-color),
+            var(--piece-a)
+        );
+    }
+
+    &.bg-dot {
+        background-image: radial-gradient(
+            circle at center,
+            hsla(0,0%,48%,48%) 0%,
+            hsla(0,0%,48%,48%) 16%,
+            transparent 1%
+        );
+        background-size: 8px 8px;
+        background-repeat: repeat;
+    }
+
+    ::backdrop {
+        background: hsla(
+            var(--piece-background-color-h),
+            40%,
+            var(--piece-background-color),
+            0.25
+        );
+    }
+
+    &.piece-disabled {
+        background: hsla(0,0%,var(--piece-theme-inverse),0.04);
+        color: hsla(0,0%,var(--piece-theme-inverse),0.12);
+        user-select: none;
+        cursor: var(--cursor-not-allowed) !important;
+        * {
+            pointer-events: none;
+        }
+    }
+
+}

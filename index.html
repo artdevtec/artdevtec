@@ -1,14 +1,136 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
-</head>
-<body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
-</body>
+<html lang="pt-Br" class="MPSO">
+  <head>
+    <!-- Primary Meta Tags -->
+    <title>Yahweh Shammah</title>
+    <meta name="title" content="Yahweh Shammah" />
+    <meta name="description" content="Letras dos louvores do departamento Yahweh Shammah" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eeeae7">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#181311">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <script src="PWA.js" defer></script>
+    <meta name="description" content="Letras dos hinos da Yahweh Shammah">
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Yahweh Shammah" />
+    <meta name="msapplication-starturl" content="/yahwehShammah/index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Open Graph / Facebook -->
+    <!-- <meta property="og:type" content="website" /> -->
+    <!-- <meta property="og:url" content="https://arrtu-eedmns.github.io/yahwehShammah/index.html" /> -->
+    <!-- <meta property="og:title" content="Yahweh Shammah" /> -->
+    <!-- <meta property="og:description" content="Letras dos LOUVORES do departamento Yahweh Shammah" /> -->
+    <!-- <meta property="og:image" content="https://arrtu-eedmns.github.io/yahwehShammah/src/img/og.png" /> -->
+
+    <!-- Material Pieces -->
+    <link rel="stylesheet" href="src/css/pieces/pieces.css">
+    <script src="src/js/pieces/pieces.js"></script>
+    <!-- m css -->
+    <link rel="stylesheet" href="src/css/style.css">
+    <!-- events -->
+    <!-- <link rel="stylesheet" href="src/css/event/snow.css"> -->
+    <!-- pages -->
+    <link rel="stylesheet" href="src/css/pages/letras.css">
+    <link rel="stylesheet" href="src/css/pages/pesquisa.css">
+    <!-- <link rel="stylesheet" href="src/css/pages/agenda.css"> -->
+    <link rel="stylesheet" href="src/css/pages/configuracoes.css">
+    <!-- m js -->
+    <script type="module" src="src/js/firebase.js"></script>
+    <script type="module" src="src/js/logo.js"></script>
+    <script src="src/js/MPSO.js"></script>
+    <!-- m pages -->
+    <script src="src/js/pages/letras.js" defer></script>
+    <script src="src/js/pages/pesquisa.js" defer></script>
+    <!-- <script src="src/js/pages/letras.js" defer></script> -->
+    <script src="src/js/pages/configuracoes.js" defer></script>
+    <!-- last m js -->
+    <script defer type="text/javascript" src="/src/js/index.js"></script>
+    <!-- Libs js CDN -->
+    <!-- <script defer type="text/javascript" src="/src/js/MPSO.js"></script> -->
+  </head>
+  <body class="default load-end piece-triade piece-surface background-color-auto-25 text-color-auto-25 ripple-color-inverse-02">
+    
+    <div class="animation-container piece-surface background-color-auto-06">
+      <div class="core piece-surface background-color-auto-02">
+        <div class="spoke piece-surface background-color-auto-06"></div>
+        <div class="spoke piece-surface background-color-auto-06"></div>
+        <div class="spoke piece-surface background-color-auto-06"></div>
+        <div class="spoke piece-surface background-color-auto-06"></div>
+      </div>
+    </div>
+
+    <header id="m-header" class="piece-surface background-color-auto-02">
+        <div class="m-titulo">
+            <div class="icon">
+                <i>Y</i>
+            </div>
+            <h1>Yahweh Shammah<span id="connection-status" data-offline="show"></span><i style="display:none;color: transparent;text-shadow: 0px 0px gold;">🎗️</i></h1>
+            <h2>Início</h2>
+        </div>
+    </header>
+    <div id="m-divider-1" class="piece-divider piece-surface background-color-auto-06"></div>
+    <aside
+        id="m-aside"
+        class="
+            piece-navigation
+            piece-bar-rail
+            piece-floating
+            piece-surface
+            background-color-auto-02
+        "
+    >
+        <!-- header -->
+        <header>
+            <div class="m-titulo">
+                <div class="icon">
+                    <i>Y</i>
+                </div>
+                <h1>Yahweh Shammah<span id="connection-status" data-offline="show"></span><i style="display:none;color: transparent;text-shadow: 0px 0px gold;">🎗️</i></h1>
+                <h2>Início</h2>
+            </div>
+            <!-- menu -->
+            <label
+                id="icon-button-presentation"
+                class="
+                    piece-icon-button
+                    piece-menu
+                    piece-medium
+                    piece-surface
+                    background-color-auto-03-hover
+                    text-color-auto-20
+                    piece-s-16
+                    ripple-color-inverse-00
+                "
+            >
+                <span class="material-symbols-rounded piece-icon piece-false" translate="no">menu</span>
+                <span class="material-symbols-rounded piece-icon piece-true" translate="no">menu_open</span>
+                <input type="checkbox" class="piece-controller">
+                <span class="piece-ripple"></span>
+            </label>
+            <!-- FAB -->
+            <!--button id="button-presentation" class="
+                    piece-FAB
+                    piece-extended
+                    piece-surface
+                    background-color-auto-04
+                    background-color-auto-05-hover
+                    text-color-auto-20
+                    piece-secondary
+                ">
+                <span class="material-symbols-rounded piece-icon" translate="no">add</span>
+                <span class="piece-label">Label</span>
+            </!--button-->
+        </header>
+        <!-- items -->
+        <div class="piece-items"></div>
+        <!-- <span id="version">4.2.0</span> -->
+    </aside>
+    <div id="m-divider-2" class="piece-divider piece-surface background-color-auto-06"></div>
+    <main id="m-main" class="piece-surface background-color-auto-02"></main>
+    
+  </body>
 </html>

@@ -1,0 +1,26 @@
+.piece-badge {   
+    width: min-content;
+	user-select: none;
+	border-radius: 16px;
+	display: grid;
+	place-items: center;
+	pointer-events: none;
+
+    font-size: 11px;
+    font-weight: 500;
+
+    &:not(.large) { aspect-ratio: 1/1; width: 16px;}
+
+    &.small  {
+        width: 6px;
+        height: 6px;
+    }
+
+    &.large   {
+        max-width: 34px;
+        min-width: 16px;
+        height: 16px;
+        padding: 0 4px;
+    }
+
+}

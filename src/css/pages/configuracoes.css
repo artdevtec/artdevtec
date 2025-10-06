@@ -1,0 +1,6 @@
+#view-configuracoes {
+    display: grid;
+    padding: 16px;
+    gap: 16px;
+    align-content: start;
+}

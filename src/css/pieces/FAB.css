@@ -1,0 +1,46 @@
+.piece-FAB {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    place-items: center;
+    border-radius: 16px;
+    cursor: var(--cursor-pointer);
+    user-select: none;
+    gap: 8px;
+    padding-inline: 16px;
+
+    .piece-label{font-size: 16px;}
+
+    &.piece-small {
+        gap: 4px;
+        padding-inline: 8px;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        .piece-label{font-size: 12px;}
+        .piece-icon {font-size: 24px;}
+    }
+    &.piece-medium {
+        gap: 12px;
+        padding-inline: 26px;
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        .piece-label{font-size: 22px;}
+        .piece-icon {font-size: 28px;}
+    }
+    &.piece-large {
+        gap: 16px;
+        padding-inline: 28px;
+        width: 96px;
+        height: 96px;
+        border-radius: 28px;
+        .piece-label{font-size: 24px;}
+        .piece-icon {font-size: 36px;}
+    }
+    &.piece-extended {
+        width: min-content;
+    }
+}

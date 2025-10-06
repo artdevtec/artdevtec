@@ -1,0 +1,220 @@
+#view-letras {
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 1fr; /*mobile*/
+
+    /* grid-template-columns: 1fr 1px 3fr; */
+
+    #letras-menu {
+        display: grid;
+        overflow-y: auto;
+        gap: 1px;
+        .card-list {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 16px;
+            padding: 16px;
+            align-items: center;
+            /* position: sticky; */
+            /* top: 0; */
+            /* z-index: 1; */
+            * {pointer-events: none;}
+            .numero {
+                width: 48px;
+                height: 48px;
+                display: grid;
+                place-items: center;
+                border-radius: 16px;
+                aspect-ratio: 1/1;
+                font-weight: 900;
+            }
+            .nome {
+                font-size: 12px;
+                font-weight: 900;
+                text-align: start;
+            }
+            .cantor {
+                font-size: 12px;
+                border-radius: 4px;
+                text-align: start;
+            }
+        }
+    }
+    #letras-detalhe {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        pointer-events: none;
+        z-index: 1;
+
+        .detalhe-content {
+            position: absolute;
+            overflow: auto;
+            transition: all 0.4s ease;
+            pointer-events: all;
+            z-index: 1;
+            
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+
+            &>header {
+                display: grid;
+                grid-template-columns: auto 1fr 40px;
+                gap: 16px;
+                padding: 16px;
+                align-items: center;
+                position: sticky;
+                top: 0;
+                z-index: 1;
+                .numero {
+                    width: 48px;
+                    height: 48px;
+                    display: grid;
+                    place-items: center;
+                    border-radius: 16px;
+                    aspect-ratio: 1/1;
+                    font-weight: 900;
+                }
+                .nome {
+                    font-size: 12px;
+                    font-weight: 900;
+                }
+                .cantor {
+                    font-size: 12px;
+                    border-radius: 4px;
+                    text-align: start;
+                }
+
+                button {
+                    transform: scale(0);           /* começa encolhido */
+                    opacity: 0;
+                    transition: transform 0.4s ease, opacity 0.4s ease;
+                }
+                
+                    /* quando a classe "show" é adicionada → expande */
+                    button.show {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                
+                    /* quando a classe "hide" é adicionada → encolhe */
+                    button.hide {
+                    transform: scale(0);
+                    opacity: 0;
+                }
+            }
+            &>main {
+                display: grid;
+                .bloco {
+                    display: grid;
+                    padding: 0px 16px;
+                    position: relative;
+                    /* --font-size: 1; */
+                    &>header {
+        
+                        display: grid;
+                        grid-auto-flow: column;
+                        gap: 4px;
+                        place-content: start;
+                        position: sticky;
+                        z-index: 1;
+                        top: 0;
+                        height: 80px;
+                        place-content: center start;
+        
+                        &>:nth-child(1) {
+                            font-size: 16px;
+                            width: 48px;
+                            height: 48px;
+                            display: grid;
+                            place-items: center;
+                            border-radius: 100px;
+                            aspect-ratio: 1/1;
+                            font-weight: 900;
+                        }
+                        &>span {
+                            --piece-s: 48%;
+                            font-size: 16px;
+                            display: grid;
+                            place-items: center;
+                            border-radius: 100px;
+                            font-weight: 900;
+                            padding: 0 16px;
+                        }
+
+                        /* quando a classe "show" é adicionada → expande */
+                        .show {
+                            transform: scale(1);
+                            opacity: 1;
+                            background: red;
+                        }
+
+                        /* quando a classe "hide" é adicionada → encolhe */
+                        .hide {
+                            transform: scale(0);
+                            opacity: 0;
+                        }
+                    }
+                    &>main {
+                        display: grid;
+                        gap: 4px;
+                        font-size: 16px;
+                        font-size: 32px;
+        
+                        input {display: none;}
+        
+                        label{
+                            --piece-s: 48%;
+                            font-size: calc(16px + ((var(--font-size) - 1) * 4px));
+                            border-radius: 8px;     
+                            padding: 16px;
+                            &:first-of-type {border-radius: 32px 32px 8px 8px;}
+                            &:last-of-type {border-radius: 8px 8px  32px 32px;}
+                        }
+                    }
+        
+                    .marcador-aspect-radio-1-1 {aspect-ratio: 1/1;}
+        
+        
+                    /* ministracao / .declamação */
+                    &:has(.marcador-ministracao, .marcador-declamacao) :where(.marcador-ministracao, .marcador-declamacao),
+                    &:has(.marcador-ministracao, .marcador-declamacao) label {
+                        --piece-h: 100;
+                        font-weight: 900;
+                    }
+        
+                    .marcador-dpto {--piece-h: 261;}
+                    .marcador-dptotodos {--piece-h: 261;}
+                    .marcador-solo {--piece-h: 48; text-decoration: underline;}
+                    .marcador-s {--piece-h: 48; text-decoration: underline;}
+                    .marcador-masculino {--piece-h: 180;}
+                    .marcador-m {--piece-h: 180;}
+                    .marcador-dptohomens {--piece-h: 180;}
+                    .marcador-dptomasculino {--piece-h: 180;}
+                    .marcador-dptom {--piece-h: 180;}
+                    .marcador-feminino {--piece-h: 300;}
+                    .marcador-f {--piece-h: 300;}
+                    .marcador-dptomulheres {--piece-h: 300;}
+                    .marcador-dptofeminino {--piece-h: 300;}
+                    .marcador-dptof {--piece-h: 300;}
+        
+                    .marcador-solomasculino {
+                        text-decoration: underline;
+                        --piece-h: 180;
+                    }
+                    .marcador-solofeminino {
+                        text-decoration: underline;
+                        --piece-h: 300;
+                    }
+                }
+            }
+            &>footer {
+                display: grid;
+                height: 80px;
+            }
+
+        }
+        #letras-conteudo {display: none;}
+        
+    }
+}
