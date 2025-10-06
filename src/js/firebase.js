@@ -51,3 +51,5 @@ export async function carregarLetrasNoLocalStorage() {
 if (!window.yahwehShammah?.letrasDB?.get()) {
   carregarLetrasNoLocalStorage();
 }
+
+window.carregarLetrasNoLocalStorage = carregarLetrasNoLocalStorage;
