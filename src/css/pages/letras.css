@@ -170,6 +170,7 @@
                             padding: 16px;
                             &:first-of-type {border-radius: 32px 32px 8px 8px;}
                             &:last-of-type {border-radius: 8px 8px  32px 32px;}
+                            *:not(.piece-ripple) { pointer-events: none;}
                         }
                     }
         

@@ -137,6 +137,8 @@ MPSO.newView({
             </div>
         `;
 
+        $("#scroll-top-page").addEventListener('click', ()=> $('.detalhe-content').scrollTo(0,0))
+
         // gera conteúdo da letra
         this.gerar(id);
 
@@ -256,6 +258,7 @@ MPSO.newView({
                         label.innerHTML = `
                             <span>${linhaLimpa}</span>
                             <input class="piece-controller" type="radio" name="letra-refrão">
+                            <span class="piece-ripple"></span>
                         `;
 
                         if (marcadoresLinha.length > 0) {
