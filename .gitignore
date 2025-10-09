@@ -1,0 +1,21 @@
+# Ignorar node_modules
+node_modules/
+
+# Ignorar arquivos temporários
+*.log
+*.tmp
+
+# Ignorar builds
+dist/
+build/
+
+# Ignorar configs locais
+.env
+
+
+# Ignorar
+.idx
+.vscode
+
+firebase-debug.log
+GEMINI.md
