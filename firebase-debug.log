@@ -941,3 +941,148 @@
 [debug] [2025-10-06T17:04:21.450Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
 [error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
 [debug] [2025-10-06T17:04:21.451Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-06T22:49:20.898Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:20.917Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:20.976Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:20.979Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:20.983Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:20.989Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:20.992Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-06T22:49:43.932Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:43.946Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.022Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.038Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.045Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.050Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.055Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-06T22:49:44.076Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.080Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.086Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.090Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.093Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-06T22:49:44.097Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.098Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.100Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.101Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-06T22:49:44.102Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-08T12:44:25.316Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T12:44:25.329Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T12:44:25.386Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T12:44:25.392Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T12:44:25.396Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T12:44:25.401Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T12:44:25.406Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-08T16:24:18.743Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:24:18.758Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:24:18.835Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:24:18.839Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:24:18.843Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:24:18.852Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:24:18.856Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-08T16:25:21.493Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.518Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.612Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.615Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.619Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.625Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.627Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-08T16:25:21.699Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.708Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.710Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.718Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.724Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-08T16:25:21.744Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.754Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.769Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.783Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-08T16:25:21.790Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-09T11:45:23.378Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:45:23.391Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:45:23.430Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:45:23.434Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:45:23.435Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:45:23.437Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:45:23.438Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-09T11:48:23.138Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.151Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.220Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.225Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.229Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.231Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.233Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-09T11:48:23.263Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.269Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.272Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.280Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.281Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-10-09T11:48:23.289Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.298Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.304Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.305Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"mcpServers"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2025-10-09T11:48:23.313Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]

@@ -1,7 +1,7 @@
 MPSO.newView({
     name: "Pesquisa",
     icon: "search",
-    showInNavigation: true,
+    showInNavigation: false,
 
     main(params) {
         const id = params[0] ? parseInt(params[0], 10) : null

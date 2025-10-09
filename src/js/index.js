@@ -1,6 +1,7 @@
 (() => {
     const body = document.body
     const header = document.querySelector('header')
+    let timeout // variável para evitar execuções acumuladas
 
     function updateMetaThemeColor() {
         const color = header ? getComputedStyle(header).backgroundColor : '#ffffff'
@@ -18,11 +19,15 @@
 
     // Observa mudanças nas classes do body
     const observer = new MutationObserver(() => {
-        updateMetaThemeColor()
+        clearTimeout(timeout) // se houver uma mudança anterior, cancela o timer
+        timeout = setTimeout(() => {
+            updateMetaThemeColor()
+        }, 300)
     })
 
     observer.observe(body, { attributes: true, attributeFilter: ['class'] })
 })()
+
 
 
 // ------------------ Start ------------------

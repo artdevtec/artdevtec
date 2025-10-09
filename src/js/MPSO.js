@@ -12,14 +12,25 @@ Node.prototype.appendAll = function(nodes) {nodes.forEach(node => this.appendChi
 let cl = (v) => console.log(v)
 
 const MPSO = {
-    name: "YS",
+    name: "Yahweh Shammah",
     views: [],
     currentView: null, // ✅ guarda a view atual
 
     // Funções globais disponíveis em todas as views
     globalFns: {
         create: h => [...Object.assign(document.createElement("template"), { innerHTML: h.trim() }).content.children],
-        normalize: str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+        normalize: str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(),
+        getPlatform() {
+            const userAgent = navigator.userAgent.toLowerCase();
+        
+            if (/iphone|ipad|ipod/.test(userAgent)) return "ios";
+            if (/android/.test(userAgent)) return "android";
+            if (/windows/.test(userAgent)) return "windows";
+            if (/macintosh|mac os x/.test(userAgent)) return "mac";
+            if (/linux/.test(userAgent)) return "linux";
+        
+            return "desktop"; // fallback genérico
+        }
     },
 
     // Cria uma nova view

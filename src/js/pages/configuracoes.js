@@ -14,7 +14,7 @@ MPSO.newView({
     // função modular dentro da view
     initVersion(containerSelector) {
         const container = $(containerSelector)
-        container.appendAll(this.create(/*html*/`<div>2.0.0</div>`))
+        container.appendAll(this.create(/*html*/`<div style="display:grid;padding: 16px;place-content: center;">2.0.0</div>`))
     },
     initFontSize(containerSelector) {
         const container = $(containerSelector)
@@ -214,7 +214,7 @@ MPSO.newView({
 
             document.documentElement.classList.add("tema-transition");
             setTimeout(() => {
-            document.documentElement.classList.remove("tema-transition");
+                document.documentElement.classList.remove("tema-transition");
             }, 300);
 
         }

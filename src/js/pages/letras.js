@@ -11,7 +11,7 @@ MPSO.newView({
         try {
             letras = JSON.parse(letras);
         } catch (e) {
-            console.error("Erro ao ler letras do localStorage:", e);
+            alert("Erro ao ler letras do localStorage:", e);
             return null;
         }
 
@@ -129,6 +129,11 @@ MPSO.newView({
                     </button>
                 </header>
                 <main class="piece-surface background-color-auto-02"></main>
+                <footer class="piece-surface background-color-auto-02"></footer>
+                <button id="scroll-top-page" style="position: fixed; bottom: 16px; right: 16px; z-index: 10;" class="piece-FAB piece-surface background-color-auto-11 text-color-auto-00 piece-s-40">
+                    <span class="material-symbols-rounded piece-icon" translate="no">arrow_upward</span>
+                    <span class="piece-ripple"></span>
+                </button>
             </div>
         `;
 

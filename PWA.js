@@ -1,132 +1,148 @@
-// ***** Register Service Worker *****
-
-if ("serviceWorker" in navigator) {
-	navigator.serviceWorker.register("sw.js") // Corrigido: era "/sw.js"
-		.then(serviceWorker => {
-			console.log("Service Worker registered: ", serviceWorker);
-		})
-		.catch(error => {
-			console.error("Error registering the Service Worker: ", error);
-		});
+// ***** DETECTAR PLATAFORMA *****
+function getPlatform() {
+	const ua = window.navigator.userAgent.toLowerCase();
+	if (/iphone|ipad|ipod/.test(ua)) return "ios";
+	if (/android/.test(ua)) return "android";
+	if (/windows/.test(ua)) return "windows";
+	return "other";
 }
 
-// navigator.serviceWorker.onmessage = event => {
-// 	const message = JSON.parse(event.data);
+// ***** VERIFICAR SE PWA ESTÁ INSTALADO *****
+function isInStandaloneMode() {
+	return (
+		window.matchMedia('(display-mode: standalone)').matches || 
+		window.navigator.standalone === true
+	);
+}
 
-// 	// detect the type of message and refresh the view
-// 	if(message && message.type.includes("/api/users")){
-// 		console.log("List of attendees to date", message.data)
-// 		renderAttendees(message.data)
-// 	}
-// };
-
-
-// ***** Install PWA on device with button *****
-
+// ***** CRIAR BOTÃO DE INSTALAÇÃO DINÂMICO *****
 let deferredPrompt;
-const installButton = document.getElementById("install_button");
-
 window.addEventListener("beforeinstallprompt", e => {
-	console.log("beforeinstallprompt fired");
 	e.preventDefault();
-	// Stash the event so it can be triggered later.
 	deferredPrompt = e;
-	// Show the install button
-	installButton.style.display = "grid";
-	installButton.classList.remove("none");
-	installButton.addEventListener("click", installApp);
+	showInstallButton();
 });
 
-function installApp() {
-	// Show the prompt
-	deferredPrompt.prompt();
-	installButton.disabled = true;
+function showInstallButton() {
+	if (document.getElementById("pwa-install-btn")) return; // evita duplicar
 
-	// Wait for the user to respond to the prompt
-	deferredPrompt.userChoice.then(choiceResult => {
-		if (choiceResult.outcome === "accepted") {
-			console.log("PWA setup accepted");
-			installButton.style.display = "none";
-			installButton.classList.add("none");
-		} else {
-			console.log("PWA setup rejected");
-		}
-		installButton.disabled = false;
-		deferredPrompt = null;
-	});
-}
+	const platform = MPSO.globalFns.getPlatform()
 
-window.addEventListener("appinstalled", evt => {
-	console.log("appinstalled fired", evt);
-});
+	// Se o app já estiver instalado, não mostra o botão
+	if (isInStandaloneMode()) return;
 
+	// Cria o botão
+	const btn = MPSO.globalFns.create(`
+		<button
+			style="
+				display: grid;
+				position: fixed;
+				bottom: 80px;
+				right: 16px;
+			"
+			id="install_button"
+			class="
+                piece-button
+                piece-extra-small
+                piece-surface
+                background-color-auto-11
+                background-color-auto-12-hover
+                text-color-dark-02
+                piece-s-40
+                
+            ">
+            ${platform == "android" ? '<span class="material-symbols-rounded piece-icon install_mobile" translate="no">install_mobile</span>' : ""}
+            ${platform == "windows" ? '<span class="material-symbols-rounded piece-icon install_desktop" translate="no">install_desktop</span>' : ""}
+            ${platform == "ios" ? '<span class="material-symbols-rounded piece-icon install_IOS" translate="no">add_box</span>' : ""}
+            <span class="piece-label" translate="no">Instalar</span>
+            <span class="piece-ripple"></span>
+        </button>
+	`)
 
-// ********* Background Sync *************
+	$('body').appendAll(btn)
 
-// Get Permissions
-function registerNotification() {
-	Notification.requestPermission(permission => {
-		if (permission === 'granted') {
-			registerBackgroundSync();
-		} else {
-			console.error("Permission was not granted.");
-		}
-	});
-}
-
-function registerBackgroundSync() {
-	if (!navigator.serviceWorker) {
-		return console.error("Service Worker not supported");
-	}
-
-	navigator.serviceWorker.ready
-		.then(registration => registration.sync.register('syncAttendees'))
-		.then(() => console.log("Registered background sync"))
-		.catch(err => console.error("Error registering background sync", err));
-}
-
-
-// ********* Atualizar PWA Manualmente *************
-
-function atualizarPWA() {
-	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.getRegistration().then(registration => {
-			if (registration) {
-				// ForÃ§a o SW a buscar nova versÃ£o do arquivo sw.js
-				registration.update().then(() => {
-					if (registration.waiting) {
-						console.log("Nova versÃ£o do Service Worker pronta. Ativando...");
-						registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-					}
-				});
+	// Define comportamento conforme plataforma
+	if (platform === "android" || platform === "windows") {
+		$("#install_button").addEventListener("click", async () => {
+			if (deferredPrompt) {
+				deferredPrompt.prompt();
+				const choiceResult = await deferredPrompt.userChoice;
+				if (choiceResult.outcome === "accepted") {
+					console.log("Usuário aceitou instalar o PWA");
+					$("#install_button").remove();
+				}
+				deferredPrompt = null;
 			}
 		});
+	}
 
-		// Aguarda 1s e recarrega a pÃ¡gina para aplicar nova versÃ£o
-		setTimeout(() => {
-			window.location.reload(true);
-		}, 1000);
+	if (platform === "ios") {
+		$("#install_button").addEventListener("click", showIosInstallGuide);
 	}
 }
 
+// ***** POPUP / TUTORIAL PARA iOS *****
+function showIosInstallGuide() {
+	// Evita duplicar o popover
+	if (document.getElementById("ios-popover")) return;
 
-// ********* Desregistrar e forÃ§ar limpeza e reload *************
+	const pop = document.createElement("div");
+	pop.id = "ios-popover";
+	pop.innerHTML = `
+		<div 
+			class="piece-surface background-color-auto-00"
+			style="
+				position: fixed;
+				background: white;
+				padding: 32px;
+				border-radius: 32px 32px 0 0;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+				z-index: 9999;
+				text-align: center;
+				width: 100%;
+				bottom: 0;
+				display: grid;
+				gap: 16px;
+				place-items: center;
+			"
+		>
+			<p>Adicionar à Tela Inicial</p>
+			<p>
+				Toque no botão <strong>Compartilhar</strong> 
+				(ícone <span style="font-size:18px;">&#x1f4e4;</span>) e depois em 
+				<strong>“Adicionar à Tela de Início”</strong>.
+			</p>
+			<button
+				id="closePopover"
+				class="
+					piece-button
+					piece-extra-small
+					piece-surface
+					background-color-auto-11
+					background-color-auto-12-hover
+					text-color-dark-02
+					piece-s-40
+					
+				">
+				<span class="material-symbols-rounded piece-icon install_IOS" translate="no">check_circle</span>
+				<span class="piece-label" translate="no">Ok</span>
+				<span class="piece-ripple"></span>
+			</button>
+		</div>
+	`;
 
-function forceUpdatePWA() {
-	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.getRegistrations().then(registrations => {
-			registrations.forEach(registration => {
-				registration.unregister().then(success => {
-					if (success) {
-						console.log("Service Worker desregistrado com sucesso.");
-					} else {
-						console.warn("Falha ao desregistrar o Service Worker.");
-					}
-				});
-			});
-		}).finally(() => {
-			// Recarrega a pÃ¡gina para forÃ§ar novo download e registro limpo do SW
-			window.location.reload(true);
-		});
-	}
+	document.body.appendChild(pop);
+	document.getElementById("closePopover").addEventListener("click", () => {
+		pop.remove();
+	});
 }
+
+// ***** INICIALIZAR *****
+window.addEventListener("load", () => {
+	const platform = getPlatform();
+
+	// iOS não dispara beforeinstallprompt → cria botão manualmente
+	if (platform === "ios" && !isInStandaloneMode()) {
+		showInstallButton();
+	}
+});
