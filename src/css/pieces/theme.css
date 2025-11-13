@@ -19,6 +19,12 @@
     --piece-tertiary: var(--piece-main-color);
 }
 
+.piece-art {
+    --piece-primary: 270;
+    --piece-secondary: 230;
+    --piece-tertiary: 300;
+}
+
 .piece-primary {--piece-h: var(--piece-primary);}
 .piece-secondary {--piece-h: var(--piece-secondary);}
 .piece-tertiary {--piece-h: var(--piece-tertiary);}

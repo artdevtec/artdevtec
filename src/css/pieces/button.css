@@ -31,6 +31,7 @@
         display: grid;
         place-content: center;
         font-weight: 500;
+        text-wrap: nowrap;
     }
 
     /* &:has(.icon):not(:has(.label)) {
@@ -49,6 +50,23 @@
 
     &:has(input:checked) .piece-icon {
         font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    &.piece-outlined {
+        border-width: 1px;
+        border-style: solid;
+    }
+
+    &.piece-elevated {
+        box-shadow: 0px 0px 4px 0px hsla(
+            var(--piece-box-shadow-color-h),
+            var(--piece-s),
+            var(--piece-box-shadow-color),
+            var(--piece-a)
+        );
+    }
+    &.piece-text {
+        background: transparent;
     }
 
     &.piece-extra-small {
@@ -94,40 +112,60 @@
 }
 
 .piece-group-button {
-    --button-radius: 100000px;           /* borda totalmente arredondada */
-    --selected-radius: 12px;        /* borda dos filhos do meio */
-    --button-gap: 8px;
 
+    --gap: 2px;
     display: inline-flex;
-    gap: var(--button-gap);
+    gap: var(--gap);
 
-    /* todos os botões dentro do grupo */
     > .piece-button {
-        border-radius: var(--selected-radius);
-        transition: border-radius 0.15s;
+        transition: border-radius 0.15s ease;
 
-        /* botão selecionado */
+        &.piece-extra-small {
+            --round: 4px;
+            --fully-round: calc(32px / 2);
+        }
+
+        &.piece-small {
+            --round: 8px;
+            --fully-round: calc(40px / 2);
+        }
+
+        &.piece-medium {
+            --round: 8px;
+            --fully-round: calc(56px / 2);
+        }
+
+        &.piece-large {
+            --round: 16px;
+            --fully-round: calc(96px / 2);
+        }
+
+        &.piece-extra-large {
+            --round: 20px;
+            --fully-round: calc(136px / 2);
+        }
+
+        border-radius: var(--round);
+
         &.active,
         &:has(input:checked) {
-            border-radius: var(--button-radius);
+            border-radius: var(--fully-round);
         }
 
-        /* primeiro filho do grupo */
         &:first-child {
-            border-radius: var(--button-radius) 0 0 var(--button-radius);
+            border-radius: var(--fully-round) var(--round) var(--round) var(--fully-round);
         }
 
-        /* último filho do grupo */
         &:last-child {
-            border-radius: 0 var(--button-radius) var(--button-radius) 0;
+            border-radius: var(--round) var(--fully-round) var(--fully-round) var(--round);
         }
 
-        /* filhos do meio ficam com border-radius menor */
         &:not(:first-child):not(:last-child):not(:has(input:checked)) {
-            border-radius: var(--selected-radius);
+            border-radius: var(--round);
         }
     }
 }
+
 
 
 

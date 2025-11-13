@@ -63,7 +63,7 @@
     &.piece-extra-small {
         height: 32px;
         .piece-leading-button {
-            border-radius: 32px 4px 4px 32px;
+            border-radius: 16px 4px 4px 16px;
             padding: 0 10px 0 12px;
             gap: 4px;
             place-items: center;
@@ -71,7 +71,7 @@
             .piece-label {font-size: 20px;}
         }
         .piece-trailing-button {
-            border-radius: 4px 32px 32px 4px;
+            border-radius: 4px 16px 16px 4px;
             padding: 0 14px 0 12px;
             .piece-icon {font-size: 22px;}
         }
@@ -79,7 +79,7 @@
     &.piece-small {
         height: 40px;
         .piece-leading-button {
-            border-radius: 40px 4px 4px 40px;
+            border-radius: 20px 4px 4px 20px;
             padding: 0 12px 0 16px;
             gap: 8px;
             place-items: center;
@@ -87,7 +87,7 @@
             .piece-label {font-size: 20px;}
         }
         .piece-trailing-button {
-            border-radius: 4px 40px 40px 4px;
+            border-radius: 4px 20px 20px 4px;
             padding: 0 14px 0 12px;
             .piece-icon {font-size: 22px;}
         }
@@ -95,7 +95,7 @@
     &.piece-medium {
         height: 56px;
         .piece-leading-button {
-            border-radius: 56px 4px 4px 56px;
+            border-radius: 28px 4px 4px 28px;
             padding: 0 24px 0 24px;
             gap: 8px;
             place-items: center;
@@ -103,7 +103,7 @@
             .piece-label {font-size: 24px;}
         }
         .piece-trailing-button {
-            border-radius: 4px 56px 56px 4px;
+            border-radius: 4px 28px 28px 4px;
             padding: 0 17px 0 13px;
             .piece-icon {font-size: 26px;}
         }
@@ -111,7 +111,7 @@
     &.piece-large {
         height: 96px;
         .piece-leading-button {
-            border-radius: 96px 8px 8px 96px;
+            border-radius: 48px 8px 8px 48px;
             padding: 0 48px 0 48px;
             gap: 12px;
             place-items: center;
@@ -119,7 +119,7 @@
             .piece-label {font-size: 32px;}
         }
         .piece-trailing-button {
-            border-radius: 8px 96px 96px 8px;
+            border-radius: 8px 48px 48px 8px;
             padding: 0 32px 0 26px;
             .piece-icon {font-size: 38px;}
         }
@@ -127,7 +127,7 @@
     &.piece-extra-large {
         height: 136px;
         .piece-leading-button {
-            border-radius: 136px 12px 12px 136px;
+            border-radius: 68px 12px 12px 68px;
             padding: 0 64px 0 64px;
             gap: 16px;
             place-items: center;
@@ -135,7 +135,7 @@
             .piece-label {font-size: 40px;}
         }
         .piece-trailing-button {
-            border-radius: 12px 136px 136px 12px;
+            border-radius: 12px 68px 68px 12px;
             padding: 0 49px 0 37px;
             .piece-icon {font-size: 50px;}
         }

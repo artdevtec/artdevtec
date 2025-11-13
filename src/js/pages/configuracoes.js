@@ -4,116 +4,14 @@ MPSO.newView({
     showInNavigation: true,
     
     main() {
-        this.initSyncLyric("#m-main section") // chama a função da própria view
-        this.initThemeToggle("#m-main section") // chama a função da própria view
-        this.initFontSize("#m-main section") // chama a função da própria view
-
-        this.initVersion("#m-main section") // chama a função da própria view
+        this.initThemeToggle("#m-main section")
+        this.initVersion("#m-main section")
     },
 
     // função modular dentro da view
     initVersion(containerSelector) {
         const container = $(containerSelector)
         container.appendAll(this.create(/*html*/`<div style="display:grid;padding: 16px;place-content: center;">2.0.0</div>`))
-    },
-    initFontSize(containerSelector) {
-        const container = $(containerSelector)
-    
-        const sizes = [16, 20, 24, 28, 32]
-        const savedValue = MPSO.storage.fontSize.get() || 1
-    
-        const labelsHTML = sizes.map((size, i) => `
-            <label class="
-                piece-surface
-                piece-button
-                background-color-auto-02
-                background-color-auto-03-hover
-                background-color-auto-11-active
-                background-color-auto-12-hover-active
-                text-color-auto-23
-                text-color-auto-00-active
-            ">
-                <input class="piece-controller" type="radio" name="font-size" value="${i + 1}" ${savedValue == i + 1 ? "checked" : ""}>
-                <span class="label">${size}</span>
-                <span class="piece-ripple"></span>
-            </label>
-        `).join("")
-    
-        container.appendAll(this.create(/*html*/`
-            <style>
-                .piece-segmented-button {
-                    display: grid;
-                    grid-auto-flow: column;
-                    gap: 2px;
-                    label {
-                        padding: inset !important;
-                        cursor: var(--cursor-pointer);
-                        border-radius: 8px;
-                        &:not(:last-of-type){margin-right: -1px;}
-                        &:first-of-type { border-radius: 40px 16px 16px 40px;}
-                        &:last-of-type { border-radius: 16px 40px 40px 16px;}
-                        .label {font-weight: 500; text-align: center; 	padding: 0;}
-                        * {pointer-events: none;}
-                        &:has(input:checked) {border-radius: 500px; padding: inset !important;}
-                        padding: 0;
-                    }
-                    input {display: none;}
-                }
-                #tema {}
-                #tema .letra {
-                    display: grid;
-                    gap: 4px;
-                    p {
-                        padding: 16px;
-                        border-radius: 8px;
-                        &:first-of-type {border-radius: 32px 32px 8px 8px;}
-                        &:last-of-type {border-radius: 8px 8px  32px 32px;}
-                    }
-                }
-            </style>
-            <div id="tema" class="piece-surface background-color-auto-04 text-color-012" style="padding:16px;">
-                <h1>Tamanho da letra</h1>
-                <div id="font-size" style="display:grid;" class="piece-segmented-button">
-                    ${labelsHTML}
-                </div>
-                <span class="letra" style="font-weight:500; border-radius: 16px; font-size: calc(16px + ((var(--font-size) - 1) * 4px));">
-                    <p class="letra piece-surface background-color-auto-08 text-color-auto-21 piece-secondary piece-s-40">Deus prometeu com certeza</p>
-                    <p class="letra piece-surface background-color-auto-08 text-color-auto-21 piece-secondary piece-s-40">Chuvas de graça mandar;...</p>
-                </span>
-            </div>
-        `))
-    
-        // aplicar tamanho salvo
-        document.documentElement.style.setProperty('--font-size', savedValue)
-    
-        // listeners para mudar fonte e salvar no storage
-        container.$$('#font-size input').forEach(input => {
-            input.addEventListener('input', () => {
-                const value = input.value
-                document.documentElement.style.setProperty('--font-size', value)
-                MPSO.storage.fontSize.set(value)
-            })
-        })
-    },
-    initSyncLyric(containerSelector) {
-        const container = $(containerSelector)
-        container.appendAll(this.create(/*html*/`
-            <button
-                data-offline="disable"
-                onclick="carregarLetrasNoLocalStorage()"
-                class="
-                    piece-button
-                    piece-surface
-                    piece-s-40
-                    background-color-auto-13
-                    text-color-auto-00
-                    background-color-15-hover
-                "
-            >  
-                <span class="material-symbols-rounded piece-icon" translate="no">sync</span>
-                <span class="piece-label">Atualizar Letras</span>
-            </button>
-        `))
     },
     initThemeToggle(containerSelector) {
         const container = $(containerSelector)

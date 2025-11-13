@@ -20,27 +20,44 @@
 
 .tema-transition * {transition: all .3s !important;}
 
-html.MPSO {
-    /* background-image: radial-gradient(circle at center,
-            hsla(0, 0%, 48%, 48%) 0%,
-            hsla(0, 0%, 48%, 48%) 16%,
-            transparent 1%);
-    background-size: 8px 8px;
-    background-repeat: repeat; */
-    display: grid;
-    height: 100vh;
+html {
+	background-image: radial-gradient(circle at center,
+	hsla(0, 0%, 48%, 48%) 0%,
+	hsla(0, 0%, 48%, 48%) 16%,
+	transparent 1%);
+	background-size: 8px 8px;
+	background-repeat: repeat;
 
-    body {
-        inset: 0;
-        margin: auto auto;
-        position: absolute;
-        overflow: hidden;
+	display: grid;
+	place-self: center;
 
-        &.default {width: 100%;height: 100%;}
-        &.svga {width: 800px;height: 600px;}
-        &.hd {width: 1280px;height: 720px;}
-        &.fullhd {width: 1920px;height: 1080px;}
-    }
+	width: 100vw;
+	height: 100vh;
+
+	container-name: corpo;
+	container-type: inline-size;
+
+	&:has(.screen-size-default ){ width: 100%; height: 100%; }
+	&:has(.screen-size-svga    ){ width: 800px;  height: 600px; }
+	&:has(.screen-size-hd      ){ width: 1280px; height: 720px; }
+	&:has(.screen-size-fullhd  ){ width: 1920px; height: 1080px; }
+	&:has(.screen-size-mobile  ){ width: 414px;  height: 896px; }
+}
+
+body {
+
+	inset: 0;
+	margin: auto;
+	position: absolute !important;
+	overflow: hidden;
+	display: grid;
+
+	/* Classes manuais */
+	&.screen-size-default { width: 100%; height: 100%; }
+	&.screen-size-svga    { width: 800px;  height: 600px; }
+	&.screen-size-hd      { width: 1280px; height: 720px; }
+	&.screen-size-fullhd  { width: 1920px; height: 1080px; }
+	&.screen-size-mobile  { width: 414px;  height: 896px; }
 }
 
 * {
@@ -143,8 +160,6 @@ html.MPSO {
     .icon {
         grid-area: icon;
         display: grid;
-        width: 56px;
-        height: 56px;
         border-radius: 8px;
     }
     h1, h2 { position: relative; width: min-content; text-wrap: nowrap;}
@@ -196,7 +211,7 @@ html.MPSO {
         &.piece-show {background: red;}
     }
     .icon {
-        background: linear-gradient(135deg, #ff5722, #f94d2c, #f44336);
+        /* background: linear-gradient(135deg, #ff5722, #f94d2c, #f44336); */
         border-radius: 12px;
         position: relative;
         i {
@@ -212,53 +227,49 @@ html.MPSO {
     }
     svg {
         position: absolute;
+        width: 100%;
+		height: auto;
     }
 }
 #m-divider-1 {grid-area: m-divider-1; display: none;}
 #m-aside {
     grid-area: m-aside;
-    .m-titulo { gap: 0; margin-bottom: 16px;}
-    header .icon {
-        background: linear-gradient(135deg, #ff5722, #f94d2c, #f44336);
-        border-radius: 12px;
-        position: relative;
-        i {
-            all: unset;
-            color: white;
-            font-size: 16px;
-            font-family: "Yuji Boku";
-            position: absolute;
-            bottom: 7px;
-            left: 22px;
-            z-index: 1;
-        }
-    }
-    header svg {
-        position: absolute;
+    .m-titulo .icon svg {
+        width: 100%;
+		height: auto;
     }
 }
 #m-divider-2 {grid-area: m-divider-2;}
 #m-main {grid-area: m-main; display: grid; overflow: hidden;}
 
-body {
-    display: grid;
-    grid-template-areas:"m-aside m-divider-2 m-main";
-    grid-template-rows: 1fr;
-    grid-template-columns: 96px 1px 1fr;
-    overflow: hidden;
-    &:has(#m-aside .piece-menu input:checked) {
-        grid-template-columns: auto 1px 1fr;
-        transition: .3s;
-        .m-titulo {
-            gap: 0 16px;
-            h1, h2 {display: block;}
+
+@container (min-width: 769px){
+    body {
+
+        inset: 0;
+        margin: auto;
+        position: absolute;
+        overflow: hidden;
+        display: grid;
+    
+        grid-template-areas:"m-aside m-divider-2 m-main";
+        grid-template-rows: 1fr;
+        grid-template-columns: 96px 1px 1fr;
+        &:has(#m-aside .piece-menu input:checked) {
+            grid-template-columns: auto 1px 1fr;
+            transition: .3s;
+            .m-titulo {
+                gap: 0 16px;
+                h1, h2 {display: block;}
+            }
         }
+        &.load-end {grid-template-columns: 0px 0px 1fr;}
+        transition: .3s;
     }
-    &.load-end {grid-template-columns: 0px 0px 1fr;}
-    transition: .3s;
 }
 
-@media screen and (max-width: 768px){
+
+@container (max-width: 768px){
     body {
         display: grid;
         grid-template-areas:

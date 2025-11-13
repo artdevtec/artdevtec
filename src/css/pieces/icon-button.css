@@ -48,7 +48,7 @@
     &.piece-extra-small {
         --button-width: 32px;
         --height: 32px;
-        --border-radius: 136px;
+        --border-radius: 16px;
         --active-radius: 12px;
         --icon-size: 20px;
 
@@ -60,7 +60,7 @@
     &.piece-small {
         --button-width: 40px;
         --height: 40px;
-        --border-radius: 136px;
+        --border-radius: 20px;
         --active-radius: 12px;
         --icon-size: 24px;
 
@@ -72,7 +72,7 @@
     &.piece-medium {
         --button-width: 56px;
         --height: 56px;
-        --border-radius: 136px;
+        --border-radius: 28px;
         --active-radius: 16px;
         --icon-size: 24px;
 
@@ -84,7 +84,7 @@
     &.piece-large {
         --button-width: 96px;
         --height: 96px;
-        --border-radius: 136px;
+        --border-radius: 48px;
         --active-radius: 28px;
         --icon-size: 32px;
 
@@ -96,11 +96,11 @@
     &.piece-extra-large {
         --button-width: 136px;
         --height: 136px;
-        --border-radius: 136px;
+        --border-radius: 68px;
         --active-radius: 28px;
         --icon-size: 40px;
 
-        &.piece-narrow { --button-width: 104px; }
-        &.piece-wide   { --button-width: 184px; }
+        &.piece-narrow { --button-width: 104px;}
+        &.piece-wide   { --button-width: 184px;}
     }
 }

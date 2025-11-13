@@ -1,78 +1,95 @@
 .piece-text-field {
+	position: relative;
 
-    position: relative;
-    z-index: 1;
-    transition: .3s;
+	> :nth-child(1) {
+		height: 56px;
+		border-radius: 8px;
+		padding: 8px 16px 8px 16px;
+		display: flex;
+		align-items: center;
+		cursor: var(--cursor-text);
+		gap: 16px;
+		border-style: solid;
+		border-width: 1px;
 
-    &>:nth-child(1) {
-        height: 48px;
-        border-radius: 8px;
-        padding: 8px;
-        padding-left: 16px;
-        display: flex;
-        align-items: center;
-        cursor: var(--cursor-text);
-        gap: 8px;
-        border-style: solid;
-        border-width: 1px;
+		> .piece-label {
+			position: absolute;
+			left: 15px;
+			top: -8px;
+			font-size: 12px;
+			padding: 0 4px;
+			background: inherit;
+			pointer-events: none;
+			transition: 0.3s;
+            pointer-events: none;
+            user-select: none;
+		}
 
-        &>.piece-label {
-            position: absolute;
-            left: 16px;
-            top: 16px;
-            transition: .3s;
-        }
+		> input {
+			all: unset;
+			flex: 1 1 0%;
+			width: 0;
+            pointer-events: none;
 
-        &>input {
-            all: unset;
-            width: 0px;
-            flex: 1 1 0%;
-            &::placeholder { user-select: none;}
-        }
-        &:has(input:focus) {
-            padding: 8px 7px;
-            padding-left: 15px;
-            border-width: 2px;
+			&::placeholder {
+				user-select: none;
+			}
+		}
+		>.piece-icon {
+			display: grid;
+			place-content: center;
+			width: 24px;
+			height: 24px;
+			order: -1;
+            user-select: none;
+		}
+	}
 
-            .piece-label {font-weight: 700;}
-        }
+	/* Alturas adicionais */
+	&.extra-small  > :nth-child(1) { height: 40px; }
+	&.small        > :nth-child(1) { height: 46px; }
+	&.medium       > :nth-child(1) { height: 52px; }
+	&.large        > :nth-child(1) { height: 58px; }
+	&.extra-large  > :nth-child(1) { height: 64px; }
 
-        &:has(input:focus, input:valid) {
+	> :nth-child(1):has(input:focus) > input {pointer-events: initial;}
 
-            transition: 0;
+	/* Label centralizada quando vazio e sem foco */
+	> :nth-child(1):has(input:not(:focus):not(:valid)) > .piece-label {
+		top: 50%;
+		left: 16px;
+		transform: translateY(-50%);
+		font-size: 1rem;
+		padding: 0;
+	}
 
-            &>.piece-label {
-                top: -8px;
-                font-size: 12px;
-                padding: 0 4px;
-                background: inherit;
-            }
+	/* Apenas ajusta o left quando houver ícone */
+	> :nth-child(1):has(>.piece-icon):has(input:not(:focus):not(:valid)) > .piece-label {
+		left: 57px;
+	}
 
-            &:has(input:focus) {
-                &>.piece-label {
-                    top: -8.5px;
-                    left: 15px;
-                }
-            }
 
-        }
+	/* Estado ativo (focus) ou preenchido (valid) */
+	> :nth-child(1):has(input:focus) {
+		border-width: 2px;
+		padding: 8px 15px 8px 15px;
+	}
 
-        /* &>:nth-child(2) { order: -1;} */
-    }
-    &>div:nth-child(2) {
-        display: none;
-        position: absolute;
-        width: 100%;
-        min-height: 240px;
-        height: 100vh;
-        max-height: calc(2/3 * 100vh);
-        border-radius: 0 0 16px 16px;
-        &>div {
-            padding: 16px;
-            display: flex;
-            gap: 16px;
-        }
-    }
+	> div:nth-child(2) {
+		display: none;
+		position: absolute;
+		width: 100%;
+		min-height: 240px;
+		height: 100vh;
+		max-height: calc(2 / 3 * 100vh);
+		border-radius: 0 0 16px 16px;
+
+		> div {
+			padding: 16px;
+			display: flex;
+			gap: 16px;
+		}
+	}
 }
 
 .piece-text-field-filled {

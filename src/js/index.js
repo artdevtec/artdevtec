@@ -94,7 +94,93 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // inicia o router só depois da animação
         MPSO.initRouter()
-        criarAnimacao('#m-header .icon', "56", "56", 60)
-        criarAnimacao('#m-aside header .icon', "56", "56", 60)
+        // criarAnimacao('#m-header .icon', "56", "56", 60)
+        // criarAnimacao('#m-aside header .icon', "56", "56", 60)
     }, animationTime)
 })
+
+const create = h => [...Object.assign(document.createElement("template"), { innerHTML: h.trim() }).content.children];
+
+// --- Código principal ---
+
+// Lista de tamanhos de tela
+const screenSizes = [
+  { label: "Padrão",  cls: "screen-size-default" },
+  { label: "SVGA",    cls: "screen-size-svga" },
+  { label: "HD",      cls: "screen-size-hd" },
+  { label: "Full HD", cls: "screen-size-fullhd" },
+  { label: "Mobile",  cls: "screen-size-mobile" }
+];
+
+// Cria a janela flutuante
+const windowEl = create(`
+  <div class="floating-window glass">
+    <h3>Tamanho da Tela</h3>
+    <form class="screen-selector"></form>
+  </div>
+`)[0];
+
+// Adiciona os botões de rádio
+const form = windowEl.$('.screen-selector');
+
+screenSizes.forEach(({ label, cls }, i) => {
+  const id = `radio-${cls}`;
+  const item = create(`
+    <label for="${id}">
+      <input type="radio" name="screen-size" id="${id}" value="${cls}" ${i === 4 ? "checked" : ""}>
+      ${label}
+    </label>
+  `)[0];
+  form.appendChild(item);
+});
+
+// Estilos básicos da janela
+const stylee = document.createElement("style");
+stylee.textContent = `
+  .floating-window {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+
+    font-family: sans-serif;
+    font-size: 14px;
+    z-index: 9999;
+    user-select: none;
+  }
+
+  .floating-window h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .floating-window label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 4px 0;
+    cursor: pointer;
+  }
+
+  .floating-window input[type="radio"] {
+    accent-color: #09f;
+  }
+`;
+document.head.appendChild(stylee);
+
+// Lógica de troca de classe no body
+form.addEventListener('change', e => {
+  if (!e.target.matches('input[type="radio"]')) return;
+  const cls = e.target.value;
+
+  // Remove todas as classes de tamanho
+  screenSizes.forEach(s => document.body.classList.remove(s.cls));
+
+  // Adiciona a selecionada
+  document.body.classList.add(cls);
+});
+
+// Adiciona a janela ao body
+document.body.appendChild(windowEl);

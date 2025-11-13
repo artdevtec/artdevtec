@@ -35,6 +35,15 @@ document.addEventListener("click", e => {
     }
 }, true);
 
+
+
+
+
+
+
+
+
+
 // Seleciona ou cria o elemento <style>
 let style = document.querySelector("#dynamic-styles");
 if (!style) {
@@ -45,7 +54,7 @@ if (!style) {
 
 // Função que gera os seletores de peça com base no tema
 function generatePieces(theme) {
-    return [
+    const base = [
         `&.property-color-${theme}-000`,
         `&.property-color-${theme}-000-hover:hover`,
         `&:hover>.piece-parent.property-color-${theme}-000-hover`,
@@ -61,6 +70,7 @@ function generatePieces(theme) {
         `&.piece-actived>.piece-parent.property-color-${theme}-000-hover-active:hover`,
         `.piece-loading-controller .property-color-${theme}-000-loading`
     ];
+    return base;
 }
 
 const themes = {
@@ -83,31 +93,82 @@ const properties = [
 
 const colors = ["piece-primary", "piece-secondary", "piece-tertiary"];
 
-// Geração otimizada de todo o CSS
+// Função auxiliar para gerar os blocos CSS
+function buildSurfaceBlock(property, selectorGroup, valueRule) {
+    return `.piece-surface { ${selectorGroup.join(", ")
+        .replaceAll("property", property)} { ${valueRule} } }\n`;
+}
+
+// Montagem do CSS
 let css = "";
 
 properties.forEach(property => {
+    // AUTO
     for (let i = 0, count = 0; i <= 100; i += 4, count++) {
-        css += `.piece-surface { ${themes.auto.join(", ").replaceAll("property", property).replaceAll("000", String(count).padStart(2, "0"))} { --piece-${property}-color: calc(var(--piece-theme) var(--piece-theme-operator) ${i}%); } }\n`;
-    }
-    for (let i = 0, count = 0; i <= 100; i += 4, count++) {
-        css += `.piece-surface { ${themes.inverse.join(", ").replaceAll("property", property).replaceAll("000", String(count).padStart(2, "0"))} { --piece-${property}-color: calc(var(--piece-theme-inverse) var(--piece-theme-operator-inverse) ${i}%); } }\n`;
-    }
-    for (let i = 100, count = 0; i >= 0; i -= 4, count++) {
-        css += `.piece-surface { ${themes.light.join(", ").replaceAll("property", property).replaceAll("000", String(count).padStart(2, "0"))} { --piece-${property}-color: ${i}%; } }\n`;
-    }
-    for (let i = 0, count = 0; i <= 100; i += 4, count++) {
-        css += `.piece-surface { ${themes.dark.join(", ").replaceAll("property", property).replaceAll("000", String(count).padStart(2, "0"))} { --piece-${property}-color: ${i}%; } }\n`;
+        css += buildSurfaceBlock(
+            property,
+            themes.auto.map(sel => sel.replaceAll("000", String(count).padStart(2, "0"))),
+            `--piece-${property}-color: calc(var(--piece-theme) var(--piece-theme-operator) ${i}%);`
+        );
     }
 
+    // INVERSE
+    for (let i = 0, count = 0; i <= 100; i += 4, count++) {
+        css += buildSurfaceBlock(
+            property,
+            themes.inverse.map(sel => sel.replaceAll("000", String(count).padStart(2, "0"))),
+            `--piece-${property}-color: calc(var(--piece-theme-inverse) var(--piece-theme-operator-inverse) ${i}%);`
+        );
+    }
+
+    // LIGHT
+    for (let i = 100, count = 0; i >= 0; i -= 4, count++) {
+        css += buildSurfaceBlock(
+            property,
+            themes.light.map(sel => sel.replaceAll("000", String(count).padStart(2, "0"))),
+            `--piece-${property}-color: ${i}%;`
+        );
+    }
+
+    // DARK
+    for (let i = 0, count = 0; i <= 100; i += 4, count++) {
+        css += buildSurfaceBlock(
+            property,
+            themes.dark.map(sel => sel.replaceAll("000", String(count).padStart(2, "0"))),
+            `--piece-${property}-color: ${i}%;`
+        );
+    }
+
+    // CORES PRINCIPAIS
     colors.forEach(color => {
         ["auto", "light", "dark"].forEach(theme => {
-            css += `.piece-surface { ${themes[theme].join(", ").replaceAll("property", property).replaceAll("000", color)} { --piece-${property}-color-h: var(--${color}); } }\n`;
+            css += buildSurfaceBlock(
+                property,
+                themes[theme].map(sel => sel.replaceAll("000", color)),
+                `--piece-${property}-color-h: var(--${color});`
+            );
         });
     });
 });
 
 style.textContent = css;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //importar a fonte de icones do Google
 var googleIcons = document.createElement('style');

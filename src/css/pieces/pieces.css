@@ -16,9 +16,11 @@
 @import url("badge.css");
 @import url("tooltip.css");
 @import url("snackbar.css");
+@import url("radio.css");
 @import url("switch.css");
 @import url("FAB-menu.css");
 @import url("ripple.css");
+@import url("table.css");
 
 /* import font/icon */
 @import url('https://fonts.googleapis.com/css2?family=Yuji+Boku&display=swap');
@@ -27,7 +29,7 @@
 
 /* main var root */
 :root {
-    --piece-main-color: 21;
+    --piece-main-color: 248;
     --piece-h: var(--piece-main-color);
     --piece-s: 16%;
     --piece-l: 0%;

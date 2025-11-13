@@ -1,323 +1,228 @@
-.piece-navigation {
+.piece-bar-rail {
+	/* ======= VARIÁVEIS BASE ======= */
+	--m-aside-width: 96px;
+	--m-aside-height: 100%;
+	--m-aside-padding: 16px;
 
-    display: grid;
-    user-select: none;
+	/* width: var(--m-aside-width); */
+	height: var(--m-aside-height);
+	display: flex;
+	flex-direction: column;
+	padding-inline: var(--m-aside-padding);
 
-    .piece-icon,
-    .piece-label
-    {pointer-events: none !important;}
+	/* ======= HEADER ======= */
+	> header {
+		display: grid;
+		padding-block: 16px;
+		gap: 16px;
 
-    .piece-label {font-weight: 500;}
+		.m-titulo {
+			display: grid;
+			grid-template-columns: auto auto;
+			grid-template-rows: auto auto;
+			grid-template-areas:
+				"icon h1"
+				"icon h2";
+			place-content: center start;
+			gap: 0 16px;
 
-    /* bar */
-    &.piece-bar {
+			.icon {
+				grid-area: icon;
+				max-height: 64px;
+				max-width: 64px;
+				display: block;
+			}
+			h1, h2 {
+				display: none;
+				position: relative;
+				width: min-content;
+				text-wrap: nowrap;
+			}
+			h1 { grid-area: h1; font-size: 20px; font-weight: 900; align-self: end; }
+			h2 { grid-area: h2; font-size: 12px; font-weight: 500; align-self: start; }
+		}
+	}
 
-        width: 100%;
-        height: 64px;
+	/* ======= ITENS ======= */
+	.piece-items {
+		flex: auto;
+		display: grid;
+		align-content: start;
+		gap: 4px;
 
-        .piece-items {
-            display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: minmax(0, 1fr);
-            width: 100%;
-            height: 64px;
+		.piece-item {
+			display: grid;
+			place-content: center;
+			place-items: center;
+			gap: 4px;
+			position: relative;
+			cursor: pointer;
+			user-select: none;
 
-            .piece-item {
-                padding-block: 6px;
-                height: auto;
-                .piece-indicator {top: 6px;}
-            }
-        }
-    }
+			width: var(--item-width, 96px);
+			height: var(--item-height, 56px);
+			padding-block: var(--item-padding, 2px);
+			margin-left: var(--item-margin-left, -16px);
 
-    /* rail */
-    @media screen and (min-width: 769px) {
-        &.piece-bar-rail {
-            width: 96px;
-            height: 100%;
-            align-content: start;
-    
-            /* changed by menu */
-            &:has(.piece-menu>input:checked) {
-                padding: 0 20px;
-                min-width: 220px;
-                max-width: 360px;
-                place-items: start;
+			input { display: none; }
 
-                >header {
-                    place-items: start;
-                    .piece-FAB.piece-extended .piece-label {display: grid;}
-                }
-        
-                .piece-item {
-                    /* grid-template-columns: auto 1fr; */
-                    grid-auto-flow: column;
-                    justify-self: start;
-                    height: 56px;
-                    border-radius: 56px;
-                    padding: 16px;
-                    gap: 16px;
-                    .piece-icon {width: 24px;}
-                    .piece-label {
-                        font-size: 16px;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                        max-width: 100px;
-                        overflow: hidden;
-                    }
-                    .piece-indicator {
-                        inset: 0;
-                        width: 100%;
-                        height: 100%;
-                        border-radius: 56px;
-                    }
-                }
-            }
-        }
-    }
+			.piece-indicator {
+				width: 56px;
+				height: 32px;
+				border-radius: 16px;
+				position: absolute;
+				top: 2px;
+				display: grid;
+			}
 
-    &.piece-rail {
-        width: 96px;
-        height: 100%;
-        grid-template-rows: auto 1fr auto;
+			.piece-icon {
+				border-radius: 32px;
+				width: 56px;
+				height: 32px;
+				display: grid;
+				place-content: center;
+				z-index: 1;
+			}
 
-        /* changed by menu */
-        &:has(.piece-menu>input:checked) {
-            padding: 0 20px;
-            min-width: 220px;
-            max-width: 360px;
-            place-items: start;
+			.piece-label {
+				height: 16px;
+				font-size: 12px;
+				z-index: 1;
+				width: max-content;
+			}
+		}
+	}
 
-            >header {
-                place-items: start;
+	/* ======= CONTAINER QUERIES ======= */
 
-                .piece-FAB.piece-extended .piece-label {display: grid;}
-            }
-    
-            .piece-item {
-                grid-auto-flow: column;
-                justify-self: start;
-                height: 56px;
-                border-radius: 56px;
-                padding: 16px;
-                gap: 16px;
-                .piece-icon {width: 24px;}
-                .piece-label {
-                    font-size: 16px;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    max-width: 100px;
-                    overflow: hidden;
-                }
-                .piece-indicator {
-                    inset: 0;
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 56px;
-                }
-            }
-        }
-    }
+	/* MOBILE */
+	@container (max-width: 799px) {
+		& {
+			--m-aside-width: 100%;
+			--m-aside-height: 64px;
+			--m-aside-padding: 0;
+		}
 
+		> :not(.piece-items) { display: none; }
 
-    @media screen and (max-width: 768px) {
-        /* bar dynamic */
-        &.piece-bar-rail {
-            width: 100%;
-            height: 64px;
+		.piece-items {
+			grid-auto-flow: column;
+			grid-auto-columns: minmax(0, 1fr);
+			height: 64px;
 
-            &>:not(.piece-items) {display:none;}
+			.piece-item {
+				width: auto;
+				height: auto;
+				padding-block: 6px;
+				.piece-indicator {top: 6px;}
+			}
+		}
+	}
 
-            .piece-items {
-                display: grid;
-                grid-auto-flow: column;
-                grid-auto-columns: minmax(0, 1fr);
-                width: 100%;
-                height: 64px;
-    
-                .piece-item {
-                    padding-block: 6px;
-                    height: auto;
-                    .piece-indicator {top: 6px;}
-                }
-            }
-        }
-    }
+	/* SVGA */
+	@container (min-width: 800px) and (max-width: 1279px) {
+		& {
+			--m-aside-width: 96px;
+			--m-aside-height: 100%;
+		}
 
-    >header {
-        display: grid;
-        place-items: center;
-        padding-block: 20px;
+		> header > .piece-menu { display: none; }
+	}
 
-        #logo {
-            font-size: 12px;
-        }
+	/* HD */
+	@container (min-width: 1280px) and (max-width: 1919px) {
+		& {
+			--m-aside-width: 96px;
+			--m-aside-height: 100%;
+		}
 
-        .piece-FAB.piece-extended .piece-label {display: none;}
-    }
+		&:has(.piece-menu > input:checked) {
+			--m-aside-width: 300px;
 
-    .piece-items {display: grid;}
-    .piece-items {align-content: start;}
+			> header h1,
+			> header h2 { display: block; }
 
-    .piece-item {
-        display: grid;
-        place-content: center;
-        place-items: center;
-        gap: 4px;
-        position: relative;
-        cursor: var(--cursor-pointer);
-        user-select: none;
-        height: 56px;
+			.piece-item {
+				grid-auto-flow: column;
+				justify-self: start;
+				border-radius: 56px;
+				padding: 16px;
+				gap: 16px;
+				margin: 0;
+				width: auto;
 
-        &:has(input:not(:checked)):not(:hover) .piece-indicator {
-            opacity: 0;
-        }
+				.piece-indicator {
+					inset: 0;
+					width: 100%;
+					height: 100%;
+					border-radius: 56px;
+				}
 
-        input { display: none;}
+				.piece-icon {
+					width: 24px;
+					position: relative;
+				}
 
-        .piece-indicator {
-            width: 56px;
-            height: 32px;
-            border-radius: 16px;
-            position: absolute;
-            top: 2px;
-            display: grid;
-        }
-        &:has(input:checked) {
-            .piece-indicator {display: grid;}
-            .piece-icon {
-                font-variation-settings:
-                'FILL' 1,
-                'wght' 400,
-                'GRAD' 0,
-                'opsz' 48
-            }
-        }
-        .piece-icon {
-            border-radius: 32px;
-            width: 56px;
-            height: 32px;
-            display: grid;
-            place-content: center;
-            z-index: 1;
-        }
-        .piece-label {
-            height: 16px;
-            font-size: 12px;
-            z-index: 1;
-        }
-    }
+				.piece-label {
+					font-weight: 500;
+					font-size: 16px;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+
+	/* FULL HD */
+	@container (min-width: 1920px) {
+		& {
+			--m-aside-width: 96px;
+			--m-aside-height: 100%;
+		}
+
+		&:has(.piece-menu > input:checked) {
+			--m-aside-width: 300px;
+
+			> header h1,
+			> header h2 { display: block; }
+
+			.piece-item {
+				grid-auto-flow: column;
+				justify-self: start;
+				border-radius: 56px;
+				padding: 16px;
+				gap: 16px;
+				margin: 0;
+				width: auto;
+
+				.piece-indicator {
+					inset: 0;
+					width: 100%;
+					height: 100%;
+					border-radius: 56px;
+				}
+
+				.piece-icon {
+					width: 24px;
+					position: relative;
+				}
+
+				.piece-label {
+					font-weight: 500;
+					font-size: 16px;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
+				}
+			}
+		}
+	}
 }
-
-
-.piece-navigation- {
-    &.piece-bar {
-        display: grid;
-        .piece-items {
-            display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: minmax(0, 1fr);
-            width: 100%;
-            height: 64px;
-
-            .piece-item {
-                padding-block: 6px;
-                height: auto;
-                .piece-indicator {top: 6px;}
-            }
-        }
-    }
-    &.piece-rail {
-        display: grid;
-        width: 96px;
-        gap: 16px;
-
-        .piece-logo {
-            width: 56px;
-            height: 56px;
-            display: grid;
-            place-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            margin-left: 20px;
-            margin-top: 20px;
-        }
-
-        .piece-menu {margin-left: 20px;}
-
-        &:has(.piece-menu>input:checked) {
-            padding: 0 16px;
-            min-width: 220px;
-            max-width: 360px;
-            place-items: start;
-            .piece-menu {margin-left: 4px;}
-            .piece-logo {margin-left: 4px;}
-            .piece-item {
-                grid-template-columns: auto 1fr;
-                height: 56px;
-                border-radius: 56px;
-                padding: 16px;
-                gap: 16px;
-                .piece-icon {width: 24px;}
-                .piece-label {
-                    font-size: 16px;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    max-width: 100px;
-                    overflow: hidden;
-                }
-                .piece-indicator {
-                    inset: 0;
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 56px;
-                }
-            }
-        }
-    }
-
-    .piece-item {
-        display: grid;
-        place-content: center;
-        place-items: center;
-        gap: 4px;
-        position: relative;
-        cursor: var(--cursor-pointer);
-        user-select: none;
-        height: 56px;
-
-        input { display: none;}
-
-        .piece-indicator {
-            width: 56px;
-            height: 32px;
-            border-radius: 16px;
-            position: absolute;
-            top: 2px;
-            display: grid;
-        }
-        &:has(input:checked) {
-            .piece-indicator {display: grid;}
-            .piece-icon {
-                font-variation-settings:
-                'FILL' 1,
-                'wght' 400,
-                'GRAD' 0,
-                'opsz' 48
-            }
-        }
-        .piece-icon {
-            width: 56px;
-            height: 32px;
-            border-radius: 32px;
-            display: grid;
-            place-content: center;
-            z-index: 1;
-        }
-        .piece-label {
-            height: 16px;
-            font-size: 12px;
-            z-index: 1;
-        }
-    }
-}
+	
+	
+	.m-titulo .icon {
+		width: 64px;
+		height: 64px;
+		display: block;
+	}

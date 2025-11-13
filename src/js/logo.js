@@ -245,26 +245,26 @@ const frames =  [
 ]
   
   // Cria uma função global
-  window.criarAnimacao = function (seletor, largura = 300, altura = 300, fps = 30) {
-    const container = document.querySelector(seletor);
-    if (!container) {
-      console.error(`Elemento "${seletor}" não encontrado.`);
-      return;
-    }
+//   window.criarAnimacao = function (seletor, largura = 300, altura = 300, fps = 30) {
+//     const container = document.querySelector(seletor);
+//     if (!container) {
+//       console.error(`Elemento "${seletor}" não encontrado.`);
+//       return;
+//     }
   
-    // Cria o elemento SVG
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("width", largura);
-    svg.setAttribute("height", altura);
-    svg.setAttribute("viewBox", "0 0 1080 1080");
-    container.appendChild(svg);
+//     // Cria o elemento SVG
+//     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+//     svg.setAttribute("width", largura);
+//     svg.setAttribute("height", altura);
+//     svg.setAttribute("viewBox", "0 0 1080 1080");
+//     container.appendChild(svg);
   
-    let frame = 0;
-    const intervalo = 1000 / fps;
+//     let frame = 0;
+//     const intervalo = 1000 / fps;
   
-    setInterval(() => {
-      svg.innerHTML = frames[frame];
-      frame = (frame + 1) % frames.length;
-    }, intervalo);
-  };
+//     setInterval(() => {
+//       svg.innerHTML = frames[frame];
+//       frame = (frame + 1) % frames.length;
+//     }, intervalo);
+//   };
   

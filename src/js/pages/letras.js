@@ -1,7 +1,7 @@
 MPSO.newView({
     name: "Letras",
     icon: "genres",
-    showInNavigation: true,
+    showInNavigation: false,
 
     // utilitário para pegar dados de uma letra pelo número
     getLetraById(id) {

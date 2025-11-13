@@ -12,7 +12,7 @@ Node.prototype.appendAll = function(nodes) {nodes.forEach(node => this.appendChi
 let cl = (v) => console.log(v)
 
 const MPSO = {
-    name: "Yahweh Shammah",
+    name: "Art",
     views: [],
     currentView: null, // ✅ guarda a view atual
 
