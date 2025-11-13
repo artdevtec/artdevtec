@@ -183,4 +183,4 @@ form.addEventListener('change', e => {
 });
 
 // Adiciona a janela ao body
-document.body.appendChild(windowEl);
+// document.body.appendChild(windowEl);
