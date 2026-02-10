@@ -4,10 +4,23 @@ MPSO.newView({
     showInNavigation: true,
     
     main() {
+        $(`#m-main section`).innerHTML = ""
         this.initPresentation("#m-main section")
+        // this.initTest("#m-main section")
     },
 
     // função modular dentro da view
+    initTest(containerSelector) {
+        const container = $(containerSelector)
+        container.appendAll(this.create(/*html*/`
+            <div class="piece-surface background-color-auto-06">
+                bg
+                <div class="piece-surface background-color-inverse-04 text-color-inverse-20">inverse</div>
+                <div class="piece-surface background-color-auto-12 text-color-light-00">button</div>
+                <label class="piece-surface background-color-light-00 background-color-light-04-hover background-color-dark-10-active background-color-light-20-hover-active text-color-dark-00"><input type="checkbox" class="piece-controller"></label>
+            </div>
+        `))
+    },
     initPresentation(containerSelector) {
         const container = $(containerSelector)
         container.appendAll(this.create(/*html*/`

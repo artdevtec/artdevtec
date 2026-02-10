@@ -349,7 +349,7 @@ MPSO.views.find(v => v.name === "Components").components.push({
 
                 ${sizesHTML}
 
-                <p>Colors</p>
+                <p>Cores</p>
                 
                 ${colorsHTML}
 
@@ -357,7 +357,7 @@ MPSO.views.find(v => v.name === "Components").components.push({
                 
                 ${tiposHTML}
 
-                <p>Icon</p>
+                <p>Icone</p>
 
                 <label id="tgg-mm" class="
                     piece-surface
@@ -479,7 +479,7 @@ MPSO.views.find(v => v.name === "Components").components.push({
                         piece-s-40
                         background-color-auto-02
                         background-color-auto-03-hover
-                        text-color-auto-23
+                        text-color-auto-11
                         ripple-color-auto-23
                         piece-${$('input[name="btn-size"]:checked').value}
                         piece-${$('input[name="btn-color"]:checked').value}

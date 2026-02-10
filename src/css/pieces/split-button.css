@@ -13,6 +13,7 @@
         place-content: center;
         cursor: var(--cursor-pointer);
         text-wrap: nowrap;
+        >* {pointer-events: none;}
     }
     .piece-trailing-button {
         display: grid;
@@ -20,6 +21,7 @@
         cursor: var(--cursor-pointer);
         transition: .2s ease-in-out;
         .piece-icon {transition: .2s ease-in-out;}
+        >* {pointer-events: none;}
     }
 
     &.piece-actived {
@@ -68,7 +70,7 @@
             gap: 4px;
             place-items: center;
             .piece-icon {font-size: 20px;}
-            .piece-label {font-size: 20px;}
+            .piece-label {font-size: 14px;}
         }
         .piece-trailing-button {
             border-radius: 4px 16px 16px 4px;
@@ -84,7 +86,7 @@
             gap: 8px;
             place-items: center;
             .piece-icon {font-size: 20px;}
-            .piece-label {font-size: 20px;}
+            .piece-label {font-size: 14px;}
         }
         .piece-trailing-button {
             border-radius: 4px 20px 20px 4px;
@@ -100,7 +102,7 @@
             gap: 8px;
             place-items: center;
             .piece-icon {font-size: 24px;}
-            .piece-label {font-size: 24px;}
+            .piece-label {font-size: 16px;}
         }
         .piece-trailing-button {
             border-radius: 4px 28px 28px 4px;
@@ -116,7 +118,7 @@
             gap: 12px;
             place-items: center;
             .piece-icon {font-size: 32px;}
-            .piece-label {font-size: 32px;}
+            .piece-label {font-size: 24px;}
         }
         .piece-trailing-button {
             border-radius: 8px 48px 48px 8px;
@@ -132,7 +134,7 @@
             gap: 16px;
             place-items: center;
             .piece-icon {font-size: 40px;}
-            .piece-label {font-size: 40px;}
+            .piece-label {font-size: 32px;}
         }
         .piece-trailing-button {
             border-radius: 12px 68px 68px 12px;

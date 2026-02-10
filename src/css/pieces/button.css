@@ -55,6 +55,9 @@
     &.piece-outlined {
         border-width: 1px;
         border-style: solid;
+        &:not(:hover) {
+            background: transparent;
+        }
     }
 
     &.piece-elevated {
@@ -65,7 +68,7 @@
             var(--piece-a)
         );
     }
-    &.piece-text {
+    &.piece-text:not(:hover) {
         background: transparent;
     }
 
