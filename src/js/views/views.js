@@ -1,0 +1,5 @@
+import "./inicio.js"
+import "./letras.js"
+import "./components.js"
+import "./pesquisa.js"
+import "./configuracoes.js"

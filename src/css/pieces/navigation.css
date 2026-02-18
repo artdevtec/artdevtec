@@ -56,7 +56,7 @@
 			place-items: center;
 			gap: 4px;
 			position: relative;
-			cursor: pointer;
+			cursor: var(--cursor-pointer);
 			user-select: none;
 
 			width: var(--item-width, 96px);
