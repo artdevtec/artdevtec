@@ -112,6 +112,95 @@
     font-size: 22px;
 }
 
+/* ─── Showcase ──────────────────────────────────────────── */
+#inicio-showcase {
+    display: grid;
+    gap: 10px;
+}
+
+.sc-bento {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-template-areas:
+        "btns fab ibtns"
+        "btns fab ibtns"
+        "form form form"
+        "chips chips chips";
+    gap: 8px;
+}
+
+.sc-cell {
+    border-radius: 20px;
+    padding: 16px;
+}
+
+.sc-btns {
+    grid-area: btns;
+    display: grid;
+    gap: 10px;
+    align-content: center;
+}
+
+.sc-fab-wrap {
+    grid-area: fab;
+    display: grid;
+    place-content: center;
+    padding: 20px;
+    border-radius: 24px;
+}
+
+.sc-ibtns {
+    grid-area: ibtns;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sc-form {
+    grid-area: form;
+}
+
+.sc-chips {
+    grid-area: chips;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.sc-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.sc-sep {
+    width: 1px;
+    height: 24px;
+    background: rgba(128,128,128,.15);
+    flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+    .sc-bento {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "btns btns"
+            "fab  ibtns"
+            "form form"
+            "chips chips";
+    }
+    .sc-ibtns {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .sc-fab-wrap { border-radius: 20px; }
+}
+
 /* ─── Stats ─────────────────────────────────────────────── */
 #inicio-stats {
     display: grid;
