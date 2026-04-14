@@ -1,0 +1,130 @@
+/* ─── Container da view ─────────────────────────────────── */
+#view-componentes {
+    display: grid;
+    overflow-y: auto;
+    align-content: start;
+    padding: 24px;
+}
+
+/* ─── Scroll wrapper ────────────────────────────────────── */
+.comp-scroll {
+    display: grid;
+    align-content: start;
+    gap: 28px;
+}
+
+/* ─── Cabeçalho da sub-página ───────────────────────────── */
+.comp-page-header {
+    display: grid;
+    gap: 12px;
+}
+
+.comp-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: var(--cursor-pointer);
+    border: none;
+    background: transparent;
+    padding: 6px 0;
+    opacity: .6;
+    transition: opacity .15s;
+    &:hover { opacity: 1; }
+}
+
+.comp-page-title {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.comp-page-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: .65;
+    max-width: 560px;
+}
+
+.comp-file-tag {
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+/* ─── Seção dentro da página ────────────────────────────── */
+.comp-section {
+    display: grid;
+    gap: 12px;
+}
+
+.comp-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    opacity: .45;
+}
+
+/* ─── Card de demo ──────────────────────────────────────── */
+.comp-demo-card {
+    border-radius: 20px;
+    display: grid;
+}
+
+.comp-demo-label {
+    padding: 14px 20px 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.comp-demo-area {
+    padding: 24px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    min-height: 80px;
+}
+
+.comp-demo-code {
+    font-family: monospace;
+    font-size: 11px;
+    line-height: 1.8;
+    padding: 14px 20px;
+    white-space: pre;
+    overflow-x: auto;
+    border-top: 1px solid rgba(128,128,128,.12);
+    border-radius: 0 0 20px 20px;
+}
+
+/* ─── Tabela de classes ─────────────────────────────────── */
+.comp-class-table {
+    display: grid;
+    gap: 1px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.comp-class-row {
+    display: grid;
+    grid-template-columns: minmax(180px, auto) 1fr;
+    gap: 16px;
+    padding: 11px 16px;
+    font-size: 12px;
+    align-items: start;
+}
+
+.comp-class-name {
+    font-family: monospace;
+    font-weight: 600;
+}
+
+.comp-class-desc {
+    opacity: .65;
+    line-height: 1.5;
+}

@@ -1,0 +1,106 @@
+.piece-checkbox {
+    transition: .3s;
+    width: clamp(var(--button-width), var(--button-width), var(--button-width));
+    height: var(--height);
+    border-radius: var(--border-radius);
+
+    box-sizing: border-box;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    text-decoration: none;
+    position: relative;
+    cursor: var(--cursor-pointer);
+
+    .piece-icon { 
+        transition: .3s;
+        font-size: var(--icon-size);
+    }
+
+    :where(*, * *) {
+        pointer-events: none;
+        user-select: none;
+    }
+
+    input { display: none; }
+
+    &:has(input:checked) .piece-icon {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    &:not(:has(input:checked)) {
+        .piece-false { display: grid; }
+        .piece-true { display: none; }
+    }
+
+    &:has(input:checked, .piece-actived) {
+        .piece-false { display: none; }
+        .piece-true { display: grid; }
+    }
+
+    &:active,
+    &:has(input:checked),
+    &.piece-actived {
+        border-radius: var(--active-radius);
+    }
+
+    /* Extra Small */
+    &.piece-extra-small {
+        --button-width: 32px;
+        --height: 32px;
+        --border-radius: 136px;
+        --active-radius: 12px;
+        --icon-size: 20px;
+
+        &.piece-narrow { --button-width: 28px; }
+        &.piece-wide   { --button-width: 40px; }
+    }
+
+    /* Small */
+    &.piece-small {
+        --button-width: 40px;
+        --height: 40px;
+        --border-radius: 136px;
+        --active-radius: 12px;
+        --icon-size: 24px;
+
+        &.piece-narrow { --button-width: 32px; }
+        &.piece-wide   { --button-width: 52px; }
+    }
+
+    /* Medium */
+    &.piece-medium {
+        --button-width: 56px;
+        --height: 56px;
+        --border-radius: 136px;
+        --active-radius: 16px;
+        --icon-size: 24px;
+
+        &.piece-narrow { --button-width: 48px; }
+        &.piece-wide   { --button-width: 72px; }
+    }
+
+    /* Large */
+    &.piece-large {
+        --button-width: 96px;
+        --height: 96px;
+        --border-radius: 136px;
+        --active-radius: 28px;
+        --icon-size: 32px;
+
+        &.piece-narrow { --button-width: 64px; }
+        &.piece-wide   { --button-width: 128px; }
+    }
+
+    /* Extra Large */
+    &.piece-extra-large {
+        --button-width: 136px;
+        --height: 136px;
+        --border-radius: 136px;
+        --active-radius: 28px;
+        --icon-size: 40px;
+
+        &.piece-narrow { --button-width: 104px; }
+        &.piece-wide   { --button-width: 184px; }
+    }
+}

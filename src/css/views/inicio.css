@@ -1,0 +1,198 @@
+#view-inicio {
+    display: grid;
+    overflow-y: auto;
+    align-content: start;
+    padding: 24px;
+    gap: 28px;
+}
+
+/* ─── Hero ──────────────────────────────────────────────── */
+#inicio-hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+    border-radius: 24px;
+    padding: 32px;
+
+    @media (max-width: 700px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+#inicio-hero-inner {
+    display: grid;
+    gap: 16px;
+    align-content: start;
+
+    h1 {
+        font-size: clamp(28px, 5vw, 48px);
+        font-weight: 900;
+        line-height: 1.05;
+        letter-spacing: -.02em;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.7;
+        opacity: .65;
+        max-width: 520px;
+    }
+}
+
+.inicio-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border-radius: 20px;
+    padding: 6px 12px;
+    width: fit-content;
+}
+
+.inicio-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+/* ─── Preview ao vivo ───────────────────────────────────── */
+#inicio-preview-live {
+    display: grid;
+    gap: 16px;
+    align-content: start;
+    padding: 20px;
+    border-radius: 20px;
+    min-width: 220px;
+}
+
+.preview-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+/* ─── Pilares ───────────────────────────────────────────── */
+#inicio-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.pillar-card {
+    border-radius: 20px;
+    padding: 20px;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+
+    h3 {
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 1.6;
+        opacity: .6;
+    }
+}
+
+.pillar-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: grid;
+    place-content: center;
+    font-size: 22px;
+}
+
+/* ─── Stats ─────────────────────────────────────────────── */
+#inicio-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+}
+
+.stat-item {
+    border-radius: 16px;
+    padding: 20px 16px;
+    display: grid;
+    gap: 4px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 900;
+    line-height: 1;
+
+    &.piece-primary  { color: hsla(var(--primary), var(--s-40), 45%, 1); }
+    &.piece-secondary { color: hsla(var(--secondary), var(--s-40), 45%, 1); }
+    &.piece-tertiary { color: hsla(var(--tertiary), var(--s-40), 45%, 1); }
+}
+
+.stat-label {
+    font-size: 12px;
+    opacity: .5;
+    font-weight: 500;
+}
+
+/* ─── Grid de componentes (usado em componentes/_router) ── */
+#inicio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 8px;
+}
+
+.inicio-comp-card {
+    border-radius: 16px;
+    padding: 16px;
+    display: grid;
+    gap: 10px;
+    cursor: var(--cursor-pointer);
+    user-select: none;
+    text-decoration: none;
+    transition: transform .12s;
+
+    &:active { transform: scale(.97); }
+
+    .comp-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: grid;
+        place-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
+    }
+
+    .comp-name {
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .comp-file {
+        font-size: 10px;
+        font-family: monospace;
+        opacity: .45;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+/* ─── Seção label ───────────────────────────────────────── */
+.inicio-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    opacity: .45;
+}

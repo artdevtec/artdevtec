@@ -1,0 +1,32 @@
+.piece-textarea {
+
+    display: grid;
+    position: relative;
+    transition: .3s;
+
+    &>:nth-child(1) {
+        display: grid;
+        border-radius: 16px;
+        border-style: solid;
+        border-width: 1px;
+
+        &:has(textarea:focus) {
+            border-width: 2px;
+            textarea {
+                padding: 16px;
+            }
+        }
+
+        cursor: var(--cursor-text);
+        transition: background .6s;
+
+        &>textarea {
+            all: unset;
+            resize: none;
+            padding: 17px;
+            &::placeholder { user-select: none;}
+        }
+
+        &>:nth-child(2) { order: -1;}
+    }
+}

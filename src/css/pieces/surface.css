@@ -1,0 +1,175 @@
+.piece-surface {
+
+    position: relative;
+    border: none;
+
+    /* ---------- H VARIABLES ---------- */
+
+    --piece-background-color-h: var(--piece-h);
+    --piece-text-color-h: var(--piece-h);
+    --piece-border-color-h: var(--piece-h);
+    --piece-box-shadow-color-h: var(--piece-h);
+
+    --piece-ripple-color-h: var(--piece-h);
+
+    --piece-scrollbar-track-outline-color-h: var(--piece-h);
+    --piece-scrollbar-thumb-background-color-h: var(--piece-h);
+    --piece-scrollbar-thumb-border-color-h: var(--piece-h);
+
+    /* ---------- ALPHA VARIABLES ---------- */
+    /* cada propriedade tem seu prÃ³prio alpha, default 1 (sÃ³lido) */
+    /* como sÃ£o declaradas aqui, cada .piece-surface filho reseta automaticamente */
+
+    --piece-background-a: 1;
+    --piece-text-a: 1;
+    --piece-border-a: 1;
+    --piece-box-shadow-a: 1;
+    --piece-ripple-a: 1;
+    --piece-scrollbar-track-outline-a: 1;
+    --piece-scrollbar-thumb-background-a: 1;
+    --piece-scrollbar-thumb-border-a: 1;
+
+    /* ---------- BLUR ---------- */
+
+    --piece-blur: 0px;
+    backdrop-filter: blur(var(--piece-blur));
+    -webkit-backdrop-filter: blur(var(--piece-blur));
+
+    /* ---------- COLOR VARIABLES ---------- */
+
+    --ripple-color: hsla(
+        var(--piece-ripple-color-h),
+        var(--piece-s),
+        var(--piece-ripple-color),
+        var(--piece-ripple-a)
+    );
+
+    --scrollbar-track-outline-color: hsla(
+        var(--piece-scrollbar-track-outline-color-h),
+        var(--piece-s),
+        var(--piece-scrollbar-track-outline-color),
+        var(--piece-scrollbar-track-outline-a)
+    );
+
+    --scrollbar-thumb-background-color: hsla(
+        var(--piece-scrollbar-thumb-background-color-h),
+        var(--piece-s),
+        var(--piece-scrollbar-thumb-background-color),
+        var(--piece-scrollbar-thumb-background-a)
+    );
+
+    --scrollbar-thumb-border-color: hsla(
+        var(--piece-scrollbar-thumb-border-color-h),
+        var(--piece-s),
+        var(--piece-scrollbar-thumb-border-color),
+        var(--piece-scrollbar-thumb-border-a)
+    );
+
+    /* ---------- SETTINGS ---------- */
+
+    background: hsla(
+        var(--piece-background-color-h),
+        var(--piece-s),
+        var(--piece-background-color),
+        var(--piece-background-a)
+    );
+
+    color: hsla(
+        var(--piece-text-color-h),
+        var(--piece-s),
+        var(--piece-text-color),
+        var(--piece-text-a)
+    );
+
+    border-color: hsla(
+        var(--piece-border-color-h),
+        var(--piece-s),
+        var(--piece-border-color),
+        var(--piece-border-a)
+    );
+
+    &.piece-box-shadow {
+        box-shadow: 0px 0px 4px 0px hsla(
+            var(--piece-box-shadow-color-h),
+            var(--piece-s),
+            var(--piece-box-shadow-color),
+            var(--piece-box-shadow-a)
+        );
+    }
+
+    &.piece-border {
+        border-width: 1px;
+        border-style: solid;
+    }
+
+    &.bg-dot {
+        background-image: radial-gradient(
+            circle at center,
+            hsla(0,0%,48%,48%) 0%,
+            hsla(0,0%,48%,48%) 16%,
+            transparent 1%
+        );
+        background-size: 8px 8px;
+        background-repeat: repeat;
+    }
+
+    ::backdrop {
+        background: hsla(
+            var(--piece-background-color-h),
+            40%,
+            var(--piece-background-color),
+            0.25
+        );
+    }
+
+    &.piece-disabled {
+        background: hsla(0,0%,var(--piece-theme-inverse),0.04);
+        color: hsla(0,0%,var(--piece-theme-inverse),0.12);
+        border-color: hsla(0,0%,var(--piece-theme-inverse),0.04);
+        user-select: none;
+        outline: none;
+        cursor: var(--cursor-not-allowed) !important;
+        * {
+            pointer-events: none;
+        }
+    }
+
+    &.piece-skeleton {
+        animation: piece-skeleton-loading 1s infinite alternate;
+        border-width: 0 !important;
+        color: transparent;
+    }
+
+    &:has(>.piece-controller:checked, [type="text"].piece-controller:focus),
+    &:has(>.piece-controller:checked, [type="text"].piece-controller:focus)>.piece-parent {
+
+        /* surface h background */
+        &.piece-background-color-primary-active   { --piece-background-color-h: var(--piece-primary);   }
+        &.piece-background-color-secondary-active { --piece-background-color-h: var(--piece-secondary); }
+        &.piece-background-color-tertiary-active  { --piece-background-color-h: var(--piece-tertiary);  }
+
+        /* surface h text */
+        &.piece-text-color-primary-active   { --piece-text-color-h: var(--piece-primary);   }
+        &.piece-text-color-secondary-active { --piece-text-color-h: var(--piece-secondary); }
+        &.piece-text-color-tertiary-active  { --piece-text-color-h: var(--piece-tertiary);  }
+
+        /* surface h border */
+        &.piece-border-color-primary-active   { --piece-border-color-h: var(--piece-primary);   }
+        &.piece-border-color-secondary-active { --piece-border-color-h: var(--piece-secondary); }
+        &.piece-border-color-tertiary-active  { --piece-border-color-h: var(--piece-tertiary);  }
+
+    }
+
+}
+
+body.piece-ctrl-active {
+    .piece-surface-show { display: grid; }
+}
+body:not(.piece-ctrl-active) {
+    .piece-surface-show { display: none; }
+}
+
+@keyframes piece-skeleton-loading {
+    from { opacity: .4; }
+    to   { opacity: 1;  }
+}

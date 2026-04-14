@@ -1,0 +1,20 @@
+.piece-snackbar {
+    border-radius: 4px;
+    height: clamp(48px, 48px, 68px);
+    padding: 0 16px 0 16px;
+    display: grid;
+	gap: 12px;
+	grid-auto-flow: column;
+    align-items: center;
+	user-select: none;
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    &>.label {
+        font: var(--body-medium-font);
+        letter-spacing: var(--body-medium-letter-spacing);
+        text-wrap: nowrap;
+    }
+	&>.piece-button>.label { color: var(--inverse-primary);}
+	&>.piece-icon-button>.icon { color: var(--inverse-on-surface);}
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="MPSO">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pieces</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <!-- Material Pieces -->
+        <link rel="stylesheet" href="src/css/pieces/pieces.css">
+        <script src="src/js/pieces/ripple.js"></script>
+        <script src="src/js/pieces/disabled.js"></script>
+        <script src="src/js/pieces/interactive.js"></script>
+        <script src="src/js/pieces/icons.js"></script>
+        <script src="src/js/pieces/piece-css-generator.js"></script>
+        <!-- CSS -->
+        <link rel="stylesheet" href="src/css/style.css">
+        <link rel="stylesheet" href="src/css/views/views.css">
+        <!-- MPSO Core -->
+        <script src="src/js/MPSO.js"></script>
+        <!-- Views JS -->
+        <script src="src/js/views/inicio.js" defer></script>
+        <script src="src/js/views/surface.js" defer></script>
+        <!-- Componentes: router primeiro, depois as páginas individuais -->
+        <script src="src/js/views/componentes/_router.js" defer></script>
+        <script src="src/js/views/componentes/surface.js" defer></script>
+        <script src="src/js/views/componentes/theme.js" defer></script>
+        <script src="src/js/views/componentes/button.js" defer></script>
+        <script src="src/js/views/componentes/group-button.js" defer></script>
+        <script src="src/js/views/componentes/icon-button.js" defer></script>
+        <script src="src/js/views/componentes/fab.js" defer></script>
+        <script src="src/js/views/componentes/fab-menu.js" defer></script>
+        <script src="src/js/views/componentes/split-button.js" defer></script>
+        <script src="src/js/views/componentes/checkbox.js" defer></script>
+        <script src="src/js/views/componentes/radio.js" defer></script>
+        <script src="src/js/views/componentes/switch.js" defer></script>
+        <script src="src/js/views/componentes/text-field.js" defer></script>
+        <script src="src/js/views/componentes/textarea.js" defer></script>
+        <script src="src/js/views/componentes/search.js" defer></script>
+        <script src="src/js/views/componentes/navigation.js" defer></script>
+        <script src="src/js/views/componentes/menu.js" defer></script>
+        <script src="src/js/views/componentes/divider.js" defer></script>
+        <script src="src/js/views/componentes/badge.js" defer></script>
+        <script src="src/js/views/componentes/tooltip.js" defer></script>
+        <script src="src/js/views/componentes/snackbar.js" defer></script>
+        <script src="src/js/views/componentes/table.js" defer></script>
+        <script src="src/js/views/componentes/progress.js" defer></script>
+        <script src="src/js/views/componentes/ripple.js" defer></script>
+        <script src="src/js/views/configuracoes.js" defer></script>
+        <!-- Index JS -->
+        <script defer src="src/js/index.js"></script>
+    </head>
+    <body class="load-end piece-surface piece-primary background-color-auto-00 text-color-auto-21 ripple-color-inverse-02 piece-analoga">
+
+        <!-- Splash screen -->
+        <div class="animation-container piece-surface background-color-auto-06">
+            <div class="core piece-surface background-color-auto-02">
+                <div class="spoke piece-surface background-color-auto-06"></div>
+                <div class="spoke piece-surface background-color-auto-06"></div>
+                <div class="spoke piece-surface background-color-auto-06"></div>
+                <div class="spoke piece-surface background-color-auto-06"></div>
+            </div>
+        </div>
+
+        <!-- Header (mobile) -->
+        <header id="m-header" class="piece-surface background-color-auto-02">
+            <div class="m-titulo">
+                <div class="icon">
+                    <div style="--size: 56px;" class="core piece-surface background-color-auto-02">
+                        <img src="src/img/lines.gif" alt="" width="56px" height="56px">
+                        <div class="spoke piece-surface background-color-auto-02"></div>
+                        <div class="spoke piece-surface background-color-auto-02"></div>
+                        <div class="spoke piece-surface background-color-auto-02"></div>
+                        <div class="spoke piece-surface background-color-auto-02"></div>
+                    </div>
+                </div>
+                <h1>Pieces</h1>
+                <h2>Início</h2>
+            </div>
+        </header>
+        <div id="m-divider-1" class="piece-divider piece-surface background-color-auto-06"></div>
+
+        <!-- Sidebar / Rail -->
+        <aside id="m-aside" class="piece-navigation piece-bar-rail piece-floating piece-surface background-color-auto-02">
+            <header>
+                <div class="m-titulo">
+                    <div class="icon">
+                        <div style="--size: 56px;" class="core piece-surface background-color-auto-02">
+                            <img src="src/img/lines.gif" alt="" width="56px" height="56px">
+                            <div class="spoke piece-surface background-color-auto-02"></div>
+                            <div class="spoke piece-surface background-color-auto-02"></div>
+                            <div class="spoke piece-surface background-color-auto-02"></div>
+                            <div class="spoke piece-surface background-color-auto-02"></div>
+                        </div>
+                    </div>
+                    <h1>Pieces</h1>
+                    <h2>Início</h2>
+                </div>
+                <label id="icon-button-presentation" class="piece-icon-button piece-menu piece-medium piece-surface background-color-auto-03-hover text-color-auto-20 piece-s-16 ripple-color-inverse-00">
+                    <span class="material-symbols-rounded piece-icon piece-false" translate="no">menu</span>
+                    <span class="material-symbols-rounded piece-icon piece-true" translate="no">menu_open</span>
+                    <input type="checkbox" class="piece-controller">
+                    <span class="piece-ripple"></span>
+                </label>
+            </header>
+            <div class="piece-items"></div>
+        </aside>
+        <div id="m-divider-2" class="piece-divider piece-surface background-color-auto-06"></div>
+
+        <main id="m-main" class="piece-surface background-color-auto-02"></main>
+
+    </body>
+</html>

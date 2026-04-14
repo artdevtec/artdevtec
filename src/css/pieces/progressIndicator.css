@@ -1,0 +1,91 @@
+.piece-progress-indicator {
+    display: grid;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    border-radius: 2px;
+
+    --piece-percentage: 0%;
+
+    &.piece-active {
+        opacity: 1;
+    }
+
+    &.piece-absolute {
+        position: absolute;
+    }
+
+    .piece-indicator {
+        transition: .3s;
+        animation: piece-progress-light 1s infinite;
+        border-radius: 2px;
+    }
+
+
+    /* ---------------- */
+    /* BAR PROGRESS     */
+    /* ---------------- */
+
+    &.piece-bar {
+
+        height: 4px;
+        width: 100%;
+
+        .piece-indicator {
+            width: var(--piece-percentage);
+            height: 100%;
+        }
+
+    }
+
+
+    /* ---------------- */
+    /* CIRCLE PROGRESS  */
+    /* ---------------- */
+
+    &.piece-circle {
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    .piece-indicator {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        animation: none;
+
+        background:
+            conic-gradient(
+                currentColor var(--piece-percentage),
+                transparent 0
+            );
+
+        /* cria o buraco do meio */
+        -webkit-mask: radial-gradient(
+            farthest-side,
+            transparent calc(100% - 4px),
+            black calc(100% - 4px)
+        );
+
+        mask: radial-gradient(
+            farthest-side,
+            transparent calc(100% - 4px),
+            black calc(100% - 4px)
+        );
+    }
+
+}
+
+}
+
+
+/* movimento da luz */
+@keyframes piece-progress-light {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

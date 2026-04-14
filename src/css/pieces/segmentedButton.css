@@ -1,0 +1,116 @@
+.piece-segmentedButton {
+
+    display: grid;
+    grid-auto-flow: column;
+    padding: 1px;
+    gap: 1px;
+
+    border-radius: 40px;
+    position: relative;
+
+    /* background: hsla(var(--h),var(--s),var(--segmentedButton-background),var(--a));
+    color: hsla(var(--h),var(--s),var(--segmentedButton-color),var(--a));
+    --ripple: calc(var(--tema) var(--tema-calc) 52%); */
+
+    &.bg {
+        --segmentedButton-background: calc(var(--tema) var(--tema-calc) 4%);
+        --segmentedButton-color: calc(var(--tema) var(--tema-calc) 76% var(--tema-calc) 20%);
+    }
+    &.mg {
+        --segmentedButton-background: calc(var(--tema) var(--tema-calc) 12%);
+        --segmentedButton-color: calc(var(--tema) var(--tema-calc) 76% var(--tema-calc) 12%);
+    }
+    &.fg {
+        --segmentedButton-background: calc(var(--tema) var(--tema-calc) 20%);
+        --segmentedButton-color: calc(var(--tema) var(--tema-calc) 76% var(--tema-calc) 4%);
+    }
+    &.accent {
+        --segmentedButton-background: calc(var(--tema) var(--tema-calc) 52%);
+        --segmentedButton-color: calc(var(--tema) var(--tema-calc) 4% var(--tema-calc) 4%);
+    }
+
+    &.outlined {
+        border: solid 1px hsla(var(--h),var(--s),calc(var(--segmentedButton-background) var(--tema-calc) 16%),var(--a));
+    }
+    &.elevated {
+        box-shadow: 0 0 4px 1px hsla(var(--h),var(--s),calc(var(--segmentedButton-background) var(--tema-calc) 16%),var(--a));
+    }
+
+    .option {
+
+        /* background: hsla(var(--h),var(--s),var(--option-background),var(--a));
+        color: hsla(var(--h),var(--s),var(--option-color),var(--a));
+        border-radius: inherit; */
+        cursor: var(--cursor-pointer);      
+
+        min-width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        box-sizing: border-box;
+
+        display: grid;
+        grid-auto-flow: column;
+        place-content: center space-between;
+        padding: 0 16px 0 8px;
+        gap: 8px;
+
+        transition:
+            background 0.3s ease,
+            border-radius 0.1s ease
+        ;
+        position: relative;
+
+        :where(*, * *) {
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .label {
+            display: grid;
+            place-content: center;
+        }
+
+        &:has(.icon):not(:has(.label)) {
+            padding: 0;
+            border-radius: 100%;
+            aspect-ratio: 1/1;
+        }
+
+        &:has(.label):not(:has(.icon)) {
+            padding: 0 16px;
+        }
+
+
+
+        &:has(>input:checked) {
+            --option-background: calc(var(--surface-background) var(--tema-calc) 8%);
+            &.outlined {
+                border: solid 1px hsla(var(--h),var(--s),calc(var(--option-background) var(--tema-calc) 52%),var(--a));
+            }
+            &.selected-primary {
+                --h: var(--primary);
+            }
+            &.selected-secondary {
+                --h: var(--secondary);
+            }
+            &.selected-tertiary {
+                --h: var(--tertiary);
+            }
+        }
+
+        &.hovered,
+        &:hover:not(.not-hover) {
+            --option-background: calc(var(--surface-background) var(--tema-calc) 4%);
+        }
+
+        .material-symbols-rounded {
+            pointer-events: none;
+        }
+
+        & input { display: none;}
+
+        &:first-child {border-radius: 32px 0 0 32px;}
+        &:last-child {border-radius: 0 32px 32px 0;}
+    }
+
+}

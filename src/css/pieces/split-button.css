@@ -1,0 +1,175 @@
+.piece-split-button {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 2px;
+    position: relative;
+    user-select: none;
+
+    .piece-leading-button {
+        display: grid;
+        grid-auto-flow: column;
+        place-content: center;
+        cursor: var(--cursor-pointer);
+        text-wrap: nowrap;
+        > * { pointer-events: none; }
+    }
+
+    .piece-trailing-button {
+        display: grid;
+        place-content: center;
+        cursor: var(--cursor-pointer);
+        transition:
+            border-radius .3s cubic-bezier(0.2, 0, 0, 1),
+            padding .3s cubic-bezier(0.2, 0, 0, 1);
+        .piece-icon {
+            transition: transform .3s cubic-bezier(0.2, 0, 0, 1);
+        }
+        > * { pointer-events: none; }
+    }
+
+    /* ── menu ── */
+    .piece-menu {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        min-width: 100%;
+        z-index: 10;
+        opacity: 0;
+        clip-path: inset(0 0 100% 0 round 16px);
+        transform: translateY(-4px);
+        pointer-events: none;
+        transition:
+            opacity .25s cubic-bezier(0.2, 0, 0, 1),
+            clip-path .3s cubic-bezier(0.2, 0, 0, 1),
+            transform .25s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    &.piece-actived {
+
+        .piece-trailing-button .piece-icon {
+            transform: rotateZ(180deg);
+        }
+
+        .piece-menu {
+            opacity: 1;
+            clip-path: inset(0 0 0% 0 round 16px);
+            transform: translateY(0);
+            pointer-events: all;
+        }
+    }
+
+    /* ── extra-small ── */
+    &.piece-extra-small {
+        height: 32px;
+
+        .piece-leading-button {
+            border-radius: 16px 4px 4px 16px;
+            padding: 0 10px 0 12px;
+            gap: 4px;
+            place-items: center;
+            .piece-icon  { font-size: 20px; }
+            .piece-label { font-size: 14px; }
+        }
+        .piece-trailing-button {
+            border-radius: 4px 16px 16px 4px;
+            padding: 0 14px 0 12px;
+            .piece-icon { font-size: 22px; }
+        }
+        &.piece-actived .piece-trailing-button {
+            border-radius: 16px;
+            padding-inline: 13px;
+        }
+    }
+
+    /* ── small ── */
+    &.piece-small {
+        height: 40px;
+
+        .piece-leading-button {
+            border-radius: 20px 4px 4px 20px;
+            padding: 0 12px 0 16px;
+            gap: 8px;
+            place-items: center;
+            .piece-icon  { font-size: 20px; }
+            .piece-label { font-size: 14px; }
+        }
+        .piece-trailing-button {
+            border-radius: 4px 20px 20px 4px;
+            padding: 0 14px 0 12px;
+            .piece-icon { font-size: 22px; }
+        }
+        &.piece-actived .piece-trailing-button {
+            border-radius: 20px;
+            padding-inline: 13px;
+        }
+    }
+
+    /* ── medium ── */
+    &.piece-medium {
+        height: 56px;
+
+        .piece-leading-button {
+            border-radius: 28px 4px 4px 28px;
+            padding: 0 24px;
+            gap: 8px;
+            place-items: center;
+            .piece-icon  { font-size: 24px; }
+            .piece-label { font-size: 16px; }
+        }
+        .piece-trailing-button {
+            border-radius: 4px 28px 28px 4px;
+            padding: 0 17px 0 13px;
+            .piece-icon { font-size: 26px; }
+        }
+        &.piece-actived .piece-trailing-button {
+            border-radius: 28px;
+            padding-inline: 15px;
+        }
+    }
+
+    /* ── large ── */
+    &.piece-large {
+        height: 96px;
+
+        .piece-leading-button {
+            border-radius: 48px 8px 8px 48px;
+            padding: 0 48px;
+            gap: 12px;
+            place-items: center;
+            .piece-icon  { font-size: 32px; }
+            .piece-label { font-size: 24px; }
+        }
+        .piece-trailing-button {
+            border-radius: 8px 48px 48px 8px;
+            padding: 0 32px 0 26px;
+            .piece-icon { font-size: 38px; }
+        }
+        &.piece-actived .piece-trailing-button {
+            border-radius: 48px;
+            padding-inline: 29px;
+        }
+    }
+
+    /* ── extra-large ── */
+    &.piece-extra-large {
+        height: 136px;
+
+        .piece-leading-button {
+            border-radius: 68px 12px 12px 68px;
+            padding: 0 64px;
+            gap: 16px;
+            place-items: center;
+            .piece-icon  { font-size: 40px; }
+            .piece-label { font-size: 32px; }
+        }
+        .piece-trailing-button {
+            border-radius: 12px 68px 68px 12px;
+            padding: 0 49px 0 37px;
+            .piece-icon { font-size: 50px; }
+        }
+        &.piece-actived .piece-trailing-button {
+            border-radius: 68px;
+            padding-inline: 43px;
+        }
+    }
+}

@@ -1,0 +1,96 @@
+.piece-menu:not(.piece-icon-button) {
+    display: grid;
+    max-width: 280px;
+    align-self: start;
+    /* overflow: hidden; */
+    box-shadow: 0 0 4px 1px hsla(0, 0%, 0%, 0.25);
+    border-radius: 16px;
+
+    ul {
+        display: grid;
+        padding: 4px;
+        gap: 2px;
+        list-style: none;
+        border-radius: 16px;
+
+        & > label:first-child,
+        & > li:first-child  { border-radius: 12px 12px 4px 4px; }
+        & > label:last-child,
+        & > li:last-child   { border-radius: 4px 4px 12px 12px; }
+        & > label:only-child,
+        & > li:only-child   { border-radius: 12px; }
+    }
+
+    &.piece-gap {
+        box-shadow: none;
+        gap: 2px;
+
+        ul {
+            box-shadow: 0 0 4px 1px hsla(0, 0%, 0%, 0.25);
+            border-radius: 8px;
+
+            &:first-child { border-radius: 16px 16px 8px 8px; }
+            &:last-child  { border-radius: 8px 8px 16px 16px; }
+
+            &:first-child > label:first-child,
+            &:first-child > li:first-child   { border-radius: 12px 12px 4px 4px; }
+            &:last-child  > label:last-child,
+            &:last-child  > li:last-child    { border-radius: 4px 4px 12px 12px; }
+        }
+    }
+
+    ul > label,
+    ul > li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding-inline: 12px;
+        height: 48px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        position: relative;
+
+        input { display: none; }
+
+        &.piece-actived,
+        &:has(input:checked) {
+            border-radius: 12px;
+        }
+    }
+
+    /* ── leading icon: estado padrão ── */
+    .piece-menu-icon {
+        font-size: 20px;
+        line-height: 1;
+        flex-shrink: 0;
+        font-variation-settings: 'FILL' 0;
+        transition: font-variation-settings .2s, color .2s;
+    }
+
+    /* ── icon false/true ── */
+    .piece-menu-icon.piece-true  { display: none; }
+    .piece-menu-icon.piece-false { display: block; }
+
+    label:has(input:checked),
+    label.piece-actived {
+        .piece-menu-icon.piece-false { display: none; }
+        .piece-menu-icon.piece-true  {
+            display: block;
+            font-variation-settings: 'FILL' 1;
+        }
+        /* icon único sem piece-false/piece-true */
+        .piece-menu-icon:not(.piece-true):not(.piece-false) {
+            font-variation-settings: 'FILL' 1;
+        }
+    }
+
+    /* ── trailing text ── */
+    .piece-menu-trailing {
+        font-size: 12px;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
+    .piece-menu-label { flex: 1; }
+}

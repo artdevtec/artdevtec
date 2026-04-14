@@ -1,0 +1,247 @@
+.piece-button {
+
+    min-width: 40px;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-auto-flow: column;
+    padding: 0 16px 0 8px;
+    gap: 8px;
+    place-content: center;
+    place-items: center;
+    text-decoration: none;
+
+    cursor: var(--cursor-pointer);
+    transition:
+        background 0.3s ease,
+        border-radius 0.2s ease;
+    position: relative;
+
+    height: var(--height);
+    border-radius: var(--border-radius);
+
+    :where(*, * *) {
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .piece-label {
+        display: grid;
+        place-content: center;
+        font-weight: 500;
+        text-wrap: nowrap;
+    }
+
+    .material-symbols-rounded { pointer-events: none; }
+
+    input { display: none; }
+
+    &:has(input:checked) .piece-icon {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    &:not(:has(input:checked)) {
+        .piece-false { display: grid; }
+        .piece-true  { display: none;  }
+    }
+
+    &:has(input:checked),
+    &.piece-actived {
+        .piece-false { display: none;  }
+        .piece-true  { display: grid; }
+    }
+
+    &:active,
+    &:has(input:checked),
+    &.piece-actived {
+        border-radius: var(--active-radius);
+    }
+
+    &.piece-outlined {
+        border-width: 1px;
+        border-style: solid;
+        &:not(:hover) { background: transparent; }
+    }
+
+    &.piece-elevated {
+        box-shadow: 0px 0px 4px 0px hsla(
+            var(--piece-box-shadow-color-h),
+            var(--piece-s),
+            var(--piece-box-shadow-color),
+            var(--piece-a)
+        );
+    }
+
+    &.piece-text:not(:hover) { background: transparent; }
+
+    &.piece-extra-small {
+        --height: 32px;
+        --border-radius: 16px;
+        --active-radius: 12px;
+        padding: 12px;
+        gap: 4px;
+        .piece-label { font-size: 14px; }
+        .piece-icon  { font-size: 20px; }
+    }
+
+    &.piece-small {
+        --height: 40px;
+        --border-radius: 20px;
+        --active-radius: 12px;
+        padding: 16px;
+        gap: 8px;
+        .piece-label { font-size: 14px; }
+        .piece-icon  { font-size: 24px; }
+    }
+
+    &.piece-medium {
+        --height: 56px;
+        --border-radius: 28px;
+        --active-radius: 16px;
+        padding: 24px;
+        gap: 8px;
+        .piece-label { font-size: 16px; }
+        .piece-icon  { font-size: 24px; }
+    }
+
+    &.piece-large {
+        --height: 96px;
+        --border-radius: 48px;
+        --active-radius: 28px;
+        padding: 48px;
+        gap: 12px;
+        .piece-label { font-size: 24px; }
+        .piece-icon  { font-size: 32px; }
+    }
+
+    &.piece-extra-large {
+        --height: 136px;
+        --border-radius: 68px;
+        --active-radius: 28px;
+        padding: 64px;
+        gap: 16px;
+        .piece-label { font-size: 32px; }
+        .piece-icon  { font-size: 40px; }
+    }
+}
+
+.piece-group-button {
+
+    --gap: 2px;
+    display: inline-flex;
+    gap: var(--gap);
+
+    > .piece-button {
+        transition: border-radius 0.15s ease;
+
+        &.piece-extra-small {
+            --round: 4px;
+            --fully-round: calc(32px / 2);
+        }
+        &.piece-small {
+            --round: 8px;
+            --fully-round: calc(40px / 2);
+        }
+        &.piece-medium {
+            --round: 8px;
+            --fully-round: calc(56px / 2);
+        }
+        &.piece-large {
+            --round: 16px;
+            --fully-round: calc(96px / 2);
+        }
+        &.piece-extra-large {
+            --round: 20px;
+            --fully-round: calc(136px / 2);
+        }
+
+        border-radius: var(--round);
+
+        &.active,
+        &:has(input:checked) {
+            border-radius: var(--fully-round);
+        }
+
+        &:first-child {
+            border-radius: var(--fully-round) var(--round) var(--round) var(--fully-round);
+        }
+        &:last-child {
+            border-radius: var(--round) var(--fully-round) var(--fully-round) var(--round);
+        }
+        &:not(:first-child):not(:last-child):not(:has(input:checked)) {
+            border-radius: var(--round);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gradient {
+    --h-p: var(--primary);
+    --h-s: var(--secondary);
+    --h-t: var(--tertiary);
+
+
+
+    &.surface {
+        background-image:
+            linear-gradient(
+                75deg,
+                hsla(var(--h-p),var(--s),calc(var(--tema) var(--tema-calc) 20%),var(--a)),
+                hsla(var(--h-s),var(--s),calc(var(--tema) var(--tema-calc) 12%),var(--a)),
+                hsla(var(--h-t),var(--s),calc(var(--tema) var(--tema-calc) 4%),var(--a))
+            )
+        ;
+        
+    }
+
+    &.accent {
+        background-image:
+            linear-gradient(
+                75deg,
+                hsla(var(--h-p),var(--s),48%,var(--a)),
+                hsla(var(--h-s),var(--s),48%,var(--a)),
+                hsla(var(--h-t),var(--s),48%,var(--a))
+            )
+        ;
+    }
+
+    &.toned {
+        background-image:
+            linear-gradient(
+                75deg,
+                hsla(var(--h-p),var(--s),calc(var(--tema) var(--tema-calc) 28%),var(--a)),
+                hsla(var(--h-s),var(--s),calc(var(--tema) var(--tema-calc) 28%),var(--a)),
+                hsla(var(--h-t),var(--s),calc(var(--tema) var(--tema-calc) 28%),var(--a))
+            )
+        ;
+    }
+}

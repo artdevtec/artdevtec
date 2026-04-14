@@ -1,0 +1,186 @@
+.piece-bar-rail {
+
+    /* ======= RESET / POINTER ======= */
+    .piece-item .piece-icon,
+    .piece-item .piece-label { pointer-events: none; }
+
+    & .piece-item:not(:has(:checked)) .piece-indicator:not(:hover) {
+        background: transparent;
+    }
+
+    /* ======= BASE ======= */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 16px;
+
+    /* ======= HEADER ======= */
+    > header {
+        display: grid;
+        padding-block: 16px;
+        gap: 16px;
+
+        .m-titulo {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+                "icon h1"
+                "icon h2";
+            place-content: center start;
+            gap: 0 16px;
+
+            .icon {
+                grid-area: icon;
+                width: 64px;
+                height: 64px;
+                display: block;
+            }
+
+            h1, h2 {
+                display: none;
+                position: relative;
+                width: min-content;
+                text-wrap: nowrap;
+            }
+
+            h1 { grid-area: h1; font-size: 20px; font-weight: 900; align-self: end; }
+            h2 { grid-area: h2; font-size: 12px; font-weight: 500; align-self: start; }
+        }
+    }
+
+    /* ======= ITENS ======= */
+    .piece-items {
+        flex: auto;
+        display: grid;
+        align-content: start;
+        gap: 4px;
+
+        .piece-item {
+            display: grid;
+            place-content: center;
+            place-items: center;
+            gap: 4px;
+            position: relative;
+            cursor: var(--cursor-pointer);
+            user-select: none;
+
+            width: 96px;
+            height: 56px;
+            padding-block: 2px;
+            margin-left: -16px;
+
+            input { display: none; }
+
+            .piece-indicator {
+                width: 56px;
+                height: 32px;
+                border-radius: 16px;
+                position: absolute;
+                top: 2px;
+                display: grid;
+            }
+
+            .piece-icon {
+                border-radius: 32px;
+                width: 56px;
+                height: 32px;
+                display: grid;
+                place-content: center;
+                z-index: 1;
+            }
+
+            .piece-label {
+                height: 16px;
+                font-size: 12px;
+                z-index: 1;
+                width: max-content;
+            }
+        }
+
+        /* item selecionado: só ícone branco */
+        .piece-item:has(:checked) .piece-icon {
+            color: white;
+        }
+    }
+
+    /* ======= MENU EXPANDIDO (compartilhado HD + FHD) ======= */
+    &:has(.piece-menu > input:checked) {
+
+        > header h1,
+        > header h2 { display: block; }
+
+        /* item selecionado: ícone + label brancos */
+        .piece-item:has(:checked) .piece-icon,
+        .piece-item:has(:checked) .piece-label { color: white; }
+
+        .piece-items .piece-item {
+            grid-auto-flow: column;
+            justify-self: start;
+            border-radius: 56px;
+            padding: 16px;
+            gap: 16px;
+            margin: 0;
+            width: auto;
+
+            .piece-indicator {
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 56px;
+            }
+
+            .piece-icon {
+                width: 24px;
+                position: relative;
+            }
+
+            .piece-label {
+                font-weight: 500;
+                font-size: 16px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+    }
+
+    /* ======= CONTAINER QUERIES ======= */
+
+    /* MOBILE */
+    /* MOBILE */
+	@container (max-width: 799px) {
+		& {
+			height: 64px;
+			padding-inline: 0;
+		}
+
+		> :not(.piece-items) { display: none; }
+
+		.piece-items {
+			grid-auto-flow: column;
+			grid-auto-columns: minmax(0, 1fr);
+			height: 64px;
+
+			.piece-item {
+				width: auto;
+				height: auto;
+				padding-block: 6px;
+
+				.piece-indicator { top: 6px; }
+			}
+		}
+	}
+
+    /* SVGA */
+    @container (min-width: 800px) and (max-width: 1279px) {
+        > header > .piece-menu { display: none; }
+    }
+}
+	
+	
+.m-titulo .icon {
+	width: 64px;
+	height: 64px;
+	display: block;
+}

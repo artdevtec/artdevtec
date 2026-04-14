@@ -1,0 +1,35 @@
+.piece-table {
+	width:100%;
+	border-spacing:1px;
+	display:table;
+	border-collapse:separate;
+	border-spacing: 1px;
+	& .piece-center { text-align:center; }
+	& .piece-justify { text-align-last:justify; }
+	& caption, & .piece-caption { font-size: 12px; font-weight:500;}
+	& th, & .piece-head { padding:16px 8px; font-weight:900; display:table-cell; }
+	& td, & .piece-col { padding:4px 8px; font-weight:400; display:table-cell; }
+	& tfoot td, & .piece-foot { padding:16px 8px; font-weight:bold; display:table-cell; }
+	& tr, & .piece-row { display:table-row; }
+	& tbody, & .piece-body { display:table-row-group; }
+	& thead, & .piece-head-group { display:table-header-group; }
+	& tfoot, & .piece-foot-group { display:table-footer-group; }
+
+	* { padding: 0 !important;}
+
+	/* linhas (40–52px) */
+	&.piece-extra-small { tbody tr, .piece-row { height:40px; } }
+	&.piece-small { tbody tr, .piece-row { height:43px; } }
+	&.piece-medium { tbody tr, .piece-row { height:46px; } }
+	&.piece-large { tbody tr, .piece-row { height:49px; } }
+	&.piece-extra-large { tbody tr, .piece-row { height:52px; } }
+
+	/* cabeçalhos/rodapés (52–64px) */
+	&.piece-extra-small { thead, tfoot { height:52px; } }
+	&.piece-small { thead, tfoot { height:55px; } }
+	&.piece-medium { thead, tfoot { height:58px; } }
+	&.piece-large { thead, tfoot { height:61px; } }
+	&.piece-extra-large { thead, tfoot { height:64px; } }
+
+	* {padding: 4px !important;}
+}

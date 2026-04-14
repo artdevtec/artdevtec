@@ -1,0 +1,132 @@
+.piece-text-field {
+    position: relative;
+    display: grid;
+    gap: 4px;
+
+    .piece-field-outline {
+        position: relative;
+        display: grid;
+        border-radius: 8px;
+        border-style: solid;
+        border-width: 2px;
+        padding: 0;
+        min-width: 0;
+        transition: border-color .2s;
+
+        legend {
+            margin-left: 12px;
+            padding: 0;
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            line-height: 0;
+            transition: width .15s cubic-bezier(0.2, 0, 0, 1);
+
+            > span {
+                font-size: 12px;
+                padding: 0 4px;
+                white-space: nowrap;
+                visibility: hidden;
+                display: block;
+                transform: translateY(-50%);
+                line-height: 1;
+            }
+        }
+
+        &:focus-within legend,
+        &:has(input:valid) legend {
+            width: auto;
+            overflow: visible;
+        }
+
+        .piece-field-container {
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 12px;
+            cursor: text;
+            border-radius: 6px;
+            border: none;
+
+            input {
+                all: unset;
+                flex: 1;
+                width: 0;
+                font-size: 1rem;
+                cursor: text;
+
+                &::placeholder { user-select: none; }
+            }
+
+            input[type="date"]:not(:focus):not(:valid) {
+                color: transparent;
+                caret-color: transparent;
+            }
+
+            > .piece-icon-button {
+                flex-shrink: 0;
+                margin-right: -8px;
+            }
+        }
+
+        .piece-label {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            pointer-events: none;
+            padding: 0 4px;
+            transition:
+                top .2s cubic-bezier(0.2, 0, 0, 1),
+                left .2s cubic-bezier(0.2, 0, 0, 1),
+                font-size .2s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        &:focus-within .piece-label,
+        &:has(input:valid) .piece-label {
+            top: 0;
+            font-size: 12px;
+        }
+
+        &:has(.piece-icon-leading):not(:focus-within):not(:has(input:valid)) .piece-label {
+            left: 48px;
+        }
+
+        .piece-icon-leading,
+        .piece-icon-trailing {
+            font-size: 20px;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .piece-field-prefix,
+        .piece-field-suffix {
+            font-size: 1rem;
+            flex-shrink: 0;
+            user-select: none;
+            opacity: 0;
+            transition: opacity .15s;
+        }
+
+        &:focus-within,
+        &:has(input:valid) {
+            .piece-field-prefix,
+            .piece-field-suffix { opacity: 1; }
+        }
+    }
+
+    &.piece-extra-small .piece-field-container { height: 40px; }
+    &.piece-small       .piece-field-container { height: 46px; }
+    &.piece-medium      .piece-field-container { height: 52px; }
+    &.piece-large       .piece-field-container { height: 58px; }
+    &.piece-extra-large .piece-field-container { height: 64px; }
+
+    .piece-field-support {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px;
+        font-size: 12px;
+    }
+}
