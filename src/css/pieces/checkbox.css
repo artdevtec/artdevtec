@@ -12,7 +12,7 @@
     position: relative;
     cursor: var(--cursor-pointer);
 
-    .piece-icon { 
+    .piece-icon {
         transition: .3s;
         font-size: var(--icon-size);
     }
@@ -22,24 +22,24 @@
         user-select: none;
     }
 
-    input { display: none; }
+    .piece-controller { display: none; }
 
-    &:has(input:checked) .piece-icon {
+    &:has(.piece-controller:checked) .piece-icon {
         font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
 
-    &:not(:has(input:checked)) {
+    &:not(:has(.piece-controller:checked)) {
         .piece-false { display: grid; }
-        .piece-true { display: none; }
+        .piece-true  { display: none;  }
     }
 
-    &:has(input:checked, .piece-actived) {
-        .piece-false { display: none; }
-        .piece-true { display: grid; }
+    &:has(.piece-controller:checked, .piece-actived) {
+        .piece-false { display: none;  }
+        .piece-true  { display: grid; }
     }
 
     &:active,
-    &:has(input:checked),
+    &:has(.piece-controller:checked),
     &.piece-actived {
         border-radius: var(--active-radius);
     }
@@ -48,8 +48,8 @@
     &.piece-extra-small {
         --button-width: 32px;
         --height: 32px;
-        --border-radius: 136px;
-        --active-radius: 12px;
+        --border-radius: 8px;
+        --active-radius: 10px;
         --icon-size: 20px;
 
         &.piece-narrow { --button-width: 28px; }
@@ -60,7 +60,7 @@
     &.piece-small {
         --button-width: 40px;
         --height: 40px;
-        --border-radius: 136px;
+        --border-radius: 10px;
         --active-radius: 12px;
         --icon-size: 24px;
 
@@ -72,7 +72,7 @@
     &.piece-medium {
         --button-width: 56px;
         --height: 56px;
-        --border-radius: 136px;
+        --border-radius: 12px;
         --active-radius: 16px;
         --icon-size: 24px;
 
@@ -84,7 +84,7 @@
     &.piece-large {
         --button-width: 96px;
         --height: 96px;
-        --border-radius: 136px;
+        --border-radius: 20px;
         --active-radius: 28px;
         --icon-size: 32px;
 
@@ -96,8 +96,8 @@
     &.piece-extra-large {
         --button-width: 136px;
         --height: 136px;
-        --border-radius: 136px;
-        --active-radius: 28px;
+        --border-radius: 28px;
+        --active-radius: 36px;
         --icon-size: 40px;
 
         &.piece-narrow { --button-width: 104px; }

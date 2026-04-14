@@ -44,6 +44,19 @@
             transform .25s cubic-bezier(0.2, 0, 0, 1);
     }
 
+    /* ── elevated ── */
+    &.piece-elevated {
+        .piece-leading-button,
+        .piece-trailing-button {
+            box-shadow: 0px 0px 4px 0px hsla(
+                var(--piece-box-shadow-color-h),
+                var(--piece-s),
+                var(--piece-box-shadow-color),
+                var(--piece-a)
+            );
+        }
+    }
+
     &.piece-actived {
 
         .piece-trailing-button .piece-icon {
