@@ -68,7 +68,7 @@
             var(--piece-box-shadow-color-h),
             var(--piece-s),
             var(--piece-box-shadow-color),
-            var(--piece-a)
+            var(--piece-box-shadow-a)
         );
     }
 

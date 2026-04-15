@@ -1,3 +1,28 @@
+/* ── Qualquer menu dentro de piece-interactive ─────────────── */
+/* position:fixed escapa de overflow:hidden e de backdrop-filter.
+   O interactive.js injeta top/left/minWidth via getBoundingClientRect(). */
+.piece-interactive .piece-menu {
+    position: fixed;
+    z-index: 100;
+    opacity: 0;
+    clip-path: inset(0 0 100% 0 round 16px);
+    transform: translateY(-4px);
+    pointer-events: none;
+    transition:
+        opacity .25s cubic-bezier(0.2, 0, 0, 1),
+        clip-path .3s cubic-bezier(0.2, 0, 0, 1),
+        transform .25s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.piece-interactive.piece-actived .piece-menu {
+    opacity: 1;
+    clip-path: inset(0 0 0% 0 round 16px);
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+/* ─────────────────────────────────────────────────────────── */
+
 .piece-menu:not(.piece-icon-button) {
     display: grid;
     max-width: 280px;
