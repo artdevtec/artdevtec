@@ -257,6 +257,8 @@ CompPages["surface"] = function(c) {
         const previewWrap = document.getElementById('sf-preview-wrap')
         const code        = document.getElementById('sf-code')
 
+        let blurImgUrl = ''   // gerada uma vez por ativação do blur
+
         function renderSwatchContainer(el) {
             const { prop, suf, type } = el.dataset
             const levels  = allLevels   // todos os tipos usam 00–25
@@ -312,10 +314,25 @@ CompPages["surface"] = function(c) {
         function update() {
             if (preview)     preview.innerHTML = buildSurface()
             if (code)        code.textContent  = buildSurface(true)
-            // Troca o fundo do preview: textura quando blur ativo, neutro quando não
+            // Troca o fundo do preview: foto quando blur ativo, neutro quando não
             if (previewWrap) {
-                previewWrap.classList.toggle('sf-blur-bg', !!meta.blur)
-                previewWrap.classList.toggle('background-color-auto-04', !meta.blur)
+                if (meta.blur) {
+                    // Gera URL apenas na primeira ativação; mantém ao mudar intensidade
+                    if (!blurImgUrl) {
+                        const seed = Math.floor(Math.random() * 1000)
+                        blurImgUrl = `https://picsum.photos/seed/${seed}/800/400`
+                    }
+                    previewWrap.style.backgroundImage    = `url(${blurImgUrl})`
+                    previewWrap.style.backgroundSize     = 'cover'
+                    previewWrap.style.backgroundPosition = 'center'
+                    previewWrap.classList.remove('background-color-auto-04')
+                } else {
+                    blurImgUrl = ''   // reset: próxima ativação sorteia nova imagem
+                    previewWrap.style.backgroundImage    = ''
+                    previewWrap.style.backgroundSize     = ''
+                    previewWrap.style.backgroundPosition = ''
+                    previewWrap.classList.add('background-color-auto-04')
+                }
             }
             renderAllSwatches()
         }
