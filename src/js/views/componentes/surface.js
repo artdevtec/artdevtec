@@ -1,24 +1,63 @@
 CompPages["surface"] = function(c) {
 
+    // ─── Presets ──────────────────────────────────────────────
+    const PRESETS = {
+        p1: {
+            meta: { palette: 'piece-secondary', sat: 'piece-s-40', blur: '' },
+            C: {
+                bg:     { base: '00', hover: '01', active: '11', hactive: '12' },
+                text:   { base: '23', hover: '',   active: '00', hactive: '' },
+                border: { base: '',   hover: '',   active: '',   hactive: '' },
+                ripple: { base: '25', hover: '',   active: '00', hactive: '' },
+            },
+            A: {
+                bg:     { base: '',   hover: '', active: '', hactive: '' },
+                text:   { base: '',   hover: '', active: '', hactive: '' },
+                border: { base: '',   hover: '', active: '', hactive: '' },
+            },
+        },
+        p2: {
+            meta: { palette: 'piece-secondary', sat: 'piece-s-40', blur: '08' },
+            C: {
+                bg:     { base: '00', hover: '01', active: '11', hactive: '12' },
+                text:   { base: '23', hover: '',   active: '00', hactive: '' },
+                border: { base: '00', hover: '',   active: '06', hactive: '' },
+                ripple: { base: '25', hover: '',   active: '00', hactive: '' },
+            },
+            A: {
+                bg:     { base: '06', hover: '', active: '', hactive: '' },
+                text:   { base: '',   hover: '', active: '', hactive: '' },
+                border: { base: '08', hover: '', active: '', hactive: '' },
+            },
+        },
+    }
+
+    function applyPreset(key) {
+        const p = PRESETS[key]
+        Object.assign(meta, JSON.parse(JSON.stringify(p.meta)))
+        props.forEach(prop => {
+            sufKeys.forEach(s => { C[prop][s] = p.C[prop]?.[s] ?? '' })
+        })
+        alphaProps.forEach(prop => {
+            sufKeys.forEach(s => { A[prop][s] = p.A[prop]?.[s] ?? '' })
+        })
+        meta.activePreset = key
+    }
+
     // ─── Estado ──────────────────────────────────────────────
-    const meta = { palette: 'piece-secondary', sat: 'piece-s-40', blur: '' }
+    const meta = { palette: '', sat: '', blur: '', activePreset: 'p1' }
 
     const props   = ['bg', 'text', 'border', 'ripple']
     const sufKeys = ['base', 'hover', 'active', 'hactive']
     const C = {}
     props.forEach(p => { C[p] = { base: '', hover: '', active: '', hactive: '' } })
-    C.bg.base     = '00'
-    C.bg.hover    = '01'
-    C.bg.active   = '11'
-    C.bg.hactive  = '12'
-    C.text.base   = '23'
-    C.text.active = '00'
-    C.ripple.base   = '25'
-    C.ripple.active = '00'
 
     const alphaProps = ['bg', 'text', 'border']
     const A = {}
     alphaProps.forEach(p => { A[p] = { base: '', hover: '', active: '', hactive: '' } })
+
+    // Aplica preset inicial
+    applyPreset('p1')
 
     // ─── Mapping ──────────────────────────────────────────────
     const cssProp = { bg: 'background', text: 'text', border: 'border', ripple: 'ripple' }
@@ -143,6 +182,21 @@ CompPages["surface"] = function(c) {
 
             <!-- Controles -->
             <div style="display:grid;gap:12px;padding:20px 24px 24px;">
+
+                ${row('Modelo',
+                    `<div class="piece-group-button">
+                        <button class="piece-button piece-extra-small piece-surface piece-s-40
+                            ${ON} piece-secondary" data-preset="p1">
+                            <span class="piece-ripple"></span>
+                            <span class="piece-label">Modelo 1</span>
+                        </button>
+                        <button class="piece-button piece-extra-small piece-surface piece-s-40
+                            ${OFF} piece-secondary" data-preset="p2">
+                            <span class="piece-ripple"></span>
+                            <span class="piece-label">Modelo 2</span>
+                        </button>
+                    </div>`
+                )}
 
                 ${row('Paleta',
                     `<div class="piece-group-button">
@@ -364,11 +418,40 @@ CompPages["surface"] = function(c) {
             renderAllSwatches()
         }
 
+        // Presets
+        function syncPresetBtns() {
+            c.querySelectorAll('[data-preset]').forEach(b => {
+                const on = b.dataset.preset === meta.activePreset
+                b.className = b.className.replace(ON + ' piece-actived', OFF).replace(ON, OFF)
+                if (on) b.className = b.className.replace(OFF, ON + ' piece-actived')
+            })
+            // Sincroniza também paleta e saturação
+            c.querySelectorAll('[data-ctrl="palette"]').forEach(b => {
+                const on = b.dataset.val === meta.palette
+                b.className = b.className.replace(ON + ' piece-actived', OFF).replace(ON, OFF)
+                if (on) b.className = b.className.replace(OFF, ON + ' piece-actived')
+            })
+            c.querySelectorAll('[data-ctrl="sat"]').forEach(b => {
+                const on = b.dataset.val === meta.sat
+                b.className = b.className.replace(ON + ' piece-actived', OFF).replace(ON, OFF)
+                if (on) b.className = b.className.replace(OFF, ON + ' piece-actived')
+            })
+        }
+
+        c.querySelectorAll('[data-preset]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyPreset(btn.dataset.preset)
+                syncPresetBtns()
+                update()
+            })
+        })
+
         // Paleta / saturação
         document.querySelectorAll('[data-ctrl]').forEach(btn => {
             btn.addEventListener('click', () => {
                 const { ctrl, val } = btn.dataset
                 meta[ctrl] = val
+                meta.activePreset = ''   // customizado
                 btn.closest('.piece-group-button')
                     ?.querySelectorAll('[data-ctrl]')
                     .forEach(b => {
@@ -376,6 +459,7 @@ CompPages["surface"] = function(c) {
                         b.className = b.className.replace(ON + ' piece-actived', OFF).replace(ON, OFF)
                         if (on) b.className = b.className.replace(OFF, ON + ' piece-actived')
                     })
+                syncPresetBtns()
                 update()
             })
         })
@@ -383,11 +467,13 @@ CompPages["surface"] = function(c) {
         // Swatches (delegação — renderizados dinamicamente)
         c.addEventListener('click', e => {
             const btn = e.target.closest('[data-prop][data-suf][data-type][data-val]')
-            if (!btn || btn.dataset.ctrl) return   // ignora group-buttons
+            if (!btn || btn.dataset.ctrl || btn.dataset.preset) return
             const { prop, suf, type, val } = btn.dataset
             if      (type === 'alpha') A[prop][suf] = val
             else if (type === 'blur')  meta.blur    = val
             else                       C[prop][suf] = val
+            meta.activePreset = ''   // customizado
+            syncPresetBtns()
             update()
         })
 
