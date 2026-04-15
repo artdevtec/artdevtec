@@ -39,16 +39,20 @@
         root.querySelectorAll('pre[id$="-code"]').forEach(inject)
     }
 
-    scan(document)
+    function init() {
+        scan(document)
+        new MutationObserver(mutations => {
+            for (const m of mutations) {
+                m.addedNodes.forEach(node => {
+                    if (node.nodeType !== 1) return
+                    if (node.matches?.('pre[id$="-code"]')) inject(node)
+                    else scan(node)
+                })
+            }
+        }).observe(document.body, { childList: true, subtree: true })
+    }
 
-    new MutationObserver(mutations => {
-        for (const m of mutations) {
-            m.addedNodes.forEach(node => {
-                if (node.nodeType !== 1) return
-                if (node.matches?.('pre[id$="-code"]')) inject(node)
-                else scan(node)
-            })
-        }
-    }).observe(document.body, { childList: true, subtree: true })
+    if (document.body) init()
+    else document.addEventListener('DOMContentLoaded', init)
 
 })()
