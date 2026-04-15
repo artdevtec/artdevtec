@@ -7,7 +7,7 @@
 
         // Wrapper com position:relative para o botão poder flutuar dentro do pre
         const wrap = document.createElement('div')
-        wrap.style.cssText = 'position:relative;'
+        wrap.style.cssText = 'position:relative;min-width:0;'
         pre.parentNode.insertBefore(wrap, pre)
         wrap.appendChild(pre)
 
