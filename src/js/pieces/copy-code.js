@@ -13,7 +13,7 @@
 
         const btn = document.createElement('button')
         btn.className = [
-            'piece-icon-button piece-small piece-surface piece-s-40 piece-secondary',
+            'piece-icon-button piece-medium piece-narrow piece-surface piece-s-40 piece-secondary',
             'background-color-auto-04 background-color-auto-06-hover',
             'text-color-auto-16 text-color-auto-18-hover',
         ].join(' ')
