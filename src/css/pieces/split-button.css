@@ -27,23 +27,6 @@
         > * { pointer-events: none; }
     }
 
-    /* ── menu ── */
-    .piece-menu {
-        position: absolute;
-        top: calc(100% + 4px);
-        left: 0;
-        min-width: 100%;
-        z-index: 10;
-        opacity: 0;
-        clip-path: inset(0 0 100% 0 round 16px);
-        transform: translateY(-4px);
-        pointer-events: none;
-        transition:
-            opacity .25s cubic-bezier(0.2, 0, 0, 1),
-            clip-path .3s cubic-bezier(0.2, 0, 0, 1),
-            transform .25s cubic-bezier(0.2, 0, 0, 1);
-    }
-
     /* ── elevated ── */
     &.piece-elevated {
         .piece-leading-button,
@@ -52,22 +35,15 @@
                 var(--piece-box-shadow-color-h),
                 var(--piece-s),
                 var(--piece-box-shadow-color),
-                var(--piece-a)
+                var(--piece-box-shadow-a)
             );
         }
     }
 
     &.piece-actived {
-
+        /* menu open/close is handled generically in menu.css */
         .piece-trailing-button .piece-icon {
             transform: rotateZ(180deg);
-        }
-
-        .piece-menu {
-            opacity: 1;
-            clip-path: inset(0 0 0% 0 round 16px);
-            transform: translateY(0);
-            pointer-events: all;
         }
     }
 
