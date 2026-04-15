@@ -5,36 +5,37 @@
         if (pre.dataset.copyInjected) return
         pre.dataset.copyInjected = '1'
 
+        // Wrapper com position:relative para o botão poder flutuar dentro do pre
+        const wrap = document.createElement('div')
+        wrap.style.cssText = 'position:relative;'
+        pre.parentNode.insertBefore(wrap, pre)
+        wrap.appendChild(pre)
+
         const btn = document.createElement('button')
         btn.className = [
-            'piece-button piece-small piece-surface piece-s-40 piece-secondary',
+            'piece-icon-button piece-small piece-surface piece-s-40 piece-secondary',
             'background-color-auto-04 background-color-auto-06-hover',
             'text-color-auto-16 text-color-auto-18-hover',
         ].join(' ')
+        btn.title = 'Copiar código'
+        btn.style.cssText = 'position:absolute;top:50%;right:10px;transform:translateY(-50%);'
         btn.innerHTML = `
             <span class="material-symbols-rounded piece-icon" translate="no" style="pointer-events:none">content_copy</span>
-            <span class="piece-label" style="pointer-events:none">Copiar</span>
             <span class="piece-ripple"></span>`
 
         btn.addEventListener('click', () => {
             navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
-                const icon  = btn.querySelector('.material-symbols-rounded')
-                const label = btn.querySelector('.piece-label')
-                icon.textContent  = 'check'
-                label.textContent = 'Copiado'
+                const icon = btn.querySelector('.material-symbols-rounded')
+                icon.textContent = 'check'
                 btn.classList.add('piece-actived')
                 setTimeout(() => {
-                    icon.textContent  = 'content_copy'
-                    label.textContent = 'Copiar'
+                    icon.textContent = 'content_copy'
                     btn.classList.remove('piece-actived')
                 }, 2000)
             })
         })
 
-        const bar = document.createElement('div')
-        bar.style.cssText = 'display:flex;justify-content:flex-end;'
-        pre.parentNode.insertBefore(bar, pre)
-        bar.appendChild(btn)
+        wrap.appendChild(btn)
     }
 
     function scan(root) {
