@@ -64,13 +64,13 @@ CompPages["surface"] = function(c) {
         return (
 `<label class="${clsStr}"
     style="border-radius:16px;padding:28px;display:grid;gap:8px;max-width:360px;cursor:pointer;">
-    <input type="checkbox" class="piece-controller" style="display:none;">
+    <input type="checkbox" class="piece-controller" style="display:none;pointer-events:none;">
     <span class="piece-ripple"></span>
-    <span style="font-size:10px;opacity:.35;text-transform:uppercase;letter-spacing:.08em;">
+    <span style="font-size:10px;opacity:.35;text-transform:uppercase;letter-spacing:.08em;pointer-events:none;">
         Clique para ativar
     </span>
-    <span style="font-size:16px;font-weight:700;">Título da surface</span>
-    <span style="font-size:13px;line-height:1.5;opacity:.6;">
+    <span style="font-size:16px;font-weight:700;pointer-events:none;">Título da surface</span>
+    <span style="font-size:13px;line-height:1.5;opacity:.6;pointer-events:none;">
         Texto de exemplo. As cores respondem aos tokens configurados e ao estado ativo.
     </span>
 </label>`)
@@ -89,21 +89,35 @@ CompPages["surface"] = function(c) {
         </button>`
 
     // ─── Níveis disponíveis ───────────────────────────────────
-    // Cor e alpha: 26 níveis (00–25); blur: 00–25 → 0px–50px
-    const allLevels  = Array.from({length:26}, (_,i) => String(i).padStart(2,'0'))
-    const blurLevels = allLevels  // mesmo range, label mostra px
+    const allLevels = Array.from({length:26}, (_,i) => String(i).padStart(2,'0'))
 
-    function swatches(prop, suf, type) {
-        const id = `sf-sw-${type === 'alpha' ? 'a-' : type === 'blur' ? 'b-' : ''}${prop}-${suf}`
-        return `<div id="${id}" class="sf-swatch-row"
-            data-prop="${prop}" data-suf="${suf}" data-type="${type}"
-            style="display:flex;gap:3px;flex-wrap:wrap;"></div>`
+    // ─── ID do swatch row / indicador ────────────────────────
+    function swKey(prop, suf, type) {
+        return `${type === 'alpha' ? 'a-' : type === 'blur' ? 'b-' : ''}${prop}-${suf}`
     }
 
+    // ─── Row simples (Paleta, Saturação) ─────────────────────
     const row = (label, html) =>
         `<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
             <span class="sf-row-label">${label}</span>${html}
         </div>`
+
+    // ─── Details row (swatches colapsáveis) ──────────────────
+    function detailsRow(label, prop, suf, type) {
+        const key = swKey(prop, suf, type)
+        return `<details class="sf-details">
+            <summary>
+                <span class="sf-arrow">▶</span>
+                <span class="sf-row-label">${label}</span>
+                <span id="sf-ind-${key}" style="display:flex;align-items:center;gap:4px;"></span>
+            </summary>
+            <div style="padding:6px 0 2px 20px;">
+                <div id="sf-sw-${key}" class="sf-swatch-row"
+                    data-prop="${prop}" data-suf="${suf}" data-type="${type}"
+                    style="display:flex;gap:3px;flex-wrap:wrap;"></div>
+            </div>
+        </details>`
+    }
 
     const sep = label =>
         `<div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -145,49 +159,49 @@ CompPages["surface"] = function(c) {
                 )}
 
                 ${sep('BACKGROUND')}
-                ${row('Normal',       swatches('bg','base','color'))}
-                ${row('Hover',        swatches('bg','hover','color'))}
-                ${row('Active',       swatches('bg','active','color'))}
-                ${row('Hover-active', swatches('bg','hactive','color'))}
+                ${detailsRow('Normal',       'bg','base','color')}
+                ${detailsRow('Hover',        'bg','hover','color')}
+                ${detailsRow('Active',       'bg','active','color')}
+                ${detailsRow('Hover-active', 'bg','hactive','color')}
 
                 ${sep('TEXTO')}
-                ${row('Normal',       swatches('text','base','color'))}
-                ${row('Hover',        swatches('text','hover','color'))}
-                ${row('Active',       swatches('text','active','color'))}
-                ${row('Hover-active', swatches('text','hactive','color'))}
+                ${detailsRow('Normal',       'text','base','color')}
+                ${detailsRow('Hover',        'text','hover','color')}
+                ${detailsRow('Active',       'text','active','color')}
+                ${detailsRow('Hover-active', 'text','hactive','color')}
 
                 ${sep('BORDA')}
-                ${row('Normal',       swatches('border','base','color'))}
-                ${row('Hover',        swatches('border','hover','color'))}
-                ${row('Active',       swatches('border','active','color'))}
-                ${row('Hover-active', swatches('border','hactive','color'))}
+                ${detailsRow('Normal',       'border','base','color')}
+                ${detailsRow('Hover',        'border','hover','color')}
+                ${detailsRow('Active',       'border','active','color')}
+                ${detailsRow('Hover-active', 'border','hactive','color')}
 
                 ${sep('RIPPLE')}
-                ${row('Normal',       swatches('ripple','base','color'))}
-                ${row('Hover',        swatches('ripple','hover','color'))}
-                ${row('Active',       swatches('ripple','active','color'))}
-                ${row('Hover-active', swatches('ripple','hactive','color'))}
+                ${detailsRow('Normal',       'ripple','base','color')}
+                ${detailsRow('Hover',        'ripple','hover','color')}
+                ${detailsRow('Active',       'ripple','active','color')}
+                ${detailsRow('Hover-active', 'ripple','hactive','color')}
 
                 ${sep('ALPHA — BACKGROUND')}
-                ${row('Normal',       swatches('bg','base','alpha'))}
-                ${row('Hover',        swatches('bg','hover','alpha'))}
-                ${row('Active',       swatches('bg','active','alpha'))}
-                ${row('Hover-active', swatches('bg','hactive','alpha'))}
+                ${detailsRow('Normal',       'bg','base','alpha')}
+                ${detailsRow('Hover',        'bg','hover','alpha')}
+                ${detailsRow('Active',       'bg','active','alpha')}
+                ${detailsRow('Hover-active', 'bg','hactive','alpha')}
 
                 ${sep('ALPHA — TEXTO')}
-                ${row('Normal',       swatches('text','base','alpha'))}
-                ${row('Hover',        swatches('text','hover','alpha'))}
-                ${row('Active',       swatches('text','active','alpha'))}
-                ${row('Hover-active', swatches('text','hactive','alpha'))}
+                ${detailsRow('Normal',       'text','base','alpha')}
+                ${detailsRow('Hover',        'text','hover','alpha')}
+                ${detailsRow('Active',       'text','active','alpha')}
+                ${detailsRow('Hover-active', 'text','hactive','alpha')}
 
                 ${sep('ALPHA — BORDA')}
-                ${row('Normal',       swatches('border','base','alpha'))}
-                ${row('Hover',        swatches('border','hover','alpha'))}
-                ${row('Active',       swatches('border','active','alpha'))}
-                ${row('Hover-active', swatches('border','hactive','alpha'))}
+                ${detailsRow('Normal',       'border','base','alpha')}
+                ${detailsRow('Hover',        'border','hover','alpha')}
+                ${detailsRow('Active',       'border','active','alpha')}
+                ${detailsRow('Hover-active', 'border','hactive','alpha')}
 
                 ${sep('BLUR')}
-                ${row('Intensidade',  swatches('blur','base','blur'))}
+                ${detailsRow('Intensidade',  'blur','base','blur')}
 
             </div>
 
@@ -259,52 +273,65 @@ CompPages["surface"] = function(c) {
 
         let blurImgUrl = ''   // gerada uma vez por ativação do blur
 
+        function swatchBgCls(type, n) {
+            const num = Number(n)
+            if (type === 'color') {
+                const textCls = num < 13 ? 'text-color-auto-21' : 'text-color-auto-02'
+                return { bgCls: `piece-surface ${meta.palette} background-color-auto-${n} ${textCls}`, label: n, title: `auto-${n}` }
+            }
+            if (type === 'alpha') {
+                return { bgCls: `piece-surface piece-s-40 ${meta.palette} background-color-auto-11 piece-background-alpha-${n} text-color-auto-21`, label: n, title: `alpha-${n} (${num*4}%)` }
+            }
+            // blur
+            return { bgCls: `piece-surface background-color-auto-06 text-color-auto-20`, label: `${num*2}`, title: `blur-${n} (${num*2}px)` }
+        }
+
         function renderSwatchContainer(el) {
             const { prop, suf, type } = el.dataset
-            const levels  = allLevels   // todos os tipos usam 00–25
             const current = type === 'alpha' ? A[prop][suf]
                           : type === 'blur'  ? meta.blur
                           :                   C[prop][suf]
 
-            el.innerHTML = levels.map(n => {
+            el.innerHTML = allLevels.map(n => {
                 const isActive = n === current
-                const num = Number(n)
-
-                let bgCls, label, title
-                if (type === 'color') {
-                    // Contraste automático: claro usa texto escuro, escuro usa texto claro
-                    const textCls = num < 13 ? 'text-color-auto-21' : 'text-color-auto-02'
-                    bgCls  = `piece-surface ${meta.palette} background-color-auto-${n} ${textCls}`
-                    label  = n
-                    title  = `auto-${n}`
-                } else if (type === 'alpha') {
-                    // Alpha: mostra cor sólida com opacidade; texto sempre escuro
-                    bgCls  = `piece-surface piece-s-40 ${meta.palette} background-color-auto-11 piece-background-alpha-${n} text-color-auto-21`
-                    label  = n
-                    title  = `alpha-${n} (${num * 4}%)`
-                } else {
-                    // Blur: fundo neutro, label em px
-                    bgCls  = `piece-surface background-color-auto-06 text-color-auto-20`
-                    label  = `${num * 2}`
-                    title  = `blur-${n} (${num * 2}px)`
-                }
-
+                const { bgCls, label, title } = swatchBgCls(type, n)
+                // Outline: duplo anel sempre visível (branco interno + preto externo)
+                const ring = isActive
+                    ? 'box-shadow:0 0 0 2px rgba(255,255,255,0.9),0 0 0 4px rgba(0,0,0,0.6);'
+                    : ''
                 return `<button
                     class="${bgCls}"
                     data-prop="${prop}" data-suf="${suf}" data-type="${type}" data-val="${n}"
                     style="width:28px;height:28px;border-radius:5px;cursor:pointer;border:none;
-                           outline:${isActive ? '2px solid currentColor' : '2px solid transparent'};
-                           outline-offset:2px;
-                           font-size:8px;font-weight:700;
-                           display:grid;place-content:center;"
+                           ${ring}font-size:8px;font-weight:700;display:grid;place-content:center;"
                     title="${title}">${label}</button>`
             }).join('') +
+            // Botão ✕ com cor explícita — evita herdar preto em dark mode
             `<button
+                class="piece-surface background-color-auto-04 text-color-auto-18"
                 data-prop="${prop}" data-suf="${suf}" data-type="${type}" data-val=""
-                style="width:28px;height:28px;border-radius:5px;cursor:pointer;
-                       font-size:12px;opacity:${current ? '.55' : '.2'};
-                       background:transparent;border:1px dashed currentColor;"
+                style="width:28px;height:28px;border-radius:5px;cursor:pointer;border:none;
+                       font-size:12px;opacity:${current ? '.8' : '.25'};"
                 title="Limpar">✕</button>`
+
+            // Atualiza indicador no summary
+            const ind = document.getElementById(`sf-ind-${swKey(prop, suf, type)}`)
+            if (ind) {
+                if (current) {
+                    const { bgCls, label } = swatchBgCls(type, current)
+                    ind.innerHTML =
+                        `<span class="${bgCls}"
+                            style="width:26px;height:20px;border-radius:4px;display:inline-grid;
+                                   place-content:center;font-size:8px;font-weight:700;">${label}</span>` +
+                        `<button class="piece-surface background-color-auto-04 text-color-auto-18"
+                            data-prop="${prop}" data-suf="${suf}" data-type="${type}" data-val=""
+                            style="width:20px;height:20px;border-radius:4px;cursor:pointer;
+                                   border:none;font-size:10px;display:inline-grid;place-content:center;"
+                            title="Limpar">✕</button>`
+                } else {
+                    ind.innerHTML = ''
+                }
+            }
         }
 
         function renderAllSwatches() {

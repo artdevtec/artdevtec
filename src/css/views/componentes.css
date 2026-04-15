@@ -138,3 +138,25 @@
     flex-shrink: 0;
 }
 
+.sf-details {
+    summary {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        list-style: none;
+        padding: 5px 0;
+        user-select: none;
+        &::-webkit-details-marker { display: none; }
+    }
+    .sf-arrow {
+        font-size: 8px;
+        opacity: .35;
+        transition: transform .2s cubic-bezier(0.2, 0, 0, 1);
+        flex-shrink: 0;
+    }
+    &[open] .sf-arrow {
+        transform: rotate(90deg);
+    }
+}
+
