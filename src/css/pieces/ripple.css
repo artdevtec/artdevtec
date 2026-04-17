@@ -7,7 +7,13 @@
     pointer-events: none;
 }
 
-/* efeito granulado */
+/* ── variáveis de controle ── */
+:root {
+    --ripple-grain-size: 3px;  /* tamanho do grão: menor = mais fino, maior = mais grosso */
+    --ripple-duration: 0.8s;
+}
+
+/* efeito base */
 .piece-ripple-effect {
     position: absolute;
     border-radius: 50%;
@@ -16,17 +22,25 @@
     width: 0;
     height: 0;
     transform: translate(-50%, -50%);
+}
 
+/* ── granulado (padrão) ── */
+.piece-ripple-effect {
     background-image: radial-gradient(circle, var(--ripple-color) 1px, transparent 1px);
+    background-size: var(--ripple-grain-size) var(--ripple-grain-size);
+}
 
-    /* controla o efeito granulado */
-    --background-size: 1px;
-    --background-size: 3px;
-    background-size: var(--background-size) var(--background-size);
+/* ── wave: ripple sólido tradicional ──
+   aplica quando .piece-ripple-wave está no elemento pai ou no body */
+.piece-ripple-wave .piece-ripple-effect,
+body.piece-ripple-wave .piece-ripple-effect {
+    background-image: none;
+    background-color: var(--ripple-color);
+    background-size: unset;
 }
 
 .piece-ripple-effect.animate {
-    animation: ripple-expand 0.8s ease-out forwards;
+    animation: ripple-expand var(--ripple-duration) ease-out forwards;
 }
 
 @keyframes ripple-expand {

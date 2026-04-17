@@ -70,7 +70,7 @@
             }
         }
 
-        .piece-label {
+        > .piece-field-container > .piece-label {
             position: absolute;
             left: 12px;
             top: 50%;
@@ -84,13 +84,13 @@
                 font-size .2s cubic-bezier(0.2, 0, 0, 1);
         }
 
-        &:focus-within .piece-label,
-        &:has(input:valid) .piece-label {
+        &:focus-within > .piece-field-container > .piece-label,
+        &:has(input:valid) > .piece-field-container > .piece-label {
             top: 0;
             font-size: 12px;
         }
 
-        &:has(.piece-icon-leading):not(:focus-within):not(:has(input:valid)) .piece-label {
+        &:has(.piece-icon-leading):not(:focus-within):not(:has(input:valid)) > .piece-field-container > .piece-label {
             left: 48px;
         }
 
