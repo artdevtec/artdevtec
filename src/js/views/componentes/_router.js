@@ -9,7 +9,7 @@ window.H = {
     header(name, desc, file) {
         return /*html*/`
         <div class="comp-page-header">
-            <button class="comp-back-btn text-color-auto-16"
+            <button class="comp-back-btn piece-surface text-color-auto-16"
                 onclick="location.hash='componentes'">
                 <span class="material-symbols-rounded" style="font-size:18px;" translate="no">arrow_back</span>
                 Componentes
@@ -71,6 +71,7 @@ const CATALOG = [
     { id: "badge",         name: "Badge",              icon: "counter_1",            file: "badge.css"             },
     { id: "tooltip",       name: "Tooltip",            icon: "tooltip",              file: "tooltip.css"           },
     { id: "snackbar",      name: "Snackbar",           icon: "notifications",        file: "snackbar.css"          },
+    { id: "toast",         name: "Toast",              icon: "info",                 file: "toast.css"             },
     { id: "table",         name: "Table",              icon: "table",                file: "table.css"             },
     { id: "progress",      name: "Progress Indicator", icon: "progress_activity",    file: "progressIndicator.css" },
     { id: "ripple",        name: "Ripple",             icon: "water_drop",           file: "ripple.css"            },
@@ -89,6 +90,9 @@ MPSO.newView({
 
         const id     = params[0]
         const scroll = $("#m-main .comp-scroll")
+
+        // scroll to top ao trocar de view
+        $("#m-main").scrollTop = 0
 
         if (id && CompPages[id]) {
             CompPages[id](scroll)

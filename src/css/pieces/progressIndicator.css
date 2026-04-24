@@ -1,102 +1,91 @@
 .piece-progress-indicator {
     display: grid;
+    overflow: hidden;
     pointer-events: none;
+    opacity: 0;
     border-radius: 2px;
 
-    --piece-percentage:   0%;
-    --piece-track-width:  4px;
+    --piece-percentage: 0%;
 
-    &.piece-absolute { position: absolute; }
+    &.piece-active {
+        opacity: 1;
+    }
+
+    &.piece-absolute {
+        position: absolute;
+    }
+
+    .piece-indicator {
+        transition: .3s;
+        animation: piece-progress-light 1s infinite;
+        border-radius: 2px;
+    }
 
 
-    /* ─────────────────────────────────────
-       BAR
-    ───────────────────────────────────── */
+    /* ---------------- */
+    /* BAR PROGRESS     */
+    /* ---------------- */
 
     &.piece-bar {
-        overflow: hidden;
+
         height: 4px;
         width: 100%;
 
         .piece-indicator {
-            height: 100%;
-            border-radius: 2px;
             width: var(--piece-percentage);
-            transition: width .3s;
+            height: 100%;
         }
 
-        /* indeterminate — segmento deslizante */
-        &.piece-indeterminate .piece-indicator {
-            width: 40%;
-            transition: none;
-            animation: piece-bar-indeterminate 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        }
     }
 
 
-    /* ─────────────────────────────────────
-       CIRCLE
-    ───────────────────────────────────── */
+    /* ---------------- */
+    /* CIRCLE PROGRESS  */
+    /* ---------------- */
 
     &.piece-circle {
-        border-radius: 50%;
-        position: relative;
 
-        /* máscara no container = anel — recorta tanto o track quanto o arco */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    .piece-indicator {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        animation: none;
+
+        background:
+            conic-gradient(
+                currentColor var(--piece-percentage),
+                transparent 0
+            );
+
+        /* cria o buraco do meio */
         -webkit-mask: radial-gradient(
             farthest-side,
-            transparent calc(100% - var(--piece-track-width)),
-            black       calc(100% - var(--piece-track-width))
+            transparent calc(100% - 4px),
+            black calc(100% - 4px)
         );
+
         mask: radial-gradient(
             farthest-side,
-            transparent calc(100% - var(--piece-track-width)),
-            black       calc(100% - var(--piece-track-width))
+            transparent calc(100% - 4px),
+            black calc(100% - 4px)
         );
-
-        /* track = background do próprio container (background-color-auto-06 etc.) */
-
-        /* arco = .piece-indicator com conic-gradient usando as vars do seu piece-surface */
-        > .piece-indicator {
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background: conic-gradient(
-                hsla(
-                    var(--piece-background-color-h),
-                    var(--piece-s),
-                    var(--piece-background-color),
-                    var(--piece-background-a)
-                ) var(--piece-percentage),
-                transparent 0
-            );
-        }
-
-        /* indeterminate — arco de 25% girando */
-        &.piece-indeterminate > .piece-indicator {
-            background: conic-gradient(
-                hsla(
-                    var(--piece-background-color-h),
-                    var(--piece-s),
-                    var(--piece-background-color),
-                    var(--piece-background-a)
-                ) 25%,
-                transparent 0
-            );
-            animation: piece-circle-indeterminate 1s linear infinite;
-        }
     }
+
+}
+
 }
 
 
-/* ── Animações ───────────────────────────────────────────── */
-
-@keyframes piece-bar-indeterminate {
-    0%   { transform: translateX(-250%); }
-    100% { transform: translateX(250%); }
-}
-
-@keyframes piece-circle-indeterminate {
-    from { transform: rotate(0deg);   }
-    to   { transform: rotate(360deg); }
+/* movimento da luz */
+@keyframes piece-progress-light {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

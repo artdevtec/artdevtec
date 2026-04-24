@@ -91,6 +91,14 @@
     min-height: 80px;
 }
 
+/* ─── Scroll lateral nos controles do playground ────────── */
+.pg-ctrl-row {
+    overflow-x: auto;
+    scrollbar-width: none;
+    min-width: 0;
+    &::-webkit-scrollbar { display: none; }
+}
+
 .comp-demo-code {
     font-family: monospace;
     font-size: 11px;
